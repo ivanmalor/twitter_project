@@ -1,7 +1,13 @@
-__author__ = 'Richard Gale'
+__author__ = 'Richard Gale, Matheu Malo, Kevin Yuan'
 
-"""Adopted Siyuan and Matheu's code to put 
-twitter stream json data directly into couchdb """
+"""Adopted/combined Matheu and Kevin's code segments to put 
+twitter stream json data directly into couchdb.
+You need to:
+1)Change the API keys
+2)Change Couchdb location + database name
+3)Select Birmingham location segment (GEOBOX_BHAM1~4)
+For the program to work properly on your machine/node.
+"""
 
 from tweepy import Stream
 from tweepy import OAuthHandler
@@ -12,10 +18,7 @@ import couchdb
 from couchdb.mapping import Document, TextField, FloatField
 
 
-"""Matheu's code"""
-
-FILE = 'BHAM_DB.csv'
-
+#Put in your own keys
 # Go to http://apps.twitter.com and create an app.
 # The consumer key and secret will be generated for you after
 consumer_key = "sEe0b4yXx5uJ54QvtbvfEYPP7"
@@ -33,26 +36,42 @@ GEOBOX_BHAM_1 = [-2.033649,52.381053,-1.887473,52.497652]
 GEOBOX_BHAM_2 = [-1.887473,52.380634,-1.728858,52.497652]
 GEOBOX_BHAM_3 = [-2.033649,52.494074,-1.887473,52.608706]
 GEOBOX_BHAM_4 = [-1.887393,52.490729,-1.728858,52.608706]
+#choose the appropriate coordinates for the node
+
+#handles authentication
+auth = OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
 
 #set up couchdb (local version)
-couch = couchdb.Server('http://localhost:5984/')
-db = couch['twit']
+#put in your own db name and address
+db_name = 'twit'
+server_location = "http://localhost:5984/"
+couch = couchdb.Server(server_location)
+db = couch[db_name]
+duplicate_count = 0
 
 
 class listener(StreamListener):
 	""" A listener handles tweets received from the stream.
-    This is a custom listener that store received tweets to FILE.
-    """
-	def on_data(self, data):
+	This is a custom listener that store received tweets to FILE.
+	"""
+	def on_data(self, tweet_data):
 		try:
-			tweet_data = data
 			#converts to json format then saves in couchdb
-			json_tweet = json.loads(tweet_data)
-			db.save(json_tweet)
-			print json_tweet
+			tweets_json = json.loads(tweet_data)
+			doc_id = tweets_json["id_str"]
+			#id of the document is the tweet id
+			doc = {"_id": doc_id, "tweet_data": tweets_json}
+			db.save(doc)
+			print('added: ' + doc_id)
 			return True
 		except BaseException as e:
 			print(e)
+			time.sleep(5)
+		except couchdb.http.ResourceConflict:
+			#handles duplicates
+			duplicate_count += 1
 			time.sleep(5)
 
 	def on_error(self,status):
@@ -60,20 +79,16 @@ class listener(StreamListener):
 		if status_code == 420:
 			print(status)
 			return False
-            
-            
+			
+			
+def main():
+	print("Streaming started....")
+	try:
+		twitterStream = Stream(auth,listener())
+		twitterStream.filter(locations = GEOBOX_BHAM)
+	except Exception as e:
+		print("Error or execution finished. Program exiting... ")
+		print("there were {0} duplicates".format(duplicate_count))
+		twitterStream.disconnect()
 
-auth = OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-
-print("Streaming started....")
-
-try:
-	twitterStream = Stream(auth,listener())
-	twitterStream.filter(locations = GEOBOX_BHAM)
-except Exception as e:
-	raise e
-	twitterStream.disconnect()
-
-
-		
+main()
