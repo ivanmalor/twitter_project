@@ -1,9 +1,18 @@
+__author__ = 'Richard Gale'
+
+"""Adopted Siyuan and Matheu's code to put 
+twitter stream json data directly into couchdb """
+
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 import os
 import time,json,sys
+import couchdb
+from couchdb.mapping import Document, TextField, FloatField
 
+
+"""Matheu's code"""
 
 FILE = 'BHAM_DB.csv'
 
@@ -25,6 +34,10 @@ GEOBOX_BHAM_2 = [-1.887473,52.380634,-1.728858,52.497652]
 GEOBOX_BHAM_3 = [-2.033649,52.494074,-1.887473,52.608706]
 GEOBOX_BHAM_4 = [-1.887393,52.490729,-1.728858,52.608706]
 
+#set up couchdb (local version)
+couch = couchdb.Server('http://localhost:5984/')
+db = couch['twit']
+
 
 class listener(StreamListener):
 	""" A listener handles tweets received from the stream.
@@ -32,11 +45,11 @@ class listener(StreamListener):
     """
 	def on_data(self, data):
 		try:
-			print (data)
-			saveFile = open(FILE,'a')
-			saveFile.write(data)
-			saveFile.write(os.linesep)
-			saveFile.close()
+			tweet_data = data
+			#converts to json format then saves in couchdb
+			json_tweet = json.loads(tweet_data)
+			db.save(json_tweet)
+			print json_tweet
 			return True
 		except BaseException as e:
 			print(e)
