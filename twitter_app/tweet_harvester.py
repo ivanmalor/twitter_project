@@ -1,4 +1,4 @@
-__author__ = 'Richard Gale, Matheu Malo, Kevin Yuan'
+__author__ = 'Richard Gale, Matheu Malo, Kevin Zhang'
 
 """Adopted/combined Matheu and Kevin's code segments to put 
 twitter stream json data directly into couchdb.
