@@ -50,7 +50,7 @@ auth.set_access_token(access_token, access_token_secret)
 #set up couchdb (local version)
 #put in your own db name and address
 db_name = 'twit'
-server_location = "http://localhost:5984/"
+server_location = "http://siyuan:zsy91067@localhost:5984/"
 couch = couchdb.Server(server_location)
 db = couch[db_name]
 duplicate_count = 0
