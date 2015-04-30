@@ -1,0 +1,3 @@
+function(doc) {
+  emit(doc._id, doc.tweet_data.user.followers_count);
+}
