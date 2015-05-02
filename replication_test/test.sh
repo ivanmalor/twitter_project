@@ -2,7 +2,7 @@
 curl -X PUT "http://localhost:5984/t1"
 curl -X PUT "http://localhost:5984/t2"
 
-curl -X POST "http://localhost:5984/t1" --header "Content-Type:application/json" --data '{"_id": "1", "name": "lets"}'
+curl -X POST "http://localhost:5984/t1" --header "Content-Type:application/json" --data '{"_id": "1"zzz}'
 curl -X POST "http://localhost:5984/t1" --header "Content-Type:application/json" --data '{"_id": "2", "name": "see"}'
 curl -X POST "http://localhost:5984/t1" --header "Content-Type:application/json" --data '{"_id": "4", "name": "if"}'
 
