@@ -18,6 +18,7 @@ import os
 import time,json,sys
 import couchdb
 from couchdb.mapping import Document, TextField, FloatField
+from meaningcloud_client import sendPost
 
 
 #Put in your own keys
@@ -49,13 +50,12 @@ auth.set_access_token(access_token, access_token_secret)
 
 #set up couchdb (local version)
 #put in your own db name and address
-db_name = 'twit'
+db_name = 'twit2'
 server_location = "http://localhost:5984/"
 couch = couchdb.Server(server_location)
 db = couch[db_name]
 duplicate_count = 0
 
-log = open("log.txt", 'a')
 
 
 class listener(StreamListener):
@@ -68,9 +68,15 @@ class listener(StreamListener):
 			tweets_json = json.loads(tweet_data)
 			doc_id = tweets_json["id_str"]
 			#id of the document is the tweet id
-			doc = {"_id": doc_id, "tweet_data": tweets_json}
+			#get additional attributes from meaningcloud service
+			response_text = sendPost(tweets_json["text"])
+			data = response_text.read()
+			r = json.loads(data.decode())
+
+			doc = {"_id": doc_id, "tweet_data": tweets_json, "meaningcloud": r}
+
+			# We make the request and parse the response
 			db.save(doc)
-			log.write(doc_id + '\n')
 			print('added: ' + doc_id)
 			return True
 		except BaseException as e:
