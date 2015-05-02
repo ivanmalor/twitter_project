@@ -14,6 +14,7 @@ from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 import os
+import sys
 import time,json,sys
 import couchdb
 from couchdb.mapping import Document, TextField, FloatField
@@ -48,7 +49,7 @@ auth.set_access_token(access_token, access_token_secret)
 
 #set up couchdb (local version)
 #put in your own db name and address
-db_name = 'twit2'
+db_name = 'twit3'
 server_location = "http://localhost:5984/"
 couch = couchdb.Server(server_location)
 db = couch[db_name]
@@ -64,11 +65,32 @@ class listener(StreamListener):
 			#converts to json format then saves in couchdb
 			tweets_json = json.loads(tweet_data)
 			doc_id = tweets_json["id_str"]
-			#id of the document is the tweet id
-			response_text = sendPost(tweets_json["text"])
-			data = response_text.read()
-			r = json.loads(data.decode())
-			doc = {"_id": doc_id, "tweet_data": tweets_json, "meaningcloud": r}
+			tweet_lang = tweets_json["lang"]
+			#gets data from meaningcloud service
+			meaningcloud_data = sendPost(tweets_json["text"], tweet_lang)
+			if meaningcloud_data is None:
+				#if invalid language, topic and sentiment is not added to document
+				doc = {"_id": doc_id, "tweet_data": tweets_json}
+			else: 
+				sentiment_topic = meaningcloud_data.read()
+				r = json.loads(sentiment_topic.decode())
+
+				#handling of API call limit
+				counter = int(r["status"]["remaining_credits"])
+				if counter < 100:
+					print ("""There are less than 100 API calls left on the current account. 
+							Please insert a new key in meaningcloud_client.py""")
+				elif counter < 10:
+					print ("""There are less than 10 API calls left on the current account. 
+							Please insert a new key in meaningcloud_client.py""")
+					print ("Terminating...")
+					sys.exit(0)
+
+				#id of the document is the tweet id
+				#meaningcloud data is added as attribute in the document
+				doc = {"_id": doc_id, "tweet_data": tweets_json, "meaningcloud": r}
+
+			#saves the document to database
 			db.save(doc)
 			print('added: ' + doc_id)
 			return True
@@ -92,6 +114,7 @@ def main():
 		twitterStream = Stream(auth,listener())
 		twitterStream.filter(locations = GEOBOX_BHAM)
 	except Exception as e:
+		print (e)
 		print("Error or execution finished. Program exiting... ")
 		twitterStream.disconnect()
 

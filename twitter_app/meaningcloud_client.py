@@ -24,15 +24,22 @@ import json
 # We define the variables need to call the API
 host = 'api.meaningcloud.com'
 api = '/sentiment-1.2.php'
+#API key here
 key = 'd2ba90e4acf476b6ae774ac9931ab0c8'
 model = 'en-general' #// es-general/en-general/fr-general
 
 
 # Auxiliary function to make a post request
-def sendPost(text):
-    params = urllib.parse.urlencode({"key": key,"model": model, "txt": text, "src": "sdk-python-1.2"})
-    headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
-    conn = http.client.HTTPConnection(host)
-    conn.request("POST", api, params, headers)
-    response = conn.getresponse()
-    return response 
+def sendPost(text, tweet_lang):
+	#if the tweet is in English, Spanish or French do the API call
+	if tweet_lang in 'en fr es':
+	    model = "{0}-general".format(tweet_lang)
+	    params = urllib.parse.urlencode({"key": key,"model": model, "txt": text, "src": "sdk-python-1.2"})
+	    headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
+	    conn = http.client.HTTPConnection(host)
+	    conn.request("POST", api, params, headers)
+	    response = conn.getresponse()
+	    return response 
+	#otherwise return None
+	else:
+		return None
