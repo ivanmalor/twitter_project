@@ -23,7 +23,7 @@ import json
 host = 'api.meaningcloud.com'
 api = '/sentiment-1.2.php'
 key = 'd2ba90e4acf476b6ae774ac9931ab0c8'
-txt = 'Birmingham is a great city but I hate soccer'
+txt = 'Birmingham is a great city but I hate soccer, and I like reading books by Shakespeare and I travel to Australia'
 model = 'en-general' #// es-general/en-general/fr-general
 
 

@@ -1,5 +1,5 @@
 #Alec Larsen - University of the Witwatersrand, South Africa, 2012 import shlex, subprocess
-
+import shlex, subprocess
 def RateSentiment(sentiString):
     #open a subprocess using shlex to get the command line string into the correct args list format
     p = subprocess.Popen(shlex.split("java -jar SentiStrength.jar stdin sentidata C:/SentStrength_Data/"),stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
@@ -8,3 +8,4 @@ def RateSentiment(sentiString):
     #remove the tab spacing between the positive and negative ratings. e.g. 1    -5 -> 1-5
     stdout_text = stdout_text.rstrip().replace("\t","")
     return stdout_text
+a = RateSentiment('hello world')
