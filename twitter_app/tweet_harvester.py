@@ -7,7 +7,6 @@ You need to:
 2)Change Couchdb location + database name
 3)Select Birmingham location segment (GEOBOX_BHAM1~4)
 For the program to work properly on your machine/node.
-
 Get tweepy and couchdb library using pip
 """
 
@@ -19,7 +18,6 @@ import time,json,sys
 import couchdb
 from couchdb.mapping import Document, TextField, FloatField
 from meaningcloud_client import sendPost
-
 
 #Put in your own keys
 # Go to http://apps.twitter.com and create an app.
@@ -54,7 +52,6 @@ db_name = 'twit2'
 server_location = "http://localhost:5984/"
 couch = couchdb.Server(server_location)
 db = couch[db_name]
-duplicate_count = 0
 
 
 
@@ -68,14 +65,10 @@ class listener(StreamListener):
 			tweets_json = json.loads(tweet_data)
 			doc_id = tweets_json["id_str"]
 			#id of the document is the tweet id
-			#get additional attributes from meaningcloud service
 			response_text = sendPost(tweets_json["text"])
 			data = response_text.read()
 			r = json.loads(data.decode())
-
 			doc = {"_id": doc_id, "tweet_data": tweets_json, "meaningcloud": r}
-
-			# We make the request and parse the response
 			db.save(doc)
 			print('added: ' + doc_id)
 			return True
@@ -84,7 +77,6 @@ class listener(StreamListener):
 			time.sleep(5)
 		except couchdb.http.ResourceConflict:
 			#handles duplicates
-			duplicate_count += 1
 			time.sleep(5)
 
 	def on_error(self,status):
@@ -95,13 +87,12 @@ class listener(StreamListener):
 			
 			
 def main():
-	print("Streaming started....")
+	print("Streaming started.... Ctrl+C to abort")
 	try:
 		twitterStream = Stream(auth,listener())
 		twitterStream.filter(locations = GEOBOX_BHAM)
 	except Exception as e:
 		print("Error or execution finished. Program exiting... ")
-		print("there were {0} duplicates".format(duplicate_count))
 		twitterStream.disconnect()
 
 main()
