@@ -23,7 +23,7 @@ import json
 host = 'api.meaningcloud.com'
 api = '/sentiment-1.2.php'
 key = 'd2ba90e4acf476b6ae774ac9931ab0c8'
-txt = 'The Royal baby is on its way At last I am so happy!'
+txt = 'The Royal baby is on its way At last I am so happy! I love mum and dad, but I like playing computer games and David Beckham and New York'
 model = 'en-general' #// es-general/en-general/fr-general
 
 

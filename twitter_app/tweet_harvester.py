@@ -99,7 +99,7 @@ class listener(StreamListener):
 			time.sleep(5)
 		except couchdb.http.ResourceConflict:
 			#handles duplicates
-			time.sleep(5)
+			print ("duplicate tweet")
 
 	def on_error(self,status):
 		#returning False in on_data disconnects the stream

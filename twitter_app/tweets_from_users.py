@@ -10,6 +10,7 @@ import json
 import time
 import couchdb
 from couchdb.mapping import Document, TextField, FloatField
+from meaningcloud_client import sendPost
 
 # HERE -- LIST OF SCREEN_USERS
 SCREEN_USER = "Cholopic"
@@ -63,7 +64,28 @@ def get_list_timeline(owner_screen_name,slug,api):
 
 		# Sentiment analysis def here
 
-		doc = {"_id": doc_id, "tweet_data": json_status}
+		meaningcloud_data = sendPost(json_status["text"], tweet_lang)
+		if meaningcloud_data is None:
+			#if invalid language, topic and sentiment is not added to document
+			doc = {"_id": doc_id, "tweet_data": json_status}
+		else: 
+			sentiment_topic = meaningcloud_data.read()
+			r = json.loads(sentiment_topic.decode())
+
+			#handling of API call limit
+			counter = int(r["status"]["remaining_credits"])
+			if counter < 100:
+				print ("""There are less than 100 API calls left on the current account. 
+						Please insert a new key in meaningcloud_client.py""")
+			elif counter < 10:
+				print ("""There are less than 10 API calls left on the current account. 
+						Please insert a new key in meaningcloud_client.py""")
+				print ("Terminating...")
+				sys.exit(0)
+
+			#id of the document is the tweet id
+			#meaningcloud data is added as attribute in the document
+		doc = {"_id": doc_id, "tweet_data": json_status, "meaningcloud": r}
 
 		store_on_db(doc)
 	return
@@ -71,8 +93,9 @@ def get_list_timeline(owner_screen_name,slug,api):
 def store_on_db(doc):
 	try:
 		#Database info here
-		db_name = 'tweets'
-		couch = couchdb.Server()
+		db_name = 'user_tweets'
+		server_location = "http://localhost:5984/"
+		couch = couchdb.Server(server_location)
 		#db = db_ini(db_name,couch)
 		db = couch[db_name]
 		db.save(doc)
