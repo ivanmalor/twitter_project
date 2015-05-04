@@ -32,3 +32,5 @@ function(doc) {
        
    }
 }
+
+//the sentiment of tweets
