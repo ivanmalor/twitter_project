@@ -7,9 +7,10 @@ from collections import Counter
 # the number of the most talked topics to be returned
 
 def create_view(server, db, map_name, reduce_name, view_name, design_name):
-    # Connect the server with url http://username:password@server_ip_address:5984/
+	#the path of the map and reduce functions (relative to this file)
     func_dir = os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/"
 
+    # Connect the server with url http://username:password@server_ip_address:5984/
     couch = couchdb.Server(server)
     # Get the database
     db = couch[db]
@@ -40,7 +41,7 @@ def create_view(server, db, map_name, reduce_name, view_name, design_name):
 
 
 def do_map_reduce_search(ret, N):
-    
+    #gets the settings from dict returned from create_view
     server = ret["server"]
     db = ret["db"]
     view_name = ret["view_name"]
@@ -51,20 +52,20 @@ def do_map_reduce_search(ret, N):
 
     result_dict = Counter()
 
+    for row in returned_view:
+        if type(row.key) == dict:
+            result_dict[('user: ' + row.key['user'], 'tweet: ' + row.key['tweet'])] = row.value
+        else:
+        	result_dict[(row.key)] = row.value
+    #perform top N search, if N == 0 return all rows descendingly
+	#create a counter object to store the list of topics returned from couchdb
     if (N != 0):
-	    # Create a counter object to store the list of topics returned from couchdb
-	    for row in returned_view:
-	        result_dict[row.key] = row.value
-
-	    # Print out the top N tweeters
 	    top_n = result_dict.most_common(N)
-	    for t in top_n:
-	        print(t)
-
-	    print ("----------------------------")
     else:
-    	for row in returned_view:
-    		print ((row.key, row.value))
+	    top_n = result_dict.most_common()
+    for t in top_n:
+        print(t[0], t[1])
+    print ("----------------------------")
 
 #arguments in order:
 #server address
@@ -76,9 +77,17 @@ def do_map_reduce_search(ret, N):
 ret1 = create_view('http://localhost:5984/', 'twit3', 'most_mentioned_tweeter.js', '_count', 'count_retweet_times', 'tweeter')
 ret2 = create_view('http://localhost:5984/', 'twit3', 'all_topics.js', '_count', 'count_occurence', 'topics')
 ret3 = create_view('http://localhost:5984/', 'twit3', 'total_sentiment_by_weekday.js', '_sum', 'tweet_sentiment', 'tweet_sentiment')
+ret4 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
+ret5 = create_view('http://115.146.93.167:5984/', 'twit', 'total_tweets_per_weekday.js', '_sum', 'total_tweets_weekdays', 'total_tweets_weekdays')
+ret6 = create_view('http://115.146.93.167:5984/', 'twit', 'user_tweet_language.js', '_sum', 'user_tweet_language', 'user_tweet_language')
 
 #put in N as second argument for top N
-#N=0 for no top N
+#N=0 for all docs, sorted descendingly
 do_map_reduce_search(ret1, 10)
 do_map_reduce_search(ret2, 10)
 do_map_reduce_search(ret3, 0)
+do_map_reduce_search(ret4, 14)
+do_map_reduce_search(ret5, 0)
+do_map_reduce_search(ret6, 20)
+
+
