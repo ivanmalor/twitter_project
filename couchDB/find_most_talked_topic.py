@@ -48,22 +48,22 @@ if __name__ == "__main__":
     """
 
     # Reduce function
-    reduce_fun ="_sum"
+    reduce_fun ="_count"
 
     # Design view
     design = {'views': {'count_occurrence': {
                         # Use map_fun_hash_tag_topics to query topics with hashtags
                         'map': map_fun_all_topics,
                         'reduce': reduce_fun
-                        }},
-              # 'language': 'python'
+                        }}
               }
 
     # Comment out this line to create new design view for counting occurrence of each topic
-    # db["_design/test"] = design
+    if not ("_design/topics" in db):
+        db["_design/topics"] = design
 
     # Get viewresult from couchdb
-    results = db.view('test/count_occurrence', group_level=1)
+    results = db.view('topics/count_occurrence', group_level=1)
 
     # Create a counter object to store the list of topics returned from couchdb
     dict = Counter()
