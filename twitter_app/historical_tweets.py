@@ -1,5 +1,5 @@
 #!/usr/local/bin/python3.4
-# Crate a list 
+
 
 
 import tweepy                               
