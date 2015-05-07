@@ -70,8 +70,9 @@ api = tweepy.API(auth,
         # monitor remaining calls and block until replenished  
         wait_on_rate_limit_notify=True, wait_on_rate_limit=True 
 )
-                 
-followers = api.followers_ids(SCREEN_USER, count = 100 )
+
+# Returns an list containing the IDs of users being followed by the specified user.                
+followers = api.friends_ids(SCREEN_USER, count = 100 )
 
 while True:
 	
