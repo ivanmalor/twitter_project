@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="https://google-developers.appspot.com/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=visualization"></script>
+<link rel="stylesheet" type="text/css" href="CSS/main.css" media="screen" />
+<script src="./JS/d3.js"></script>
+<script src="./JS/d3.js"></script>
+<script src="./JS/d3.layout.cloud.js"></script>
+<script src="./JS/maps.js"></script>
+<script src="./JS/jquery-1.11.1.js"></script>
+<script src="./JS/main.js"></script>
+
+<body onload="initialize()">
+
+<div id="words" style="padding: 10px">
+
+<script>
+  var fill = d3.scale.category20();
+  d3.layout.cloud().size([400, 400])
+      .words([
+        "#Hello", "#world", "#normally", "#you", "#want", "#wr23r", "#words",
+        "#than", "#this","#Hello", "#2fsfs", "#Hello", "#qqrqr", "#normally", "#vdfva", "#want", "#more", "wefwefw","234234" ,"fvdvd" ,"t4t4" ].map(function(d) {
+        return {text: d, size: 10 + Math.random() * 90};
+      }))
+      .padding(1)
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+  function draw(words) {
+    d3.select("body").append("svg")
+        .attr("width", 400)
+        .attr("height", 400)
+      .append("g")
+        .attr("transform", "translate(200,200)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+</script>
+</div>
+
+<div class="header">
+	<input type="text" id="searchKeyTweet"/>
+	<button id="btnSearchTweet">Search Tweet</button>
+</div>
+
+<div class="header">
+	<input type="text" id="searchKeyUser"/>
+	<button id="btnSearchUser">Search Username</button>
+</div>
+
+<div class="displayList" >
+	<ul id="displaySearch"></ul>
+</div>
+
+
+<div id="mainContainer">
+	<h1> Birmingham  </h1>
+</div>
+
+<div class="container">
+		<div id="map_canvas"></div>
+</div>
+
+</body>
