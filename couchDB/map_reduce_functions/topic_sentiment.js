@@ -1,5 +1,5 @@
 function(doc) {
-                    topic_list = ["italy", "#birmingham", "united kingdom", "#starwarsday", "ur", "star wars", "birmingham", "england", "walsall", "#royalbaby"] 
+                    topic_list = ["italy", "#starwarsday", "united kingdom", "#birmingham", "birmingham", "ur", "star wars", "walsall", "england", "#sports"] 
                     tweet = doc.tweet_data.text.toLowerCase()
                     //if there is a sentiment for the tweet
                     if (doc.meaningcloud.score){

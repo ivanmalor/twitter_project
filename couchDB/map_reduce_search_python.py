@@ -49,15 +49,14 @@ def create_view(server, db, map_name, reduce_name, view_name, design_name):
 
     #return if reduce function has been used
     reduce_used = reduce_name != ""
-    return {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
+    return {"server": couch, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
 
-
-def do_map_reduce_search(ret, N, identifier):
+def sort_map_reduce_search(ret, N, identifier):
     #gets the settings from dict returned from create_view
-    server = ret["server"]
     db = ret["db"]
     view_name = ret["view_name"]
     design_name = ret["design_name"]
+    view_name = ret["view_name"]
     reduce_used = ret["reduce_used"]
     # Get viewresult from couchdb
 
@@ -108,15 +107,16 @@ def do_map_reduce_search(ret, N, identifier):
     for t in top_n:
         print(t[0], t[1])
     print ("----------------------------")
-
+    #outputs the sorted dictionary with map reduce results into html
+    output_html(top_n, view_name)
     return top_n
 
 
 def perform_topic_sentiment_search(top_n, ret):
     server = ret["server"]
     db = ret["db"]
-    view_name = "topic_sentiment_ver2"
-    design_name = "topic_sentiment_ver2"
+    view_name = "topic_sentiment"
+    design_name = "topic_sentiment"
 
     #uses the Counter dictionary returned by previous top n topic search
     #and embeds it in a javascript function for topic/sentiment search
@@ -164,6 +164,23 @@ def perform_topic_sentiment_search(top_n, ret):
     return new_param
 
 
+#outputs the sorted map reduce search result into a html file
+def output_html(top_n, view_name):
+    html = """<table class="table table-striped"><tbody>
+                <tr>
+                    <th>Category</th>
+                    <th>Value</th>
+                </tr>"""
+    for item in top_n:
+        html += "<tr>"
+        html += "<td>" + str(item[0]) + "</td>"
+        html += "<td>" + str(item[1]) + "</td>"
+        html += "</tr>"
+    html += "</tbody></table>"
+
+    html_file = open(os.path.dirname(os.path.realpath(__file__)) + "/html_output/" + view_name +".html",'w')
+    html_file.write(html)
+
 #arguments in order:
 #server address
 #database name
@@ -172,31 +189,32 @@ def perform_topic_sentiment_search(top_n, ret):
 #view name
 #design name 
 
-param1 = create_view('http://115.146.93.167/:5984/', 'twit', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
-param2 = create_view('http://115.146.93.167/:5984/', 'twit', 'all_topics.js', '_count', 'all_topics', 'all_topics')
-param3 = create_view('http://115.146.93.167/:5984/', 'twit', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
-param4 = create_view('http://115.146.93.167/:5984/', 'twit', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
-param5 = create_view('http://115.146.93.167/:5984/', 'twit', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
-param6 = create_view('http://115.146.93.167/:5984/', 'twit', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
-param7 = create_view('http://115.146.93.167/:5984/', 'twit', 'most_followers.js', '', 'most_followers', 'most_followers')
-param8 = create_view('http://115.146.93.167/:5984/', 'twit', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
+param1 = create_view('http://localhost:5984/', 'twit3', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
+param2 = create_view('http://localhost:5984/', 'twit3', 'all_topics.js', '_count', 'all_topics', 'all_topics')
+param3 = create_view('http://localhost:5984/', 'twit3', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
+param4 = create_view('http://localhost:5984/', 'twit3', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
+param5 = create_view('http://localhost:5984/', 'twit3', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
+param6 = create_view('http://localhost:5984/', 'twit3', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
+param7 = create_view('http://localhost:5984/', 'twit3', 'most_followers.js', '', 'most_followers', 'most_followers')
+param8 = create_view('http://localhost:5984/', 'twit3', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
 
 
 
 #put in N as second argument for top N
 #N=0 for all docs, sorted descendingly
 
-do_map_reduce_search(param1, 10, 'count_user_mention')
-do_map_reduce_search(param3, 10, 'count_topic')
-do_map_reduce_search(param4, 15, 'avg_sentiment')
-do_map_reduce_search(param5, 14, 'avg_sentiment')
-do_map_reduce_search(param6, 10, 'count_lang')
-do_map_reduce_search(param7, 10, 'count_follower')
-do_map_reduce_search(param8, 10, 'count_tweets')
+sort_map_reduce_search(param1, 10, 'count_user_mention')
+sort_map_reduce_search(param3, 10, 'count_topic')
+sort_map_reduce_search(param4, 15, 'avg_sentiment')
+sort_map_reduce_search(param5, 14, 'avg_sentiment')
+sort_map_reduce_search(param6, 10, 'count_lang')
+sort_map_reduce_search(param7, 10, 'count_follower')
+sort_map_reduce_search(param8, 10, 'count_tweets')
 
-top_n = do_map_reduce_search(param2, 10, 'count_topic')
+top_n = sort_map_reduce_search(param2, 10, 'count_topic')
 param9 = perform_topic_sentiment_search(top_n, param2)
-do_map_reduce_search(param9, 10, 'topic_sentiment')
+sort_map_reduce_search(param9, 10, 'topic_sentiment')
+
 
 
 
