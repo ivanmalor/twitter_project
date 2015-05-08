@@ -2,26 +2,26 @@ function(doc) {
 	date = new Date(Date.parse((doc.tweet_data.created_at)));
 	weekday = getWeekday(date.getDay())
 	if(doc.meaningcloud.score){		
- 		emit(weekday, parseFloat(doc.meaningcloud.score));
+ 		emit(weekday, [1, parseFloat(doc.meaningcloud.score)]);
  	}
 }
 
 function getWeekday(day){
 	switch(parseInt(day)){
 		case 0:
-			return 'sunday'
+			return 'Sunday'
 		case 1:
-			return 'monday'
+			return 'Monday'
 		case 2:
-			return 'tuesday'
+			return 'Tuesday'
 		case 3:
-			return 'wednesday'
+			return 'Wednesday'
 		case 4:
-			return 'thursday'
+			return 'Thursday'
 		case 5:
-			return 'friday'
+			return 'Friday'
 		case 6:
-			return 'saturday'
+			return 'Saturday'
 		default:
 			return "UNDEFINED"
 	}

@@ -5,6 +5,6 @@ function(doc) {
 	tweet = doc.tweet_data.text
 	//checks where the word appears in tweet
 	if (tweet.split(" ").indexOf(word) > -1){
- 		emit(user_name, tweet);
+ 		emit({user: user_name, tweet: doc._id}, tweet);
 	}
 }
