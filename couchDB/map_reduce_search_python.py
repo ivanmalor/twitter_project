@@ -112,7 +112,7 @@ def do_map_reduce_search(ret, N, identifier):
     return top_n
 
 
-def do_topic_sentiment_search(top_n, ret):
+def perform_topic_sentiment_search(top_n, ret):
     server = ret["server"]
     db = ret["db"]
     view_name = "topic_sentiment_ver2"
@@ -125,7 +125,7 @@ def do_topic_sentiment_search(top_n, ret):
         #make it lowercase
         topics.append('"'+ t[0].lower() +'"')
     topics_insert = ", ".join(topics)
-
+    map_func_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/topic_sentiment.js",'w')
     map_func = """function(doc) {
                     topic_list = [""" + topics_insert + """] 
                     tweet = doc.tweet_data.text.toLowerCase()
@@ -144,9 +144,8 @@ def do_topic_sentiment_search(top_n, ret):
                         });
                     }
                 }"""
-
-    print (map_func)
-
+    #writes the map function made according to popular topics into js file
+    map_func_file.write(map_func)
     reduce_func = "_sum"
     reduce_used = True
 
@@ -163,6 +162,8 @@ def do_topic_sentiment_search(top_n, ret):
     #return if reduce function has been used
     new_param = {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
     return new_param
+
+
 #arguments in order:
 #server address
 #database name
@@ -171,14 +172,14 @@ def do_topic_sentiment_search(top_n, ret):
 #view name
 #design name 
 
-param1 = create_view('http://localhost:5984/', 'twit3', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
-param2 = create_view('http://localhost:5984/', 'twit3', 'all_topics.js', '_count', 'all_topics', 'all_topics')
-param3 = create_view('http://localhost:5984/', 'twit3', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
-param4 = create_view('http://localhost:5984/', 'twit3', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
-param5 = create_view('http://localhost:5984/', 'twit3', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
-param6 = create_view('http://localhost:5984/', 'twit3', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
-param7 = create_view('http://localhost:5984/', 'twit3', 'most_followers.js', '', 'most_followers', 'most_followers')
-param8 = create_view('http://localhost:5984/', 'twit3', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
+param1 = create_view('http://115.146.93.167/:5984/', 'twit', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
+param2 = create_view('http://115.146.93.167/:5984/', 'twit', 'all_topics.js', '_count', 'all_topics', 'all_topics')
+param3 = create_view('http://115.146.93.167/:5984/', 'twit', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
+param4 = create_view('http://115.146.93.167/:5984/', 'twit', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
+param5 = create_view('http://115.146.93.167/:5984/', 'twit', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
+param6 = create_view('http://115.146.93.167/:5984/', 'twit', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
+param7 = create_view('http://115.146.93.167/:5984/', 'twit', 'most_followers.js', '', 'most_followers', 'most_followers')
+param8 = create_view('http://115.146.93.167/:5984/', 'twit', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
 
 
 
@@ -194,7 +195,7 @@ do_map_reduce_search(param7, 10, 'count_follower')
 do_map_reduce_search(param8, 10, 'count_tweets')
 
 top_n = do_map_reduce_search(param2, 10, 'count_topic')
-param9 = do_topic_sentiment_search(top_n, param2)
+param9 = perform_topic_sentiment_search(top_n, param2)
 do_map_reduce_search(param9, 10, 'topic_sentiment')
 
 
