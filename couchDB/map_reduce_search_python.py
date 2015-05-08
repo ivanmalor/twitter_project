@@ -20,9 +20,6 @@ def create_view(server, db, map_name, reduce_name, view_name, design_name):
     # Get the database
     db = couch[db]
 
-
-    # Map function to count the times that a tweeter has been @.
-    # This only considers the collected tweet data.
     map_func = open(func_dir + map_name, 'r').read()
 
     # Reduce function
@@ -78,7 +75,7 @@ def do_map_reduce_search(ret, N, identifier):
     if (identifier == 'count_user_mention'):
         print ("The number of mentions of each Twitter user are: ")
     elif (identifier == 'count_topic'):
-        print ("The number of mentions of each topic are: ")
+        print ("The number of mentions of the following topics are: ")
     elif (identifier == 'avg_sentiment'):
         print ("The average sentiment per each time period are: ")
     elif (identifier == 'count_lang'):
@@ -90,7 +87,7 @@ def do_map_reduce_search(ret, N, identifier):
     elif (identifier == 'contains_word'):
         print ("The tweets which contain the parameter word are: ")
     elif (identifier == 'topic_sentiment'):
-        print ("The average sentiment for the tweets containing the parameter word are: ")
+        print ("The average sentiment for each of the topics are: ")
     print ("----------------------------")
 
     for row in returned_view:
@@ -112,6 +109,60 @@ def do_map_reduce_search(ret, N, identifier):
         print(t[0], t[1])
     print ("----------------------------")
 
+    return top_n
+
+
+def do_topic_sentiment_search(top_n, ret):
+    server = ret["server"]
+    db = ret["db"]
+    view_name = "topic_sentiment_ver2"
+    design_name = "topic_sentiment_ver2"
+
+    #uses the Counter dictionary returned by previous top n topic search
+    #and embeds it in a javascript function for topic/sentiment search
+    topics = []
+    for t in top_n:
+        #make it lowercase
+        topics.append('"'+ t[0].lower() +'"')
+    topics_insert = ", ".join(topics)
+
+    map_func = """function(doc) {
+                    topic_list = [""" + topics_insert + """] 
+                    tweet = doc.tweet_data.text.toLowerCase()
+                    //if there is a sentiment for the tweet
+                    if (doc.meaningcloud.score){
+                        //creates a list of individual tweet words
+                        tweet_words = tweet.split(" ")
+                        //checks where the word appears in tweet
+                        topic_list.forEach(function(t){
+                            //for each topic word compare for each word in tweet
+                            var index = tweet_words.indexOf(t)
+                            //if topic word is found in list
+                            if (index > -1){
+                                emit(tweet_words[index], [1, parseFloat(doc.meaningcloud.score)]);
+                            }
+                        });
+                    }
+                }"""
+
+    print (map_func)
+
+    reduce_func = "_sum"
+    reduce_used = True
+
+    # Design view
+    design = {'views': { view_name: {
+                        'map': map_func,
+                        'reduce': reduce_func
+                        }}
+                  }
+    # Make new view or not if already exist
+    if not (("_design/" + design_name) in db):
+        db["_design/" + design_name] = design
+
+    #return if reduce function has been used
+    new_param = {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
+    return new_param
 #arguments in order:
 #server address
 #database name
@@ -120,32 +171,33 @@ def do_map_reduce_search(ret, N, identifier):
 #view name
 #design name 
 
-ret1 = create_view('http://localhost:5984/', 'twit3', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
-ret2 = create_view('http://localhost:5984/', 'twit3', 'all_topics.js', '_count', 'all_topics', 'all_topics')
-ret25 = create_view('http://localhost:5984/', 'twit3', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
-ret3 = create_view('http://localhost:5984/', 'twit3', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
-ret4 = create_view('http://localhost:5984/', 'twit3', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
-ret6 = create_view('http://localhost:5984/', 'twit3', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
-ret7 = create_view('http://localhost:5984/', 'twit3', 'most_followers.js', '', 'most_followers', 'most_followers')
-ret8 = create_view('http://localhost:5984/', 'twit3', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
-ret9 = create_view('http://localhost:5984/', 'twit3', 'contains_word.js', '', 'contains_word', 'contains_word')
-ret13 = create_view('http://localhost:5984/', 'twit3', 'topic_and_sentiment.js', '_sum', 'topic_and_sentiment', 'topic_and_sentiment')
+param1 = create_view('http://localhost:5984/', 'twit3', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
+param2 = create_view('http://localhost:5984/', 'twit3', 'all_topics.js', '_count', 'all_topics', 'all_topics')
+param3 = create_view('http://localhost:5984/', 'twit3', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
+param4 = create_view('http://localhost:5984/', 'twit3', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
+param5 = create_view('http://localhost:5984/', 'twit3', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
+param6 = create_view('http://localhost:5984/', 'twit3', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
+param7 = create_view('http://localhost:5984/', 'twit3', 'most_followers.js', '', 'most_followers', 'most_followers')
+param8 = create_view('http://localhost:5984/', 'twit3', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
 
 
 
 #put in N as second argument for top N
 #N=0 for all docs, sorted descendingly
 
-do_map_reduce_search(ret1, 10, 'count_user_mention')
-do_map_reduce_search(ret2, 10, 'count_topic')
-do_map_reduce_search(ret25, 10, 'count_topic')
-do_map_reduce_search(ret3, 0, 'avg_sentiment')
-do_map_reduce_search(ret4, 14, 'avg_sentiment')
-do_map_reduce_search(ret6, 10, 'count_lang')
-do_map_reduce_search(ret7, 10, 'count_follower')
-do_map_reduce_search(ret8, 10, 'count_tweets')
-do_map_reduce_search(ret9, 10, 'contains_word')
-do_map_reduce_search(ret13, 10, 'topic_sentiment')
+do_map_reduce_search(param1, 10, 'count_user_mention')
+do_map_reduce_search(param3, 10, 'count_topic')
+do_map_reduce_search(param4, 15, 'avg_sentiment')
+do_map_reduce_search(param5, 14, 'avg_sentiment')
+do_map_reduce_search(param6, 10, 'count_lang')
+do_map_reduce_search(param7, 10, 'count_follower')
+do_map_reduce_search(param8, 10, 'count_tweets')
+
+top_n = do_map_reduce_search(param2, 10, 'count_topic')
+param9 = do_topic_sentiment_search(top_n, param2)
+do_map_reduce_search(param9, 10, 'topic_sentiment')
+
+
 
 
 
