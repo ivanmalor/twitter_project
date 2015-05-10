@@ -1,17 +1,25 @@
-//Find the sentiment extent of a particular user towards a certain topic
-//Use group_level = 3 to get the all sentiment levels towards a topic
+aston_villa_squad= ['guzan','steer','given','baker','vlaar','okore','clark','bacuna','senderos','richardson','hutton','cissokho',
+'kinsella','lowton','sylla', 'cleverly','sinclair','cole','westwood','delph','herd','sanchez','gil','calder',
+'weimann','agbonlahor','benteke','kozak','zogbia','grealish','sherwood'];
+
 function(doc) {
-  if(doc.tweet_data.user.id == 3127895833){
-    if(doc.meaningcloud){
-      if(doc.meaningcloud.entity_list){
-        doc.meaningcloud.entity_list.forEach(function(entity){
-          if(entity.text == "Straw"){
-            if(entity.score_tag){
-              emit([doc.tweet_data.user.id, doc.tweet_data.user.screen_name, entity.score_tag], 1)
-            }
-	  }
-        });
-      }
+ if(doc.tweet_data.entities.hashtags){
+    doc.tweet_data.entities.hashtags.forEach(
+    function(hashtag){
+        if(hashtag.text === "avfc"){
+            aston_villa_squad.forEach(
+                function(player){
+                    tweet_words = doc.tweet_data.text.toLowerCase().split(" ");
+                    if(tweet_words.indexOf(player)>-1){
+                        emit(player, 1);
+                    }
+                }
+            );
+
+        }
     }
-  }
+
+ );
+
+ }
 }

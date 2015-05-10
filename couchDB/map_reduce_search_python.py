@@ -44,8 +44,8 @@ def create_view(server, db, map_name, reduce_name, view_name, design_name):
                             }}
                   }
     # Make new view or not if already exist
-    if not (("_design/" + design_name) in db):
-        db["_design/" + design_name] = design
+    # if not (("_design/" + design_name) in db):
+    db["_design/" + design_name] = design
 
     # Return if reduce function has been used
     reduce_used = reduce_name != ""
