@@ -3,6 +3,7 @@ __author = "Richard Gale"
 import couchdb
 import os
 from collections import Counter
+import json
 
 # Create a view in couchDB
 
@@ -90,14 +91,11 @@ def sort_map_reduce_search(ret, N, identifier, g_level):
     print("----------------------------")
 
     for row in returned_view:
-        if type(row.key) == dict:
-            # For scenarios where the key is a dict with multiple values
-            result_dict[('user: ' + row.key['user'], 'tweet: ' + row.key['tweet'])] = row.value
-        elif type(row.value) == list:
+        if identifier in "avg_sentiment topic_sentiment":
             # For weekday scenarios when you want to get the average sentiment by dividing with total tweets
-            result_dict[(row.key)] = round((float(row.value[1]) / row.value[0]), 5)
+            result_dict[row.key] = round((float(row.value[1]) / row.value[0]), 5)
         else:
-            result_dict[(row.key)] = row.value
+            result_dict[str(row.key)] = row.value
 
     # Perform top N search, if N == 0 return all rows descendingly
     # create a counter object to store the list of topics returned from couchdb
@@ -109,9 +107,17 @@ def sort_map_reduce_search(ret, N, identifier, g_level):
         print(t[0], t[1])
     print("----------------------------")
 
-    # Outputs the sorted dictionary with map reduce results into html
-    output_html(top_n, view_name)
+    # Outputs the sorted dictionary with map reduce results into JSON
+    output_json(top_n, view_name)
     return top_n
+
+
+# Outputs the sorted map reduce search result into a json file
+def output_json(top_n, view_name):
+    json_data = json.dumps(dict(top_n))
+
+    json_file = open(os.path.dirname(os.path.realpath(__file__)) + "/json_output/" + view_name +".json",'w')
+    json_file.write(json_data)
 
 
 def perform_topic_sentiment_search(top_n, ret):
@@ -166,22 +172,6 @@ def perform_topic_sentiment_search(top_n, ret):
     return new_param
 
 
-# Outputs the sorted map reduce search result into a html file
-def output_html(top_n, view_name):
-    html = """<table class="table table-striped"><tbody>
-                <tr>
-                    <th>Category</th>
-                    <th>Value</th>
-                </tr>"""
-    for item in top_n:
-        html += "<tr>"
-        html += "<td>" + str(item[0]) + "</td>"
-        html += "<td>" + str(item[1]) + "</td>"
-        html += "</tr>"
-    html += "</tbody></table>"
-
-    html_file = open(os.path.dirname(os.path.realpath(__file__)) + "/html_output/" + view_name +".html",'w')
-    html_file.write(html)
 
 # Arguments in order:
 # Server address
@@ -191,14 +181,15 @@ def output_html(top_n, view_name):
 # View name
 # Design name
 
-param1 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
-param2 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'all_topics.js', '_count', 'all_topics', 'all_topics')
-param3 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
-param4 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
-param5 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
-param6 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
-param7 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'most_followers.js', '', 'most_followers', 'most_followers')
-param8 = create_view('http://siyuan:zsy91067@localhost:5984/', 'twit', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
+param1 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
+param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_topics.js', '_count', 'all_topics', 'all_topics')
+param3 = create_view('http://115.146.93.167:5984/', 'twit', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
+param4 = create_view('http://115.146.93.167:5984/', 'twit', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
+param5 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
+param6 = create_view('http://115.146.93.167:5984/', 'twit', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
+param7 = create_view('http://115.146.93.167:5984/', 'twit', 'most_followers.js', '', 'most_followers', 'most_followers')
+param8 = create_view('http://115.146.93.167:5984/', 'twit', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
+param10 = create_view('http://115.146.93.167:5984/', 'twit', 'topic_accent.js', '_count', 'topic_accent', 'topic_accent')
 
 
 # Put in N as second argument for top N
@@ -208,13 +199,16 @@ sort_map_reduce_search(param1, 10, 'count_user_mention', 1)
 sort_map_reduce_search(param3, 10, 'count_topic', 1)
 sort_map_reduce_search(param4, 15, 'avg_sentiment', 1)
 sort_map_reduce_search(param5, 14, 'avg_sentiment', 1)
-sort_map_reduce_search(param6, 10, 'count_lang', 1)
+sort_map_reduce_search(param6, 50, 'count_lang', 2)
 sort_map_reduce_search(param7, 10, 'count_follower', 1)
 sort_map_reduce_search(param8, 10, 'count_tweets', 1)
 
 top_n = sort_map_reduce_search(param2, 10, 'count_topic', 1)
 param9 = perform_topic_sentiment_search(top_n, param2)
 sort_map_reduce_search(param9, 10, 'topic_sentiment', 1)
+
+sort_map_reduce_search(param10, 0, 'count_topic', 1)
+
 
 
 
