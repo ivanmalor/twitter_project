@@ -8,9 +8,12 @@ import re
 
 # Create a view in couchDB
 
-def create_view(server, db, map_name, reduce_name, view_name, design_name):
+def create_view(server, db, map_name, reduce_name):
     #the path of the map and reduce functions (relative to this file)
     func_dir = os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/"
+
+    view_name = re.sub('.js', '', map_name)
+    design_name = view_name
 
     # Connect the server with url http://username:password@server_ip_address:5984/
     couch = couchdb.Server(server)
@@ -28,6 +31,7 @@ def create_view(server, db, map_name, reduce_name, view_name, design_name):
 
     if reduce_name == '':
         # Design view
+        reduce_func = ''
         design = {'views': { view_name: {
                         'map': map_func
                         }}
@@ -45,13 +49,42 @@ def create_view(server, db, map_name, reduce_name, view_name, design_name):
                             'reduce': reduce_func
                             }}
                   }
-    # Make new view or not if already exist
-    if not (("_design/" + design_name) in db):
-        db["_design/" + design_name] = design
+    #whether to make new view or not if already exists and same functions
+    same = eval_new_old_funcs(db, design_name, map_func, reduce_func)
+    if not same:
+        #if the view exists but function/s are different, replace the functions
+        if (("_design/" + design_name) in db):
+            view = db["_design/" + design_name]
+            db.delete(view)
+            db["_design/" + design_name] = design
+        #if the existing view is not found simply create it
+        else:
+            db["_design/" + design_name] = design
 
     # Return if reduce function has been used
     reduce_used = reduce_name != ""
     return {"server": couch, "db": db, "view_name": view_name, "design_name": design_name, "reduce_used": reduce_used}
+
+
+#evaluates whether the current map/reduce functions in view are identical to the ones being inserted
+def eval_new_old_funcs(db, design_name, map_func, reduce_func):
+    if (("_design/" + design_name) in db):
+        curr_view = db["_design/" + design_name]
+    else:
+        return False
+
+    view = curr_view.values()
+    for item in view:
+        if type(item) is dict:
+            curr_map = item[design_name]['map']
+            try:
+                curr_reduce = item[design_name]['reduce']
+            except KeyError:
+                curr_reduce = ''
+
+            if curr_map != map_func or curr_reduce != reduce_func:
+                return False
+    return True
 
 # Load couchDB views and perform sorting on returned views
 def sort_map_reduce_search(ret, N, g_level):
@@ -72,26 +105,11 @@ def sort_map_reduce_search(ret, N, g_level):
     # Identifier is used to differentiate the output explanation according to
     # the key value structure of the search
 
-    if view_name == 'most_mentioned_tweeter':
-        print("The number of mentions of each Twitter user are: ")
-    elif view_name == 'hash_tag_topics' or view_name == 'all_topics':
-        print("The number of mentions of the following topics are: ")
-    elif view_name == 'total_sentiment_by_weekday' or view_name == 'sentiment_morning_night':
-        print("The average sentiment per each time period are: ")
-    elif view_name == 'user_tweet_language':
-        print("The number of each user/tweet language combinations are: ")
-    elif view_name == 'most_followers':
-        print("The most followed Twitter users are: ")
-    elif view_name == 'most_prolific_tweeter':
-        print("The Twitter users with the most tweets harvested are:")
-    elif view_name == 'contains_word':
-        print("The tweets which contain the parameter word are: ")
-    elif view_name == 'topic_sentiment':
-        print("The average sentiment for each of the topics are: ")
-    elif view_name == 'topic_accent':
-        print("The number of tweets by each user mentioning accent are: ")
-    elif view_name == 'highest_sentiment_tweets':
-        print("The highest sentiment tweets for the highest sentiment time period are:")
+    print(view_name)
+    if N != 0:
+        print("top {0}:".format(N))
+    else:
+        print ("all instances: ")
     print("----------------------------")
 
     for row in returned_view:
@@ -112,23 +130,33 @@ def sort_map_reduce_search(ret, N, g_level):
     print("----------------------------")
 
     # Outputs the sorted dictionary with map reduce results into JSON
-    output_json(top_n, view_name)
+    save_json(top_n, view_name)
     return top_n
 
 
 # Outputs the sorted map reduce search result into a json file
-def output_json(top_n, view_name):
-    json_data = json.dumps(dict(top_n))
+def save_json(top_n, view_name):
+    databaseName = "queries_results"
+    server = "http://115.146.93.167:5984/"
+    username = "CCC-2015team17"
+    password = "CCC-Team17"
+    couch = couchdb.Server(server)
+    couch.resource.credentials = (username, password)
+    # Get the database
+    db = couch[databaseName]
+    json_data=db.get(view_name)
+    if json_data:
+       json_data["data"]=top_n
+    else:
+       json_data= {"_id":view_name,"data":top_n}
+    db.save(json_data)
 
-    json_file = open(os.path.dirname(os.path.realpath(__file__)) + "/json_output/" + view_name +".json",'w')
-    json_file.write(json_data)
 
-
-def perform_topic_sentiment_search(top_n, ret):
+def perform_concept_sentiment_search(top_n, ret):
     server = ret["server"]
     db = ret["db"]
-    view_name = "topic_sentiment"
-    design_name = "topic_sentiment"
+    view_name = "concept_sentiment"
+    design_name = "concept_sentiment"
 
     # Uses the Counter dictionary returned by previous top n topic search
     # and embeds it in a javascript function for topic/sentiment search
@@ -138,7 +166,59 @@ def perform_topic_sentiment_search(top_n, ret):
         concept = re.sub("[\[\]\']", '', t[0])
         topics.append('"'+ concept.lower() +'"')
     topics_insert = ", ".join(topics)
-    map_func_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/topic_sentiment.js",'w')
+    map_func_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/concept_sentiment.js",'w')
+    map_func = """function(doc) {
+                    topic_list = [""" + topics_insert + """] 
+                    tweet = doc.tweet_data.text.toLowerCase()
+                    //if there is a sentiment for the tweet
+                    if (doc.meaningcloud.score){
+                        //creates a list of individual tweet words
+                        tweet_words = tweet.split(" ")
+                        //checks where the word appears in tweet
+                        topic_list.forEach(function(t){
+                            //for each topic word compare for each word in tweet
+                            var index = tweet_words.indexOf(t)
+                            //if topic word is found in list
+                            if (index > -1){
+                                emit(tweet_words[index], [1, parseFloat(doc.meaningcloud.score)]);
+                            }
+                        });
+                    }
+                }"""
+    # Writes the map function made according to popular topics into js file
+    map_func_file.write(map_func)
+    reduce_func = "_sum"
+    reduce_used = True
+
+    # Design view
+    design = {'views': { view_name: {
+                        'map': map_func,
+                        'reduce': reduce_func
+                        }}
+                  }
+    # Make new view or not if already exist
+    if not (("_design/" + design_name) in db):
+        db["_design/" + design_name] = design
+
+    # Return if reduce function has been used
+    new_param = {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
+    return new_param
+
+def perform_hashtag_sentiment_search(top_n, ret):
+    server = ret["server"]
+    db = ret["db"]
+    view_name = "hashtag_sentiment"
+    design_name = "hashtag_sentiment"
+
+    # Uses the Counter dictionary returned by previous top n topic search
+    # and embeds it in a javascript function for topic/sentiment search
+    topics = []
+    for t in top_n:
+        # Make it lowercase
+        concept = re.sub("[\[\]\']", '', t[0])
+        topics.append('"'+ concept.lower() +'"')
+    topics_insert = ", ".join(topics)
+    map_func_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/hashtag_sentiment.js",'w')
     map_func = """function(doc) {
                     topic_list = [""" + topics_insert + """] 
                     tweet = doc.tweet_data.text.toLowerCase()
@@ -215,18 +295,21 @@ def perform_day_sentiment_search(top_n, ret):
 # Database name
 # Name of map function file in ./map_reduce_functions
 # Name of reduce function file in ./map_reduce_functions (or default operation)
-# View name
-# Design name
+param1 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_tweeter.js', '_count')
+param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_topics.js', '_count')
+param3 = create_view('http://115.146.93.167:5984/', 'twit', 'hash_tag_topics.js', '_count')
+param4 = create_view('http://115.146.93.167:5984/', 'twit', 'total_sentiment_by_weekday.js', '_sum')
+param5 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_night.js', '_sum')
+param6 = create_view('http://115.146.93.167:5984/', 'twit', 'user_tweet_language.js', '_count')
+param7 = create_view('http://115.146.93.167:5984/', 'twit', 'most_followers.js', '')
+param8 = create_view('http://115.146.93.167:5984/', 'twit', 'most_prolific_tweeter.js', '_count')
+param10 = create_view('http://115.146.93.167:5984/', 'twit', 'topic_accent.js', '_count')
+param12 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_avfc_players.js', '_count')
+param13 = create_view('http://115.146.93.167:5984/', 'twit', 'most_positive_sentiment_avfc_player.js', '_sum')
+param14 = create_view('http://115.146.93.167:5984/', 'twit', 'tweet_number_time_day.js', '_count')
+param15 = create_view('http://115.146.93.167:5984/', 'twit', 'jobs.js', '')
 
-param1 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_tweeter.js', '_count', 'most_mentioned_tweeter', 'most_mentioned_tweeter')
-param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_topics.js', '_count', 'all_topics', 'all_topics')
-param3 = create_view('http://115.146.93.167:5984/', 'twit', 'hash_tag_topics.js', '_count', 'hash_tag_topics', 'hash_tag_topics')
-param4 = create_view('http://115.146.93.167:5984/', 'twit', 'total_sentiment_by_weekday.js', '_sum', 'total_sentiment_by_weekday', 'total_sentiment_by_weekday')
-param5 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_night.js', '_sum', 'sentiment_morning_night', 'sentiment_morning_night')
-param6 = create_view('http://115.146.93.167:5984/', 'twit', 'user_tweet_language.js', '_count', 'user_tweet_language', 'user_tweet_language')
-param7 = create_view('http://115.146.93.167:5984/', 'twit', 'most_followers.js', '', 'most_followers', 'most_followers')
-param8 = create_view('http://115.146.93.167:5984/', 'twit', 'most_prolific_tweeter.js', '_count', 'most_prolific_tweeter', 'most_prolific_tweeter')
-param10 = create_view('http://115.146.93.167:5984/', 'twit', 'topic_accent.js', '_count', 'topic_accent', 'topic_accent')
+
 
 
 # Put in N as second argument for top N
@@ -240,8 +323,13 @@ highest_sentiment_period = sort_map_reduce_search(param5, 14, 1)
 sort_map_reduce_search(param6, 50, 2)
 sort_map_reduce_search(param7, 10, 1)
 sort_map_reduce_search(param8, 10, 1)
+sort_map_reduce_search(param12, 10, 2)
+sort_map_reduce_search(param13, 10, 2)
+sort_map_reduce_search(param14, 0, 2)
+sort_map_reduce_search(param15, 0, 2)
 
-param9 = perform_topic_sentiment_search(all_topics, param2)
+
+param9 = perform_concept_sentiment_search(all_topics, param2)
 sort_map_reduce_search(param9, 10, 1)
 
 sort_map_reduce_search(param10, 10, 1)
