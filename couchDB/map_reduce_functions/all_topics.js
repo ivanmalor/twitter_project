@@ -1,10 +1,11 @@
 function(doc) {
+    user_name = doc.tweet_data.user.screen_name
     if(doc.meaningcloud){
-        if(doc.meaningcloud.entity_list){
-            doc.meaningcloud.entity_list.forEach(function(entity){
+        if(doc.meaningcloud.concept_list){
+            doc.meaningcloud.concept_list.forEach(function(concept){
             //ignore all @username
-                if(entity.text.indexOf("@")< 0){
-                    emit(entity.text.toLowerCase(), 1);
+                if(concept.text.indexOf("@") < 0){
+                    emit([concept.text.toLowerCase(), user_name],  1);
                 }
             });
         }

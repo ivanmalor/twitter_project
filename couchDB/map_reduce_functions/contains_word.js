@@ -1,10 +1,17 @@
 function(doc) {
-	word = 'football'
+	topic = 'accent'
 	user_name = doc.tweet_data.user.screen_name
-	followers = doc.tweet_data.user.followers_count
-	tweet = doc.tweet_data.text
-	//checks where the word appears in tweet
-	if (tweet.split(" ").indexOf(word) > -1){
- 		emit({user: user_name, tweet: doc._id}, tweet);
+	tweet = doc.tweet_data.text.toLowerCase()
+	//checks where the word appears in tweet or mentioned
+	if (tweet.split(" ").indexOf(topic) > -1){
+ 		emit([user_name, doc._id], tweet);
+	} 
+	//if the specific topic word is not mentioned look for it in meaningcloud
+	else if (doc.meaningcloud.concept_list){
+        doc.meaningcloud.concept_list.forEach(function(concept){
+	        if(concept.text.toLowerCase() == topic){
+	 			emit([user_name, doc._id], tweet);
+	 		}
+		});
 	}
 }

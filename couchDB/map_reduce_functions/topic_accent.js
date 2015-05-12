@@ -7,11 +7,12 @@ function(doc) {
  		emit([user_name, doc._id], tweet);
 	} 
 	//if the specific topic word is not mentioned look for it in meaningcloud
-	else if (doc.meaningcloud.entity_list){
-        doc.meaningcloud.entity_list.forEach(function(entity){
-	        if(entity.text.toLowerCase() == topic){
+	else if (doc.meaningcloud.concept_list){
+        doc.meaningcloud.concept_list.forEach(function(concept){
+	        if(concept.text.toLowerCase() == topic){
 	 			emit([user_name, doc._id], tweet);
 	 		}
 		});
 	}
 }
+
