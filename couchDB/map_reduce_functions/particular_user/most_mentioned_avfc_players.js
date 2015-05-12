@@ -21,12 +21,12 @@ function(doc) {
               aston_villa_squad.forEach(
               function(player){
                   tweet_words = doc.tweet_data.text.toLowerCase().split(" ");
-           if(tweet_words.indexOf(player)>-1){
+                  if(tweet_words.indexOf(player)>-1){
                       var position = getPosition(player);
                       if(position != null){
                           emit([position,player], 1);
                       }
-           }
+                  }
 
               });
 
