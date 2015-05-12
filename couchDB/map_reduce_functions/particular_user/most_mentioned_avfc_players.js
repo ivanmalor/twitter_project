@@ -1,3 +1,7 @@
+//Use _sum as reduce function.
+//group_level = 2 for the number of mentions on each player
+//group_level = 1 for the number of mentions on each position (e.g. striker, goalkeeper)
+//group_level = 0 for the total number of mentions of Aston Villa players
 aston_villa_squad= ['guzan','steer','given','baker','vlaar','okore','clark','bacuna','senderos','richardson','hutton','cissokho',
 'kinsella','lowton','sylla', 'cleverly','sinclair','cole','westwood','delph','herd','sanchez','gil','calder',
 'weimann','agbonlahor','benteke','kozak','zogbia','grealish','sherwood'];
