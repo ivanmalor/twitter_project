@@ -9,13 +9,13 @@ function(doc){
 		// place_name = doc.tweet_data.place.name
 		inside = inside_bham(point)
 		if (inside){
-			emit(user_name, followers)
+			emit('@'+user_name, followers)
 		}
 	}
 }
 
 function inside_bham (point) {
-  	bham_bound = [[-87.1221241,33.3837599],[-87.1221241,33.6787149],[-86.5781498,33.6787149],[-86.5781498,33.3837599],[-87.1221241,33.3837599]]  
+  	bham_bound = [[-2.0336485,52.381053],[-2.0336485,52.6087058],[-1.7288577,52.6087058],[-1.7288577,52.381053],[-2.0336485,52.381053]]
     // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
     
     var x = point[0], y = point[1];

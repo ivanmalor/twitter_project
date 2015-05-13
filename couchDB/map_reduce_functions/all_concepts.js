@@ -5,7 +5,7 @@ function(doc) {
             doc.meaningcloud.concept_list.forEach(function(concept){
             //ignore all @username
                 if(concept.text.indexOf("@") < 0){
-                    emit([concept.text.toLowerCase(), user_name],  1);
+                    emit([concept.text, user_name],  1);
                 }
             });
         }

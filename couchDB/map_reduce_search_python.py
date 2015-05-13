@@ -263,6 +263,10 @@ param17 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_negative', '
 param18 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_positive', '')
 param19 = create_view('http://115.146.93.167:5984/', 'twit', 'birmingham_university_sentiment', '_sum')
 param20 = create_view('http://115.146.93.167:5984/', 'twit', 'birmingham_university_topics', '_count')
+param21 = create_view('http://115.146.93.167:5984/', 'twit', 'election_mentions', '_count')
+param22 = create_view('http://115.146.93.167:5984/', 'twit', 'election_sentiment', '_sum')
+
+
 
 correlate_hourly_ratio(param14, 0)
 
@@ -272,13 +276,13 @@ correlate_hourly_ratio(param14, 0)
 # N=0 for all docs, sorted descendingly
 try:
     print ("ctrl+c or ctrl+z to abort")
-    sort_map_reduce_search(param17, 0, 2)
-    sort_map_reduce_search(param18, 0, 2)
+    # sort_map_reduce_search(param17, 0, 2)
+    # sort_map_reduce_search(param18, 0, 2)
     sort_map_reduce_search(param1, 10, 1)
-    concept_topics = sort_map_reduce_search(param2, 100, 1)
+    # concept_topics = sort_map_reduce_search(param2, 100, 1)
     hash_tag_topics = sort_map_reduce_search(param3, 10, 1)
     sort_map_reduce_search(param4, 15, 1)
-    highest_sentiment_period = sort_map_reduce_search(param5, 14, 1)
+    highest_sentiment_period = sort_map_reduce_search(param5, 21, 1)
     sort_map_reduce_search(param6, 50, 2)
     sort_map_reduce_search(param7, 10, 1)
     sort_map_reduce_search(param8, 10, 1)
@@ -287,10 +291,13 @@ try:
     sort_map_reduce_search(param14, 0, 2)
     sort_map_reduce_search(param15, 0, 2)
     sort_map_reduce_search(param16, 0, 2)
+    sort_map_reduce_search(param20, 0, 2)
+    sort_map_reduce_search(param21, 15, 2)
 
 
-    param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment", '_sum')
-    sort_map_reduce_search(param_new, 10, 1)
+
+    # param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment", '_sum')
+    # sort_map_reduce_search(param_new, 10, 1)
 
     sort_map_reduce_search(param10, 10, 1)
 

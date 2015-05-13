@@ -6,7 +6,7 @@ function(doc){
     place_name = doc.tweet_data.place.name
     tweet = doc.tweet_data.text
     user_name = doc.tweet_data.user.screen_name
-    if (point &&inside_box(point)) {
+    if (point && inside_box(point)) {
         if (doc.meaningcloud.entity_list){
             entity_list = doc.meaningcloud.entity_list
             entity_list.forEach(function(e){

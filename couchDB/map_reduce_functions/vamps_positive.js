@@ -1,5 +1,5 @@
 function(doc) {
-	topics = 'onstagewiththevamps'
+	topics = ['onstagewiththevamps']
 	user_name = doc.tweet_data.user.screen_name
 	tweet = doc.tweet_data.text.toLowerCase()
 
