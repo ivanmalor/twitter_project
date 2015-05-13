@@ -1,7 +1,9 @@
 //Get hour and date of each tweet from a particular user
 //Use _sum as reduce function
-//Use group_level = 2 to get the number of tweets for different hours on different days
-//Use group_level = 1 to get the number of tweets for different days
+//Use group_level = 4 to get the number of tweets for different hours
+//Use group_level = 3 to get the number of tweets for different dates
+//Use group_level = 2 to get the number of tweets for different months
+//Use group_level = 1 to get the number of tweets for different years
 //Use group_level = 0 to get the total number of tweets for this user
 
 function(doc) {
@@ -9,7 +11,10 @@ function(doc) {
     if(doc.tweet_data.user.id == 52184891){
         date_obj = new Date(Date.parse((doc.tweet_data.created_at)));
         hour = date_obj.getUTCHours().toString();
-        key = date_obj.toLocaleDateString();
-        emit([key,hour], 1);
+        year = date_obj.getUTCFullYear().toString();
+        //getUTCMonth() returns value from 0 to 11
+        month = (date_obj.getUTCMonth()+1).toString();
+        date = date_obj.getUTCDate().toString();
+        emit([year,month, date, hour], 1);
     }
 }
