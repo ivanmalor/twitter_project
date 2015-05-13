@@ -13,7 +13,7 @@
  @contact    http://www.meaningcloud.com (http://www.daedalus.es)
  @copyright  Copyright (c) 2015, DAEDALUS S.A. All rights reserved.
 
- Subsequently edited by COMP90024 Cluster and Cloud Computing Team
+ *******Subsequently edited by COMP90024 Cluster and Cloud Computing Team*******
 """
 
 

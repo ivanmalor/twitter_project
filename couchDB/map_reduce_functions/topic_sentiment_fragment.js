@@ -1,5 +1,3 @@
-function(doc) {
-                    topic_list = ["rt", "hypertext transfer protocol", "day", "match", "people", "voting", "candidate", "campaign", "man", "page", "final", "fight", "station", "left", "host", "home", "report", "tomorrow", "woman", "work", "block", "coalition", "elector", "job", "government", "support", "country", "today", "future", "friend", "celebrate", "selfie", "idiot", "political", "card", "photograph", "guy", "change", "event", "family", "hope", "video", "result", "mother", "rally", "front", "call", "arrogant", "dream", "manager", "service", "district", "business", "coach", "child", "city", "policy", "economy", "school", "love", "politician", "world", "chance", "position", "fair", "fan", "telephone", "place", "sex", "opening", "car", "council", "money", "team", "jew", "society", "teacher", "student", "sunday", "tax", "specialist", "ballot", "media", "decision", "open", "member", "supporter", "democracy", "exam", "boy", "food", "letter", "bank", "cast", "green", "muslim", "start", "head", "cancer", "blog"]
     tweet = doc.tweet_data.text.toLowerCase()
     //if there is a sentiment for the tweet
     if (doc.meaningcloud.score){
