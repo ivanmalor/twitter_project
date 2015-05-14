@@ -3,8 +3,11 @@ function(doc) {
 	point = doc.tweet_data.coordinates.coordinates;
 	user_name = doc.tweet_data.user.screen_name
 	if (is_mentioned(topics, doc)){
-		if (point && inside_box(point)){
- 			emit(user_name, tweet);
+		if (doc.meaningcloud.score){
+			score = doc.meaningcloud.score
+			if (point && inside_box(point)){
+	 			emit(user_name, [score,point,tweet]);
+			}
 		}
 	}
 }

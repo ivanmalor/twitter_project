@@ -1,9 +1,11 @@
 //Filters the tweets with coordinates from a bounding box
 
 function(doc){	
-    point = doc.tweet_data.coordinates.coordinates;
-    place_id = doc.tweet_data.place.id
-    place_name = doc.tweet_data.place.name
+    if(doc.tweet_data.coordinates.coordinates){
+        point = doc.tweet_data.coordinates.coordinates;
+    } else {
+        return
+    }
     tweet = doc.tweet_data.text
     user_name = doc.tweet_data.user.screen_name
     if (point && inside_box(point)) {

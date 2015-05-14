@@ -27,25 +27,6 @@ function is_mentioned(topics, doc){
             	});
             });
         }
-	else if (doc.meaningcloud.entity_list){
-        doc.meaningcloud.entity_list.forEach(function(entity){
-        	topics.forEach(function(t){
-		        if(entity.text.toLowerCase() == t){
-		        	eval = true
-		 		}
-        	});
-		});
-	}
-	//if the specific topics words is not mentioned in tweet look for it in hashtag
-    //if still not found look for it in the meaningcloud concept list for the tweet
-    } else if (doc.meaningcloud.concept_list){
-        doc.meaningcloud.concept_list.forEach(function(concept){
-        	topics.forEach(function(t){
-		        if(concept.text.toLowerCase() == t){
-		        	eval = true
-		 		}
-        	});
-		});
-	}
+    }
     return eval
 }
