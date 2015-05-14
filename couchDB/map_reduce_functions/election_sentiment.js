@@ -11,6 +11,10 @@ var lab_party = ['ed','miliband','labour'];
 var lib_party = ['nick', 'clegg','liberal'];
 /* Scottish National Party*/
 var snp = ['nicola', 'sturgeon', 'snp'];
+/* UK Independence Party */
+var ukip = ['ukip', 'nigel', 'farage', '#ukip'];
+/* Greens */
+var green = ['green', 'greens', 'farage', '#green', '#greens', 'natalie', 'bennett'];
 
 /* pre-election date - May 7th, 2015 */
 // Any tweets before this date are classified as pre-election tweets
@@ -54,6 +58,10 @@ function getParty(word){
        return "liberal";
    }else if(snp.indexOf(word) > -1){
        return "snp";
+   }else if(ukip.indexOf(word) > -1){
+       return "ukip";
+   }else if(green.indexOf(word) > -1){
+       return "green";
    }else{
        return null;
    }
@@ -63,7 +71,7 @@ function getPeriod(date){
     if(date < pre_ele_date){
         //pre-election
         return "pre-election"
-    }else if(date > pre_ele_date){
+    }else if(date > post_ele_date){
         //post-election
         return "post-election"
     }else{

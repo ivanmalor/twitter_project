@@ -58,6 +58,10 @@ function getParty(word){
        return "liberal";
    }else if(snp.indexOf(word) > -1){
        return "snp";
+   }else if(ukip.indexOf(word) > -1){
+       return "ukip";
+   }else if(green.indexOf(word) > -1){
+       return "green";
    }else{
        return null;
    }
@@ -67,7 +71,7 @@ function getPeriod(date){
     if(date < pre_ele_date){
         //pre-election
         return "pre-election"
-    }else if(date > pre_ele_date){
+    }else if(date > post_ele_date){
         //post-election
         return "post-election"
     }else{
