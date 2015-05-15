@@ -15,24 +15,10 @@ function(doc){
         return
     }
     tweet = doc.tweet_data.text
-    tweet_id = doc._id
     user_name = doc.tweet_data.user.screen_name
     if (point && (inside_box(point, b_uni) || inside_box(point, city_uni) || inside_box(point, aston_uni) || inside_box(point, newman_uni) || inside_box(point, uni_college) ) ) {
-        if(doc.meaningcloud.concept_list){
-            doc.meaningcloud.concept_list.forEach(function(concept){
-                if (concept.text == 'job'){
-                    emit([user_name, tweet_id], [concept.text, tweet, parseFloat(score)]);
-                }
-            });
-        }
-        if(doc.meaningcloud.entity_list){
-            doc.meaningcloud.entity_list.forEach(function(entity){
-                if (entity.text == '#Job' || entity.text == '#Jobs' || entity.text == '#Hiring' || entity.text == '#Hospitality' || entity.text == '#TweetMyJobs'){
-                    emit([user_name, tweet_id], [entity.text, tweet, parseFloat(score)]);
-                }
-            });
-        }
-    };  
+        emit('University Sentiment', [1, parseFloat(score)]);
+    }  
 }
 
 function inside_box (point, bbox) {
@@ -55,5 +41,3 @@ function inside_box (point, bbox) {
     
     return inside;
 };
-
-

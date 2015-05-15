@@ -1,8 +1,9 @@
 function(doc) {
 	topics = ['accent']
 	user_name = doc.tweet_data.user.screen_name
+	tweet_id = doc._id
 	if (is_mentioned(topics, doc)){
- 		emit(user_name, tweet);
+ 		emit([user_name,tweet_id], tweet);
 	}
 }
 

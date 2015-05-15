@@ -15,9 +15,9 @@ function(doc) {
 	}
 	if (weekday + period == highest_sentiment_period){
 		if(doc.meaningcloud.score){
-			if (parseFloat(doc.meaningcloud.score) > 0.8){
+			if (parseFloat(doc.meaningcloud.score) > 0.7){
 				user_name = doc.tweet_data.user.screen_name
-				tweet_id = doc.tweet_data.user.id_str
+				tweet_id = doc._id
 	 			emit([user_name, tweet_id], doc.tweet_data.text);
 			}
 	 	}

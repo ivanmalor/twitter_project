@@ -16,11 +16,12 @@ function(doc){
     }
     tweet = doc.tweet_data.text
     user_name = doc.tweet_data.user.screen_name
+    tweet_id = doc._id
     if (point && (inside_box(point, b_uni) || inside_box(point, city_uni) || inside_box(point, aston_uni) || inside_box(point, newman_uni) || inside_box(point, uni_college) ) ) {
         if(doc.meaningcloud.concept_list){
             doc.meaningcloud.concept_list.forEach(function(concept){
                 if (concept.text == 'beverage' || concept.text == 'food' || concept.text == 'exam' || concept.text == 'attack' || concept.text == 'prison'){
-                    emit(concept.text, [tweet, parseFloat(score)]);
+                    emit([user_name, tweet_id], [concept.text, tweet, parseFloat(score)]);
                 }
             });
         }
@@ -28,7 +29,7 @@ function(doc){
         if(doc.meaningcloud.entity_list){
             doc.meaningcloud.entity_list.forEach(function(entity){
                 if (entity.text == '#Transportation' || entity.text == '#Syria'){
-                    emit(entity.text, [tweet, parseFloat(score)]);
+                    emit([user_name, tweet_id], [entity.text, tweet, parseFloat(score)]);
                 }
             });
         }
