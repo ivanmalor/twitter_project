@@ -1,11 +1,14 @@
 function(doc) {
-    highest_sentiment_period = 'Tuesday Morning'
+    highest_sentiment_period = 'Thursday Afternoon'
  	date = new Date(Date.parse((doc.tweet_data.created_at)));
 	weekday = getWeekday(date.getDay())
 	hour = date.getUTCHours()
 	if (hour >= 7 && hour <= 12){
 		period = ' Morning'
-	} else if (hour >= 18 && hour <= 23)
+	} 
+	else if (hour > 13 && hour <= 17)
+		period = ' Afternoon'
+	else if (hour >= 18 && hour <= 23)
 		period = ' Night'
 	else {
 		return

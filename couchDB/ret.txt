@@ -1,0 +1,1207 @@
+ctrl+c or ctrl+z to abort
+total_sentiment_by_weekday
+top 15:
+----------------------------
+Tuesday 0.31494
+Thursday 0.29044
+Sunday 0.27095
+Friday 0.26632
+Saturday 0.23965
+Monday 0.22705
+Wednesday 0.20494
+----------------------------
+tweet_number_time_day
+all instances: 
+----------------------------
+Wednesday 242888
+Thursday 157335
+Friday 127681
+Monday 104819
+Sunday 100196
+Saturday 87523
+Tuesday 66972
+----------------------------
+tweet_number_time_day
+all instances: 
+----------------------------
+Thursday,7 30523
+Wednesday,21 30476
+Thursday,8 30328
+Wednesday,20 25907
+Thursday,6 24828
+Wednesday,19 22075
+Wednesday,22 20848
+Wednesday,18 19858
+Wednesday,17 18463
+Wednesday,16 17003
+Friday,18 16744
+Wednesday,15 16090
+Wednesday,14 14573
+Wednesday,23 10011
+Thursday,5 9647
+Wednesday,13 9339
+Friday,16 8578
+Monday,20 8272
+Monday,19 7902
+Friday,11 7225
+Friday,17 7136
+Saturday,14 7046
+Friday,10 7044
+Friday,15 7018
+Sunday,19 6952
+Monday,18 6935
+Monday,21 6718
+Friday,9 6502
+Sunday,20 6392
+Friday,8 6252
+Friday,19 6204
+Thursday,15 6122
+Monday,17 5953
+Monday,15 5897
+Friday,7 5844
+Thursday,14 5841
+Sunday,21 5792
+Sunday,18 5785
+Monday,16 5747
+Sunday,14 5478
+Sunday,15 5473
+Monday,14 5383
+Sunday,16 5362
+Sunday,17 5343
+Thursday,12 5312
+Saturday,18 5310
+Saturday,20 5298
+Wednesday,12 5259
+Saturday,13 5251
+Friday,14 5195
+Sunday,13 5125
+Wednesday,11 5105
+Sunday,12 5103
+Saturday,21 5090
+Monday,12 5090
+Monday,13 5061
+Saturday,19 5028
+Monday,11 5019
+Sunday,11 4993
+Friday,6 4980
+Thursday,13 4960
+Sunday,10 4955
+Saturday,16 4944
+Tuesday,14 4929
+Saturday,15 4895
+Saturday,17 4880
+Tuesday,12 4801
+Tuesday,10 4797
+Monday,10 4786
+Thursday,0 4782
+Sunday,9 4768
+Friday,12 4726
+Monday,22 4698
+Saturday,11 4691
+Tuesday,11 4665
+Saturday,12 4632
+Monday,9 4512
+Tuesday,9 4489
+Sunday,22 4470
+Tuesday,13 4452
+Wednesday,9 4377
+Wednesday,8 4357
+Wednesday,10 4351
+Friday,13 4339
+Saturday,22 4046
+Monday,8 4031
+Saturday,23 4002
+Tuesday,8 3998
+Thursday,16 3949
+Friday,2 3900
+Sunday,8 3862
+Wednesday,7 3788
+Thursday,9 3707
+Saturday,9 3654
+Friday,20 3639
+Friday,22 3588
+Tuesday,18 3568
+Tuesday,15 3560
+Saturday,8 3540
+Thursday,17 3522
+Tuesday,7 3485
+Friday,23 3406
+Tuesday,16 3390
+Thursday,4 3345
+Monday,7 3279
+Tuesday,17 3278
+Monday,23 3266
+Friday,21 3253
+Friday,5 3175
+Thursday,11 3151
+Saturday,10 3069
+Saturday,7 2992
+Wednesday,6 2925
+Sunday,7 2883
+Sunday,23 2881
+Thursday,10 2852
+Thursday,1 2799
+Sunday,0 2791
+Friday,4 2690
+Thursday,2 2622
+Tuesday,6 2617
+Thursday,3 2532
+Monday,0 2420
+Monday,6 2419
+Friday,3 2240
+Tuesday,0 2230
+Saturday,0 2209
+Sunday,1 2196
+Sunday,3 2168
+Tuesday,19 2151
+Friday,1 2035
+Friday,0 1969
+Sunday,6 1917
+Sunday,2 1900
+Sunday,4 1830
+Wednesday,5 1821
+Sunday,5 1777
+Tuesday,1 1704
+Monday,1 1682
+Tuesday,5 1664
+Saturday,6 1630
+Monday,5 1597
+Thursday,21 1553
+Monday,2 1534
+Tuesday,2 1461
+Tuesday,23 1410
+Monday,3 1375
+Saturday,1 1337
+Wednesday,2 1315
+Tuesday,3 1299
+Thursday,20 1285
+Wednesday,3 1272
+Wednesday,4 1244
+Monday,4 1243
+Wednesday,1 1233
+Tuesday,4 1204
+Wednesday,0 1198
+Thursday,19 1168
+Saturday,5 1109
+Saturday,2 1056
+Thursday,18 1054
+Saturday,4 953
+Thursday,22 910
+Saturday,3 861
+Tuesday,20 740
+Tuesday,21 675
+Thursday,23 543
+Tuesday,22 405
+----------------------------
+most_frequent_tweet_hour
+----------------------------
+Thursday,7 19.4%
+Thursday,8 19.276%
+Thursday,6 15.78%
+Friday,18 13.114%
+Wednesday,21 12.547%
+Wednesday,20 10.666%
+Wednesday,19 9.089%
+Wednesday,22 8.583%
+Wednesday,18 8.176%
+Saturday,14 8.05%
+Monday,20 7.892%
+Wednesday,17 7.601%
+Monday,19 7.539%
+Tuesday,14 7.36%
+Tuesday,12 7.169%
+----------------------------
+most_mentioned_tweeter
+top 10:
+----------------------------
+@TheVampsband 23221
+@JoeJONeill 7640
+@theSNP 6759
+@NicolaSturgeon 6181
+@UKLabour 5236
+@suttonnick 3388
+@Working4Wales 2588
+@TheGreenParty 2293
+@birminghammail 2236
+@GaryBarlow 2181
+----------------------------
+all_concepts
+top 100:
+----------------------------
+RT 180169
+HypertextTransferProtocol 24909
+day 17783
+match 10739
+people 9031
+voting 8978
+candidate 8316
+campaign 7810
+man 7125
+station 5698
+page 5579
+final 5371
+fight 4971
+host 4505
+left 4355
+home 4270
+report 4175
+tomorrow 3846
+work 3390
+woman 3325
+elector 3231
+block 3090
+coalition 3070
+job 3020
+today 2857
+government 2773
+support 2631
+country 2619
+future 2598
+card 2423
+friend 2413
+celebrate 2407
+photograph 2341
+political 2335
+selfie 2284
+idiot 2191
+guy 2123
+change 2086
+event 2050
+family 2035
+hope 2019
+result 2003
+video 1985
+arrogant 1831
+call 1817
+city 1791
+mother 1772
+service 1758
+business 1746
+chance 1738
+district 1730
+front 1720
+coach 1710
+rally 1709
+child 1698
+dream 1698
+manager 1682
+Sunday 1681
+policy 1669
+love 1661
+place 1627
+position 1618
+world 1617
+school 1614
+fan 1602
+politician 1588
+telephone 1575
+economy 1563
+opening 1534
+ballot 1529
+fair 1527
+car 1487
+money 1479
+council 1467
+sex 1445
+student 1440
+media 1404
+democracy 1385
+team 1372
+open 1365
+society 1349
+tax 1342
+food 1315
+decision 1310
+teacher 1305
+member 1302
+specialist 1295
+Jew 1288
+exam 1276
+start 1256
+supporter 1253
+cast 1237
+blog 1236
+boy 1227
+green 1219
+club 1195
+poster 1167
+bank 1159
+blue 1159
+person 1154
+----------------------------
+hash_tag_topics
+top 10:
+----------------------------
+#ge2015 185549
+#birmingham 64242
+#votesnp 32065
+#onstagewiththevamps 31461
+#ge15 27830
+#jobs 24503
+#job 14762
+#snp 12435
+#labour 10634
+#ukip 7210
+----------------------------
+sentiment_morning_night
+top 21:
+----------------------------
+ThursdayAfternoon 0.35316
+ThursdayNight 0.34688
+TuesdayMorning 0.31875
+TuesdayNight 0.31348
+SundayAfternoon 0.3125
+FridayMorning 0.30065
+TuesdayAfternoon 0.29998
+SaturdayAfternoon 0.29628
+ThursdayMorning 0.28993
+FridayAfternoon 0.27482
+WednesdayMorning 0.25802
+SundayMorning 0.25324
+SundayNight 0.25038
+MondayNight 0.24199
+WednesdayNight 0.2355
+SaturdayMorning 0.23226
+FridayNight 0.22502
+MondayAfternoon 0.20828
+MondayMorning 0.20442
+SaturdayNight 0.19775
+WednesdayAfternoon 0.13847
+----------------------------
+user_tweet_language
+all instances: 
+----------------------------
+en 759463
+en-gb 70805
+es 13099
+en-GB 9531
+fr 7860
+pt 5500
+ru 3756
+it 3439
+SelectLanguage... 2293
+de 1992
+ja 1479
+pl 1400
+id 1347
+nl 1311
+tr 1098
+ar 683
+sv 382
+da 293
+ca 254
+th 248
+el 139
+fi 132
+ko 128
+he 116
+hu 99
+zh-cn 98
+cs 79
+no 78
+xx-lc 65
+ro 48
+zh-tw 40
+gl 24
+en-AU 20
+hi 20
+vi 19
+fil 19
+eu 14
+zh-TW 10
+zh-Hans 10
+nb 10
+ga 9
+msa 7
+uk 7
+hr 5
+fa 4
+pt-PT 4
+zh-CN 3
+es-MX 3
+bn 2
+et 2
+sk 1
+fr-CA 1
+sl 1
+Selezionalingua... 1
+lv 1
+en-xx 1
+en-US 1
+----------------------------
+most_followers
+top 10:
+----------------------------
+@boohoo 394267
+@twinatlantic 80982
+@JsGravendijk 68280
+@WWE__History 64555
+@AmarnaMiller 52083
+@davidgcant 46858
+@craigbigbro1 46676
+@mac_birmingham 39028
+@JeromeShaw 38324
+@therealdeekelly 36689
+----------------------------
+most_prolific_tweeter
+top 10:
+----------------------------
+@BirminghamJob__ 3838
+@Job_Birmingham1 1939
+@ge2015bot 1936
+@BhamNetwork 1844
+@jpyatt78 1693
+@VirtualJukebox 1553
+@PooWithEyes 1370
+@chat2sexygirls 1357
+@CoventryUpdate 1343
+@_zoelectric 1285
+----------------------------
+most_mentioned_avfc_players
+top 10:
+----------------------------
+Coach,sherwood 179
+Striker,benteke 57
+Middlefielder,delph 33
+Striker,grealish 30
+defender,vlaar 18
+Middlefielder,cole 14
+GoalKeeper,guzan 12
+GoalKeeper,given 12
+defender,bacuna 11
+Middlefielder,gil 8
+----------------------------
+most_positive_sentiment_avfc_player
+top 10:
+----------------------------
+Coach,sherwood 27.150000000000002
+Striker,benteke 15.399999999999999
+Middlefielder,delph 10.0
+Middlefielder,cole 3.6000000000000005
+defender,bacuna 3.47
+Middlefielder,westwood 3.12
+Striker,grealish 2.8999999999999995
+GoalKeeper,given 1.9
+defender,richardson 1.2000000000000002
+Middlefielder,gil 1.2
+----------------------------
+tweet_number_time_day
+all instances: 
+----------------------------
+Thursday,7 30523
+Wednesday,21 30476
+Thursday,8 30328
+Wednesday,20 25907
+Thursday,6 24828
+Wednesday,19 22075
+Wednesday,22 20848
+Wednesday,18 19858
+Wednesday,17 18463
+Wednesday,16 17003
+Friday,18 16744
+Wednesday,15 16090
+Wednesday,14 14573
+Wednesday,23 10011
+Thursday,5 9647
+Wednesday,13 9339
+Friday,16 8578
+Monday,20 8272
+Monday,19 7902
+Friday,11 7225
+Friday,17 7136
+Saturday,14 7046
+Friday,10 7044
+Friday,15 7018
+Sunday,19 6952
+Monday,18 6935
+Monday,21 6718
+Friday,9 6502
+Sunday,20 6392
+Friday,8 6252
+Friday,19 6204
+Thursday,15 6122
+Monday,17 5953
+Monday,15 5897
+Friday,7 5844
+Thursday,14 5841
+Sunday,21 5792
+Sunday,18 5785
+Monday,16 5747
+Sunday,14 5478
+Sunday,15 5473
+Monday,14 5383
+Sunday,16 5362
+Sunday,17 5343
+Thursday,12 5312
+Saturday,18 5310
+Saturday,20 5298
+Wednesday,12 5259
+Saturday,13 5251
+Friday,14 5195
+Sunday,13 5125
+Wednesday,11 5105
+Sunday,12 5103
+Saturday,21 5090
+Monday,12 5090
+Monday,13 5061
+Saturday,19 5028
+Monday,11 5019
+Sunday,11 4993
+Friday,6 4980
+Thursday,13 4960
+Sunday,10 4955
+Saturday,16 4944
+Tuesday,14 4929
+Saturday,15 4895
+Saturday,17 4880
+Friday,12 4820
+Tuesday,12 4801
+Tuesday,10 4797
+Monday,10 4786
+Thursday,0 4782
+Sunday,9 4768
+Monday,22 4698
+Saturday,11 4691
+Tuesday,11 4665
+Saturday,12 4632
+Monday,9 4512
+Tuesday,9 4489
+Sunday,22 4470
+Tuesday,13 4452
+Wednesday,9 4377
+Wednesday,8 4357
+Wednesday,10 4351
+Friday,13 4339
+Saturday,22 4046
+Monday,8 4031
+Saturday,23 4002
+Tuesday,8 3998
+Thursday,16 3949
+Friday,2 3900
+Sunday,8 3862
+Wednesday,7 3788
+Thursday,9 3707
+Saturday,9 3654
+Friday,20 3639
+Friday,22 3588
+Tuesday,18 3568
+Tuesday,15 3560
+Saturday,8 3540
+Thursday,17 3522
+Tuesday,7 3485
+Friday,23 3406
+Tuesday,16 3390
+Thursday,4 3345
+Monday,7 3279
+Tuesday,17 3278
+Monday,23 3266
+Friday,21 3253
+Friday,5 3175
+Thursday,11 3151
+Saturday,10 3069
+Saturday,7 2992
+Wednesday,6 2925
+Sunday,7 2883
+Sunday,23 2881
+Thursday,10 2852
+Thursday,1 2799
+Sunday,0 2791
+Friday,4 2690
+Thursday,2 2622
+Tuesday,6 2617
+Thursday,3 2532
+Monday,0 2420
+Monday,6 2419
+Friday,3 2240
+Tuesday,0 2230
+Saturday,0 2209
+Sunday,1 2196
+Sunday,3 2168
+Tuesday,19 2151
+Friday,1 2035
+Friday,0 1969
+Sunday,6 1917
+Sunday,2 1900
+Sunday,4 1830
+Wednesday,5 1821
+Sunday,5 1777
+Tuesday,1 1704
+Monday,1 1682
+Tuesday,5 1664
+Saturday,6 1630
+Monday,5 1597
+Thursday,21 1553
+Monday,2 1534
+Tuesday,2 1461
+Tuesday,23 1410
+Monday,3 1375
+Saturday,1 1337
+Wednesday,2 1315
+Tuesday,3 1299
+Thursday,20 1285
+Wednesday,3 1272
+Wednesday,4 1244
+Monday,4 1243
+Wednesday,1 1233
+Tuesday,4 1204
+Wednesday,0 1198
+Thursday,19 1168
+Saturday,5 1109
+Saturday,2 1056
+Thursday,18 1054
+Saturday,4 953
+Thursday,22 910
+Saturday,3 861
+Tuesday,20 740
+Tuesday,21 675
+Thursday,23 543
+Tuesday,22 405
+----------------------------
+jobs
+top 10:
+----------------------------
+None 0.73141
+----------------------------
+university_sentiment
+top 50:
+----------------------------
+----------------------------
+university_topics
+top 50:
+----------------------------
+#Birmingham [254, 35.730000000000004, 0.14067]
+Birmingham [62, 20.75, 0.33468]
+#Job [55, 40.660000000000004, 0.73927]
+#Jobs [50, 37.06, 0.7412]
+UnitedKingdom [46, 33.26, 0.72304]
+#Hiring [33, 24.750000000000004, 0.75]
+Hilton [26, 18.16, 0.69846]
+day [25, 6.43, 0.2572]
+#Hospitality [24, 16.56, 0.69]
+man [21, -2.0999999999999996, -0.1]
+food [17, 8.469999999999999, 0.49824]
+WestMidlands [17, 7.699999999999999, 0.45294]
+people [15, -1.0, -0.06667]
+#TweetMyJobs [14, 10.9, 0.77857]
+home [14, -2.8000000000000007, -0.2]
+beverage [12, 8.22, 0.685]
+@dermotodw [12, 1.0000000000000009, 0.08333]
+attack [12, -6.6999999999999975, -0.55833]
+#Transportation [11, 8.1, 0.73636]
+Wolverhampton [11, 0.1000000000000002, 0.00909]
+prison [11, -4.8999999999999995, -0.44545]
+manager [10, 6.3, 0.63]
+event [10, 6.2, 0.62]
+#Dudley [10, -1.7000000000000002, -0.17]
+hay [9, 7.199999999999999, 0.8]
+cheerleader [9, 5.21, 0.57889]
+exam [9, -0.5700000000000001, -0.06333]
+woman [9, -3.2, -0.35556]
+SellyOak [9, -3.5000000000000004, -0.38889]
+family [8, 1.9500000000000002, 0.24375]
+fight [8, 0.12999999999999978, 0.01625]
+death [8, -4.5, -0.5625]
+car [8, -5.199999999999999, -0.65]
+Tyco [7, 5.6, 0.8]
+#BusinessMgmt [7, 5.6, 0.8]
+Sales [7, 5.6, 0.8]
+project [7, 5.6, 0.8]
+resource [7, 4.9, 0.7]
+solution [7, 4.9, 0.7]
+assistant [7, 4.8999999999999995, 0.7]
+canteen [7, 4.5, 0.64286]
+bankholiday [7, 4.3999999999999995, 0.62857]
+job [7, 3.8699999999999997, 0.55286]
+NewsCorporation [7, 1.95, 0.27857]
+fan [7, 1.7999999999999998, 0.25714]
+tea [7, 0.5999999999999999, 0.08571]
+match [7, 0.55, 0.07857]
+school [7, -0.8, -0.11429]
+#Syria [7, -2.5999999999999996, -0.37143]
+#MayweatherPacquiao [6, 4.5, 0.75]
+----------------------------
+election_mentions
+top 15:
+----------------------------
+snp,pre-election 21668
+labour,pre-election 11266
+snp,In-election 7087
+ukip,pre-election 5433
+conservative,pre-election 4368
+labour,In-election 4126
+liberal,pre-election 3811
+ukip,In-election 3498
+green,pre-election 2631
+conservative,In-election 2002
+green,In-election 1590
+liberal,In-election 1154
+labour,post-election 634
+conservative,post-election 340
+ukip,post-election 143
+----------------------------
+election_sentiment
+all instances: 
+----------------------------
+labour,pre-election 573.21
+liberal,pre-election 378.56
+green,In-election 242.81000000000003
+ukip,In-election 231.07999999999996
+green,pre-election 175.90000000000003
+labour,In-election 164.30000000000004
+snp,pre-election 118.04000000000002
+snp,In-election 77.82999999999998
+liberal,In-election 11.2
+labour,post-election 7.0
+conservative,post-election 3.3999999999999995
+liberal,post-election 0.6
+ukip,post-election 0.3999999999999997
+green,post-election -0.3999999999999999
+conservative,In-election -36.74
+conservative,pre-election -162.24
+ukip,pre-election -184.49
+----------------------------
+accent_sentiment
+all instances: 
+----------------------------
+None -0.09277
+----------------------------
+vamps_sentiment
+all instances: 
+----------------------------
+vamps -0.48248
+----------------------------
+university_tweets
+all instances: 
+----------------------------
+shona_smith1,-1.927208,52.449556 😢
+ThomasFaherty,-1.930945,52.450626 🐦 Pigeon Room Club Logo @ University of Birmingham https://t.co/wgmxCXwJXA
+Michael16809042,-1.930945,52.450626 （−＿−；） @ University of Birmingham https://t.co/f0Z97yNQlF
+shona_smith1,-1.92720637,52.44955352 “@megashton: Top exam tip from @shona_smith1 "ohhhh so you have to read the question"... #screwed #revisiontips #examadvice” I'm clever ok
+lararatnaraja,-1.93113,52.451214 “@indianabrambles: Annual trend (4) http://t.co/vpc6DfL5x0” #dcr_cida
+shona_smith1,-1.92487,52.4647 “@girlideas: *takes a break from doing nothing* ah i really deserved this” my life atm
+shona_smith1,-1.923715,52.464308 “@Jack123Ford: Just so everyone is aware I can put socks on but my lace tying skills leave a lot to be desired” @boringjackford
+shona_smith1,-1.927195,52.44952 “@GavStaceyReacts: Me after all the election shenanigans http://t.co/08RSOihhQC” @EleanorRoseL
+shona_smith1,-1.9237035,52.46421921 “@GabbyLogan: http://t.co/i0TwRGiqzd are winners born or made?” Really interesting article, check it out ✌️
+lucynoad,-1.937211,52.457455 wish I was as good at remembering my revision notes as I am at making them look pretty ✏️📚🎀
+shona_smith1,-1.927188,52.44964 when people forget HOW to indirect tweet #moron
+shona_smith1,-1.927216,52.44953 when people are sitting in the same room as you yet can't insult you to your face #indirect #losingmycarnivalRAG
+_SMurage,-1.9319088,52.451382 this is SO frustrating.  
+I just wanna go and eat chips 😩
+shona_smith1,-1.927218,52.449132 stress level: one million.
+bennyhilts,-1.931825,52.45121 someone bring some paracetamol to the link please, despo need
+shona_smith1,-1.92721,52.449543 people who don't even follow you who indirect insult you (cheers ford)
+shona_smith1,-1.925884,52.459904 once again another TOP night with the carnival crew ✌️❤️
+shona_smith1,-1.92395,52.4642 oh @MumfordAndSons you have done WONDERS with wilder mind, what an incredible album 👌❤️🎧
+izyanshakir,-1.930257,52.45142 makan je lebih ni 😁✌🏼️ (@ Main Library - @uoblibservices in Birmingham, West Midlands) https://t.co/SIxmvPWTBN http://t.co/hluAW9sWpp
+shona_smith1,-1.92373428,52.46444038 lovely to meet and chat with @JackWhetts last night 🐯❤️ http://t.co/UZwfCWUnWN
+shona_smith1,-1.924648,52.464057 listening to the hairspray soundtrack 👌🎧
+shona_smith1,-1.923836,52.464318 just can't even deal with puppy chat 😍🐶
+JanetRLindsay,-1.930945,52.450625 iamanotheryou sharing at University of Birmingham #3principles #mental #health @ University of… https://t.co/UnBPpcNRWw
+caicaiHU,-1.930231,52.451463 http://t.co/xVRrOCb55e
+caicaiHU,-1.930233,52.451537 http://t.co/tCrfQGqh9I
+caicaiHU,-1.930712,52.451036 http://t.co/peKyJskJ10
+caicaiHU,-1.929961,52.45126 http://t.co/iWtREMem1p
+caicaiHU,-1.930205,52.451511 http://t.co/OKCXK9XA3u
+caicaiHU,-1.930235,52.451595 http://t.co/BxIoOOZL9C
+_SMurage,-1.9319179,52.4513819 how is it spring and the wind is blowing like its out of its mind? 
+who lied to all of us?
+shona_smith1,-1.927206,52.449539 educating the mind without educating the heart is no education at all~~aristotle
+shona_smith1,-1.924607,52.463896 don't you put me on the back burner
+lucynoad,-1.933664,52.451745 can't believe how quickly years go💙💛
+shona_smith1,-1.927056,52.449733 booked on to my @rugbyworldcup #ThePack Comms and Marketing team training in june...exciting times ❤️🌹 #RWC2015
+aimeecreamer,-1.930945,52.450626 april showers bring may flowers 🌸 #may #spring #summer #pink #blossom #nature #england #hashtag @… https://t.co/lnOYx2lmcv
+shona_smith1,-1.926447,52.461243 anyone wants an uber code, y'all need to use p9zj2 :)
+shona_smith1,-1.927193,52.449618 and this is our 'poor season' #stillfourth #playoffsherewecome #weareleicestertigers @LeicesterTigers http://t.co/msHV09DV0n
+megwright29,-1.93217572,52.45090785 You only have the right to complain if you actually vote. Given we're british (and hence love complaining) there is no excuse!
+Green_Caroline,-1.936895,52.45054 You might think that a national training centre would at least vaguely accessible by public transport. Not so @CPD_Solutions
+ashtonfrancesca,-1.937027,52.450714 You know those girls with severely annoying voices... Sitting next to one on the train. Ffs.
+sshinaz,-1.930067,52.451362 Without a cellphone for 68 hours to this minute. Much exhilarating with FB/Twitter as main sources of communication.
+megwright29,-1.930641,52.45122 When the guild puts gradball tickets on 45mins early... Woop woop!
+megwright29,-1.931124,52.451148 What's making revising for this exam even more depressing is the knowledge that there's a new GoT episode I haven't seen. Only 2 more weeks.
+EANewsFeed,-1.930325,52.450409 Wednesday #Syria Daily: Rebels Move on #Ariha, 1 of Regime's Last Positions in #Idlib Province http://t.co/gbEzAKZV5l
+EANewsFeed,-1.930348,52.4504 Wednesday #Syria Daily: Rebels Move on #Ariha, 1 of Regime's Last Positions in #Idlib Province http://t.co/gbEzAKZV5l
+drlaurenyoung,-1.93570406,52.4519679 We should be equally concerned about antenatal steroids as
+antenatal MgSO4 for neuro-protection in preterms @ADC_BMJ
+http://t.co/6MHnc9Fzf3”
+johnbubb2,-1.932033,52.451135 Wanna do an ocado order anyone? @chase_connie looking at you https://t.co/1Ng4zh8MT4
+shona_smith1,-1.923861,52.464285 Waaaah Tom Brady is banned for 4 matches 😢🏈
+shona_smith1,-1.924572,52.464455 Using mgmt as an abbreviation for management is dangerous for me in exam revision...just want to listen to electric feel 🎧
+johnbubb2,-1.930816,52.451244 Urgh I wish exams were worth like 40% of the module and the rest was coursework / essays etc
+EANewsFeed,-1.930682,52.451046 US Audio Analysis: Recipe for Violence --- The Shootings at the "Muhammad Cartoon" Contest in Texas (@ScottLucas_EA) http://t.co/ESuiOrAcyX
+SNBartlett,-1.930695,52.451311 UKIP reject Farage's resignation #MeinFurherWorship
+PezzyModo,-1.925037,52.459242 U mad bro
+shona_smith1,-1.92714445,52.46199882 Tuning in to @BBCR1 for my fave @gregjames 💕🎵
+EANewsFeed,-1.930211,52.450455 Tuesday #Syria Daily: Rebels Launch Offensive on #Hezbollah &amp; #Assad Forces Near #Lebanon Border http://t.co/Os5a6fNk84
+EANewsFeed,-1.928966,52.45183 Tuesday #Syria Daily: Rebels Launch Offensive on #Hezbollah &amp; #Assad Forces Near #Lebanon Border http://t.co/Os5a6fNk84
+EANewsFeed,-1.930336,52.450375 Tuesday #Iran Daily: Tehran Presses Sanctions Issue as Nuclear Talks End in New York http://t.co/gQjujPgtO3
+SNBartlett,-1.93180995,52.45106541 Translation... Give me a first u muddafuka #feelinit http://t.co/kK7VaOAmwj
+SNBartlett,-1.930685,52.451353 Tough choice #LibDemFightback http://t.co/c2iBbq4aZl
+cSouuu,-1.935278,52.450397 Toes, please don't fall off.
+shona_smith1,-1.923637,52.46436 Time to get up and ready for a day of revision in the carnival office 😁
+EANewsFeed,-1.933198,52.452615 Thursday #Syria Daily: #Assad Regime Pressed by Rebels &amp; #ISIS - But #Hezbollah Saves It Near #Lebanon Border http://t.co/qSsOJv59UO
+TwoTowersAle,-1.926232,52.447502 This Bank holiday weekend get your Two Towers ales at @ButchersSocial @Street_Banquet @flyingteapoteve @BotanistBham @RoseVillaTavern :-)
+lararatnaraja,-1.931399,52.451222 The three Vs of data.. @AnthonyLilley @Cida_Co #dcr_cida http://t.co/kiLNhpEOvT
+megwright29,-1.931001,52.45118 Text from dad: "good luck in your exam today, or is it tomorrow?".... It was yesterday 👏
+uobmsrecommends,-1.929903,52.450703 TONIGHT @BarberConcerts presents La Venexiana! With a programme featuring Monteverdi at 7.30pm #music #bham #concert @unibirmingham @mybham
+SNBartlett,-1.930167,52.450383 Such little motivation at the moment 👎
+SNBartlett,-1.93129987,52.45116927 Stuck in this sauna of a library http://t.co/ZXXMF9m4xX
+megwright29,-1.931053,52.45118 Still waiting for it to hit me that I have an exam on Tuesday.... It's just isn't hitting me, I'm definitely in denial... Aggghh....
+shona_smith1,-1.927121,52.44973 Sounds like the Toulon-Clermont game was a cracker 👌
+johnbubb2,-1.931669,52.451114 So many people from my school and college year are handing in final 3rd yr dissertations, and here I am not even halfway through uni #losers
+shona_smith1,-1.920658,52.464065 So happy to hear that the incredible @Hambofoundation was honoured with an award at the #RPAs, a true inspiration #TeamHambo
+megwright29,-1.930996,52.451202 So apparently there's a Lib Dem poster stealer on the loose in Cumnor... Not on people. Even of you don't support them, that's not cool.
+becccamitchell,-1.93074493,52.45022038 So annoyed at myself for leaving my revision
+johnbubb2,-1.930963,52.451206 Sitting next to an air vent in the library was a smart move. Perfect temp.
+sjabremner,-1.930945,52.450626 Samantha Paul 'mapping the value of archaeological archives within museums' #caha2015 @ University of… https://t.co/snQ7YhIaQk
+sshinaz,-1.93684084,52.45553084 SNP tearing Labour into pieces in Scotland. 30-34% swings in every constituency. #GE2015
+emmaphelan,-1.927067,52.449434 SITZPROOOOOOOOOOOOOOBE @GMTGOurHouse
+EStoneman,-1.930945,52.450626 Pretty much 🙌🏼🙏🏼👌🏼 #ExamSeason #CannotWaitUntilImDone #21stMay #SlutsNightOut @ University of… https://t.co/qeRQv8fWrg
+San_The_Sly,-1.933397,52.452877 Pointless tweet, but I'm happy that I have a surprise planned for someone
+shona_smith1,-1.927213,52.449543 Plllllease everyone retweet @MollyThomas_'s @SmirnoffEurope tweet for me. 🙏 #willloveyouforever ❤️
+SyafiqraziFA,-1.93039,52.452637 Penat, sakit, susah, 
+I think hanya ibu sahaja yg tak pernah mengenal erti-erti perkataan tersebut… https://t.co/tfMXbC4XhO
+SNBartlett,-1.931224,52.451515 Only going to be stopping in Iceland for a few hours this summer 😢 #Harpa http://t.co/Ydwkw2q4Ys
+Louisa_Ward,-1.93086628,52.4489443 Old Joe lookin' fine @ Old Joe Clocktower, University of Birmingham https://t.co/iim53URwIT
+paoladantonio,-1.930945,52.450626 Oh god why @ University of Birmingham https://t.co/BfodrOv5YI
+becccamitchell,-1.93040433,52.45028926 Obviously Labour isn't perfect but they'd at least not be working soley for the interest of the top 1%
+EntryCentral,-1.933669,52.451534 Now open: Paul Weston Memorial Junior Aquathlon 2015 05/07/2015 http://t.co/rYddCANWUn @PW_Aquathlon
+becccamitchell,-1.930404,52.450289 Now given that information can somebody please explain the concept of a working class Tory?
+shona_smith1,-1.92286907,52.45838607 Not normally one for getting political, but if you make a statement, please back it up with genuine statistics/information. #imdone
+tsaminamina_,-1.93094523,52.45062464 No time for small steps - optimistic as always @ University of Birmingham https://t.co/Ux1Swgiwqi
+lararatnaraja,-1.930805,52.451314 New blog about how @D2ArtDigital developed @DASH_ARTS @DrChrisCreed @docollaboration http://t.co/Vq8dRd6DQB
+annieewalton,-1.926371,52.44882 My plan to revise on the train has gone very wrong as I'm currently squished up next to a middle aged man tucking into his BLT. Lovely.
+DevonCaira,-1.932874,52.451027 My Blog for The University of Birmingham and Pint of Science Festival! Check it out... :D #UOB #PintOfScience… http://t.co/zBAe45m3JA
+EANewsFeed,-1.929956,52.450529 Monday #Syria Daily: Fighting Continues for Last Regime Holdout in Jisr al-Shughour http://t.co/hCVXynqIDK
+shivasapra,-1.932104,52.451637 Messed up people - Man guilty of raping one-day-old baby boy - http://t.co/aKVRV6FBYU
+JamesHarrisss,-1.930424,52.451105 Maybe I'll actually pass Differential Equations after all? #PhasePortrait #3amLibrary #Dedicated @… https://t.co/7TPyA2KJiL
+johnbubb2,-1.931139,52.451261 Makes a change for me to read something degree related that I find mildly interesting
+EStoneman,-1.92559617,52.45761643 Made brownies with Tom 😊 #Procrastination #NotAsGoodAsMummaLanes #HangoverDay @ Tennis Courts https://t.co/klcFzaKD7c
+tsaminamina_,-1.93055556,52.45055556 MCT got me like There is TIME, there is HOPE, still aiming higher, DETERMINED #jiwarunning phew… https://t.co/At58cMQjyy
+shona_smith1,-1.924452,52.464093 Love my lil welsh muffin 👌👭 #bestfriends @MollyThomas_ http://t.co/Nse84Ta9Bh
+megwright29,-1.931002,52.451195 Looking forward to voting in my first general election tomorrow :D #GE2015 #firsttimevoter #LibDems @LibDems
+Xafster,-1.930945,52.450625 Lonely The Brave
+
+Vinyl artwork rules!!! @ University of Birmingham https://t.co/ATA2ctrYgA
+SNBartlett,-1.931123,52.451249 Leadership worship... another page out of the you know what book #UKIP
+shona_smith1,-1.927116,52.449604 Keep retweeting my gal @MollyThomas_'s @SmirnoffEurope brand ambassador tweet ❤️ #molforsmirnoff ✌️
+aciddiero,-1.93085,52.45133 Kalau belajar harus gini dikit biar ngga ngantuk 😗👌 (at University House (Business School)) [pic] — https://t.co/wibU1GQ8qA
+shona_smith1,-1.924089,52.464275 Just to clarify, that's not a good eeeeee, it's an expression of pure unadulterated dread and fear
+shona_smith1,-1.926442,52.46066 Just cast my votes in the @AvivaUK community fund for the incredible @Hambofoundation
+shona_smith1,-1.93372662,52.45172868 It's not every morning a rugby World Cup winner just walks into your sports cafe...
+johnbubb2,-1.931738,52.451173 It's not even 11 am and I'm so done with revision for today.
+shona_smith1,-1.93373406,52.45172728 It's fine to not support the Tories, but saying David Cameron doesn't deserve it? He deserves what he's worked hard for and campaigned for.
+yogipanggayuh,-1.930945,52.450625 It's almost 9 pm and I'm cycling from #northfield to #birmingham @ University of Birmingham https://t.co/Z496Wkl7fH
+ThierryAFC,-1.932608,52.449776 It is almost impossible for United to play well without Michael Carrick
+_SMurage,-1.931937,52.4513877 Im literally stranded in Costa because of this fxcking rain. 
+aint no way im getting my wash and set wet.
+shivasapra,-1.93071,52.45136 If only "@AmritB15: @shivasapra Risa tonight"
+becccamitchell,-1.93072259,52.45022791 If i had just done ONE LECTURE A DAY I WOULD NOT BE ABOUT TO FAIL
+johnbubb2,-1.931637,52.451176 If I was a plant I would be producing a lot of ABA right now
+meg_nash,-1.932183,52.450906 ITS THAT TIME OF YEAR AGAIN @CaitlinLaw http://t.co/N321NeJV2j
+shona_smith1,-1.923977,52.464504 IT'S MY BIRTHDAY 🎉🎉🎉 http://t.co/r6iSIS5fMo
+_SMurage,-1.9294447,52.4508751 I've ran out of ways to procrastinate.
+ThierryAFC,-1.932571,52.44977 I've heard Danny Graham's name for the first time in a significant number of years
+ifapel,-1.930547,52.449602 I'm at University of Birmingham - @unibirmingham in Birmingham, West Midlands https://t.co/rhNwqOAW5U
+entropid,-1.925064,52.449713 I'm at University House (Business School) in Birmingham, West Midlands https://t.co/FZNkusSZWB
+jessshorthose,-1.9344625,52.4470725 I need alcohol after that exam.
+abbyharhar,-1.9362698,52.4511433 I literally just dropped my phone down the toilet. So I smashed it and drowned it in less than a week. My poor suicidal Samsung :(
+JamesAKendall11,-1.931963,52.4514 I hope that is the last time I see Jonathan Trott in an England side. Hes had his chance twice now. Give someone else a go please!
+johnbubb2,-1.930533,52.451317 I have a memory like a sieve
+LordOfTheReeves,-1.9332322,52.4534411 I fucking love the feeling of pressing a black pen on a thick piece of paper really hard
+megwright29,-1.930982,52.451203 I don't think disappointment really covers my reaction to the election results. :(
+SteveBradnam,-1.93018861,52.45057534 I don't like the man but it's hard to disagree with any of what @piersmorgan is saying on 5 live!
+baz090405,-1.9297678,52.456391 I didnt think @KP24 was dropped because he is a poor batsman or in bad form. Are mountains of runs going to change minds on his future?
+shona_smith1,-1.92436854,52.46152101 I DON'T KNOW ABOUT YOU BUT I'M FEELING 22. @BBCR1
+SNBartlett,-1.930719,52.45115 How can a Student 'Union' sell dinner and after party tickets for £74 ?!? 😂 where's it held the Ritz
+shona_smith1,-1.92424823,52.46434637 Hoping my lil @EmGosss is ok 😘
+TwoTowersAle,-1.925257,52.447887 Hope we see you there :-) @TheBestElinor @brumyumyum
+shona_smith1,-1.92406042,52.46428108 Highlight of today: will calling me from the toilet saying he's stuck in there. Idiot just needed to turn the door handle. #lol
+shona_smith1,-1.92642,52.46126 Hey UK, it's general election day 🇬🇧🇬🇧 #GE2015
+SNBartlett,-1.931465,52.451183 Have respect for Lord Sugar waiting to leave Labour until after election. Think he's spot on, hope Labour listen &amp; react to his concern
+callumhalpin_,-1.936582,52.451375 Hate going through university train station, full of little posh divs called Sebastian and the rest of his mukkas from Shropshire being loud
+shona_smith1,-1.924181,52.463883 HOISIN CRISPY OWL. http://t.co/YUgcXVU2MU i owe my knowledge of this hilarity to the carnival boys 😂😂😂 #bonbonbonssss #quicheslorraine
+shona_smith1,-1.92720562,52.44954556 Great to hear on the ball city on @bbc5lsx away at portman rd ⚽️⚽️ OTBC @NorwichCityFC
+TCVBirmingham,-1.93468,52.44788 Great start at our health for life food growing space at Queen Elizabeth hospital today with npower @QEHBCharity http://t.co/wZOyxraC5G
+bennyhilts,-1.931961,52.45119 Grab ya titties for B.I.G.
+SNBartlett,-1.931432,52.451201 Glad that @normanlamb is running for Leader. Support his campaign wether a Lib Dem or not, genuine guy, great politician!
+johnbubb2,-1.93124,52.451305 Get it? Coz i'm stressed init
+johnbubb2,-1.936732,52.45207 Fun fact for the day: there are more than four times as many species of orchid as there are mammals. 🌱
+lararatnaraja,-1.931471,52.451216 Full house for @AnthonyLilley lab on FKA Digital @Cida_Co #dcr_cida @docollaboration @ace_midlands http://t.co/5S4uz1uInm
+EANewsFeed,-1.937058,52.45425 Friday #Syria Daily: US Pushes Political Talks While Rebels Push Military Offensive http://t.co/NNFESowjAr
+EANewsFeed,-1.930373,52.450394 Friday #Iran Daily: 8 Hours of Nuclear Talks on Thursday http://t.co/nsCYjZQIZT
+megwright29,-1.93067551,52.45134273 Found my very first uni essay last night... It only had 8 references... How? And one of them was a textbook.. It made me cringe... A lot.
+shona_smith1,-1.927197,52.449521 Forgot how much I love kings of leon 👌👌👌
+rosiees7,-1.923989,52.459618 Flowers on The Vale on a revision break with ma main gal @kirbs_96 #nature #vale #UoB  #thevale… https://t.co/rZrbFQpG1p
+rollie_rae,-1.92451,52.447827 First time voting today 🇬🇧 #GE2015
+tweetrhii,-1.93094523,52.45062464 Finals of Rock Paper Scissors at @campamericaau #CAMeetUp 😂🇺🇸 #iamCA @ University of Birmingham https://t.co/IyTMbJoXuA
+aciddiero,-1.93101,52.4512 Final examssss 😵😵😵😵😇😇😇💪💪💪📖📖📚📚📚 (at @uoblibservices) [pic] — https://t.co/QLBN1G0Fh7
+sallyja03428117,-1.932845,52.453968 Fabulous discussions at today's practitioner masterclass on Public Health Law &amp; Ethics
+sshinaz,-1.93688978,52.45560191 Exit Poll CAUTION: British media will be run by hypotheticals for an hour. #GE2015
+ata8696,-1.925022,52.459953 Enough :( #examweek #frontback http://t.co/6NwjE3DMHJ
+JamesAKendall11,-1.93197,52.451397 England naming an unchanged side is a joke. Rashid should be playing and its ridiculous Lyth isn't in the side.
+Buliaros,-1.928035,52.448414 Ed Miliband can't eat a sandwich gracefully ergo he's less fit for parliament than a party whose ideology is based on lies and conjecture...
+emmaphelan,-1.924275,52.460854 Dunno whether the correct response would be to laugh or cry at how utterly shite this essay is
+megwright29,-1.930708,52.451252 Does anyone want to apply to go on pointless with me? Please? Pretty pretty please? I need someone!
+San_The_Sly,-1.93151747,52.45051617 Definitely not freaking out right now nope haha
+shona_smith1,-1.924394,52.464263 Definitely another @CarnivalRAG office revision day tomorrow
+shona_smith1,-1.927208,52.449554 Damn that was close, focus canariessssss ⚽️🐤💚💛💚💛
+SNBartlett,-1.931117,52.451235 Cracking day Wallace http://t.co/oISnZ9rU4p
+sshinaz,-1.936926,52.455462 Conservative candidate knocks-out Nigel Farage in Thanet South. :O #GE2015
+shona_smith1,-1.92705034,52.44970143 Congrats to the maple RA's who actually pulled duck session off- top night 🎉💕💕
+TheoTolman,-1.924,52.45828 Come ooooon! Champions!
+cSouuu,-1.932684,52.451267 Cold feet. Literally cold. More like frozen. Worst decision to wear sandals out. ❄️🌀❄️🌀❄️
+shona_smith1,-1.923787,52.464183 Can't wait for llanbedr after my exams ❤️
+TwoTowersAle,-1.926763,52.447716 Can't wait :-) @brumyumyum #lovebrum
+shona_smith1,-1.923624,52.46441 Can't listen to tsunami without thinking of @Archie_Heaton doing the salmon 🐟🐟🐟
+shivasapra,-1.930706,52.451363 Can hear what I can only describe as a man being pleasured in the library... must be an explanation? #UoB #kinky
+Ceciliatiwi,-1.930375,52.451199 Boom boom boom, my head goes boom #exam
+jsf_group,-1.93399,52.450074 Bon voyage Will, heading off to Texas for a research visit in Prof Anslyn's lab 2day http://t.co/FUpaJUWVk9
+Sam_D_Jackson,-1.930945,52.450625 Birmingham just being beautiful in the sun #Birmingham #Suchsun #nicedayforwalk @ University of… https://t.co/WVR77eT3kj
+_JenBainbridge,-1.93094523,52.45062464 Because we have ducks on campus ☀️ @ University of Birmingham https://t.co/XZzTbLksY2
+sjabremner,-1.93094523,52.45062464 Beautiful day at #UoB ug's revising in the sun @ University of Birmingham https://t.co/xTvtfNTCuW
+hellocatfood,-1.930945,52.450625 As above, so below @ University of Birmingham https://t.co/vmGGe5eMpA
+hollye900,-1.93345132,52.44901269 Anyone know what time Joe's stops serving food? @unibirmingham
+shona_smith1,-1.923581,52.464218 Any time I hear cheerleader it makes me think of @megashton and @Jessica_Levy96 #feelgoodrevisiontune 👍
+johnbubb2,-1.931385,52.451283 Another fun fact: a species of bamboo can grow at a rate of 0.00003 km/h or 1 mm every two minutes woo. Can't find the species soz
+shona_smith1,-1.927211,52.449544 And 1 week until back to norwich for @BBCR1 big weekend 😍😍
+shivasapra,-1.930722,52.451344 Always get asked who I am with at the library... this is not a social visit!
+UrbanCyclesUK,-1.930513,52.450817 A short blog you may want to read BEFORE you leave the office. 5 Reasons To Choose The Long Way Home  http://t.co/2jZ5S20OV4
+shona_smith1,-1.927211,52.449545 @tigerwillis1 haha feels weird to be supporting them
+shona_smith1,-1.924337,52.4637 @stephzellerx the vale is not ok rn
+lucynoad,-1.937156,52.457222 @sellyoakpolice @hannahstephens_ we'll follow you if you buy our album when it drops  x X x
+becccamitchell,-1.930399,52.450289 @samir_richards but what is the thought process :/?
+BrendanClark95,-1.930763,52.451187 @rustyrockets Revolutions, justice and prosecuting bankers involved in the financial crisis... Now you endorse Miliband #hypocrite #twat
+BrendanClark95,-1.930686,52.45119 @rustyrockets People thought voting for Blair would be good because he'd 'listen to them' #lookwhathappened #hypocrite
+IsabellaDeith,-1.92845626,52.45771944 @rachel_rosexo @kathrynlegg @Alexandramae96 I opened this in a lecture 😭😭😭
+jessshorthose,-1.934451,52.44705 @nikita_pandit yessssss. Sunday evening with cheeky joes?? Xxx
+jessshorthose,-1.934535,52.447056 @nikita_pandit alone?? Are you mad?? Just why are you doing that to yourself?! I've given up and am in bed so so so cold in our flat :(
+BBCWeatherBot,-1.927011,52.462825 @nhstn We're expecting temperatures up to 16°C, white cloud and a strong breeze.  http://t.co/plmB1r3GAT
+sjabremner,-1.92955,52.451176 @mim_bay 'the river charmed by Ilia: The Aniene's ancient origins at the Villa d'Este, Tivoli' #caha2015 @CAHA_UoB http://t.co/IaLoxnY97F
+shona_smith1,-1.927213,52.449536 @megashton @Jessica_Levy96 💁💁
+shona_smith1,-1.927211,52.449531 @megashton @Jack123Ford @Jessica_Levy96 W-I-L-D-C-A-T-S
+shona_smith1,-1.927219,52.44952 @lesterlemmy thankyoooo
+stowey88,-1.925165,52.448333 @lansburyhenri http://t.co/YMAgaMZt8p ill send you then invitation
+ellafarage,-1.93036,52.45044 @justineaslanian @hadasfarage love the top secret ones! 😂
+jessshorthose,-1.9345756,52.4470903 @jordput I need some of that chill!! Ahaha
+lararatnaraja,-1.931657,52.451206 @indianabrambles @Anamariacida @AnthonyLilley you're tweeting during the bit on attention management!
+SNBartlett,-1.93128779,52.45110989 @iansynott Ahhh that's a shout didn't know it was open. Know if it is tomorrow?
+xtatsgx,-1.92213367,52.46209662 @homesicksinners doing fish and shark impressions 😂
+lucynoad,-1.937178,52.45749 @hannahstephens_ HA are you bent
+lucynoad,-1.937232,52.457546 @hannahstephens_ @vichammond she actually stole my move
+megwright29,-1.931096,52.451187 @eugeniahewitt @gareth_d I've asked him... He says he has to ask you :P
+laurahand,-1.932362,52.449869 @eButterz I actually put on high waisted this morning..... It's begun.
+shona_smith1,-1.9239216,52.46428843 @danpennington7 those tend just to be exaggerated claims, probably coming from the left wing parties anyway...(ps I don't like arguing 😢)
+shona_smith1,-1.92074523,52.46402806 @danpennington7 tbf labour's economic plans are appalling, spending money we don't have is naaaaat a good shout.
+shona_smith1,-1.92409481,52.4643325 @danpennington7 ps I'm sorry 😢💔
+shona_smith1,-1.921349,52.46495 @danpennington7 if it's not the tigers players getting injured, seems to be the tigers fans 😝
+shona_smith1,-1.92413198,52.46427775 @danpennington7 IM SORRY but yay us 🎉 http://t.co/bdh8vL6MyM
+shona_smith1,-1.924322,52.46426981 @danpennington7 @emmagilding_ you don't understand how little I know for these exams...is ed back tho?
+shona_smith1,-1.92403698,52.46434976 @danpennington7 @emmagilding_ yeah Marcos was saying at awards he thought he'd be back for this game!
+shona_smith1,-1.92434541,52.46425027 @danpennington7 @emmagilding_ pretty sure no government would wipe out the fire service dw...and yes pls because I don't like arguing 😢😢😢😢🇬🇧
+becccamitchell,-1.930358,52.450408 @daisydeschanel I thought so 💞
+lararatnaraja,-1.930715,52.451378 @blueyedda lol obvs.. I programme it ;)
+lararatnaraja,-1.930837,52.451353 @bethanbishop @BSmartAlliance @dr_rick @_CDHS @HEFT_Innovation @vickysargent @_boilerhouse_ another great meeting too!
+DianaJSpencer,-1.93198,52.451202 @barrystrauss :)
+BrendanClark95,-1.93197795,52.45108647 @_JessicaEvans haha I meant I overheard some guy saying that at uni 😂 Long time no see!
+therealdeekelly,-1.9319115,52.4513445 @Vital0 at the ep launch
+lucyharkins95,-1.932609,52.4498 @UoBLibServices it is boiling in 4C/3C - can you turn the air con on?
+shona_smith1,-1.927194,52.449512 @TerseTweet but you take comp sci?
+shona_smith1,-1.927198,52.449543 @ShaunGibson19 thanks Shaun 👍👍
+AliciaERCrawley,-1.927654,52.451068 @Sam2Mass #corruption
+Ste_Tonks,-1.935577,52.464935 @RAWRitsJ nuh uh!
+SNBartlett,-1.930949,52.451239 @Nigel_Farage Il Duce please don't leave!
+GeorgeMatuska,-1.921694,52.45045 @NHSKentCHFT am in Birmingham for http://t.co/MulVrbEH0w hosted by @BILD_tweets welcome by @BobGates19 http://t.co/ng65VOZjHL
+shona_smith1,-1.924289,52.46401 @MickAxten thankyou!!
+MissTayamaRai,-1.93195,52.44753 @Limbu009 lol maybe, for some reason i was sure that I was working 5 days this week. Ugh its ok coz I wont be short with my hours now 😁
+shona_smith1,-1.927197,52.449538 @LeicesterTigers doing revision in my society's office yesterday...they may have got a little annoyed with me but meh #WeAreLeicesterTigers
+shona_smith1,-1.92383746,52.46417288 @KezzzMc hahah they called you perry
+_acpm_,-1.931877,52.451374 @JSpencer2520 good luck/hope it went well!
+shivasapra,-1.932236,52.449973 @JSChaggar94 oh hell yes you can
+AliciaERCrawley,-1.9276542,52.4510675 @Issypie SEE YOU IN NORWICH IN LESS THAN A MONTH XXX
+BrendanClark95,-1.931618,52.451244 @IamAston thought we'd do you lot a favour before we take that FA Cup back 😉
+BrendanClark95,-1.931098,52.45108 @IamAston haha, too predictable? I expect a good fight from Villa tbf, playing well atm. Your'e welcome, i'll let @Alexis_Sanchez know haha
+SNBartlett,-1.930825,52.451303 @HuffPostUKPol 'un-resigns' 😂
+shona_smith1,-1.9272,52.449532 @FreddieBurns happy birthday freddie! 🐯❤️💚 http://t.co/zkypqBsbRY
+dwhembro,-1.930281,52.450363 @EmpCoaching guys are missing you @WelshieBerry
+shona_smith1,-1.927064,52.449691 @Charlottebeer90 what time do you guys kick off?
+BrendanClark95,-1.93214177,52.45120008 @BuzzFeedBooks @BuzzFeed @amyybunch you're welcome
+c_mac_27,-1.922187,52.462682 @BroadcastMoose @pnefc @ianevatt23 what happened was disgusting behaviour &amp; disappointing that us loyal true FANS miss out on glory! #❤️⚽️
+lararatnaraja,-1.931354,52.451223 @BobbytheBaker @AnthonyLilley @Cida_Co lol I love data driven decision making.. @claytonshaw just called me the queen of it!
+sarahruthbeck,-1.931844,52.450783 @BirkbeckNews @JohnClibbens interesting topic, but what a strange claim to open with that 'Curiosity is unique to humans'. I don't think so.
+shona_smith1,-1.9270932,52.46202866 @BBCR1 Saturday big weekend tickets are in the post wooo 🎉 just waiting on Sunday now :)
+SNBartlett,-1.930754,52.45121 @BBCBreaking what an elaborate way to renegade on a promise
+jasel4,-1.9335472,52.4503258 @Area11Band guess who's in the metro #Itsyouguys #O2AcademyBirmingham http://t.co/yMU4M2xvwa
+shivasapra,-1.932554,52.449818 @AmritB15 has to be done. Manz was out till 5am
+sjabremner,-1.92907,52.450935 @AmdMyers 'a self-reflective structure in Achilles Tatius' Leukippe and Kleitophon' #caha2015 @CAHAColloquium http://t.co/mNWTkd4gs8
+shona_smith1,-1.927204,52.44956 :(
+shivasapra,-1.9295705,52.4508567 9am... what 9am? 10am... what 10am? Cheers for the pointless revision timetable POLSIS. #CouldBeSleeping
+ThierryAFC,-1.932597,52.449726 2014 World Cup joint highest assist maker Cuadrado getting a very rare start for Chelsea. Ramires injured in the warmup
+megwright29,-1.93037,52.450461 2 exams done. 2 still to go. 311.25hrs till this is all over :D #halfway
+shona_smith1,-1.927211,52.44954 1 week until puppy day 🐶
+SNBartlett,-1.9321469,52.45119064 1 exam down and an essay absolutely nailed. 😁
+BaileyNagy,-1.9229356,52.4490555 .@afneil Ask Paddy Ashdown if there wasn't another solution in 2010 that wouldn't have led to the destruction of his party. #ge2015
+megwright29,-1.932135,52.450911 (I'll stop with the election tweets soon... Promise!)
+shona_smith1,-1.925521,52.46034 'It's like being in the Alps on steroids...' @Archie_Heaton on the Himalayas, 3rd May 2015
+sallyja03428117,-1.932691,52.453921 #westmidsphmasterclasses Great discussion &amp; debate at today's Public Health Law &amp; Ethics masterclass
+AliciaERCrawley,-1.927604,52.450716 #ivoted labour because I don't hate them as much as the tories.
+EANewsFeed,-1.93317,52.452746 #Syria: Report - Bomb nr regime holdout in Nat'l Hospital in Jisr al-Shughour was only detonation of stuck vehicle http://t.co/L643QVmOc9
+EANewsFeed,-1.93174,52.450969 #Syria: OTT propaganda? State media proclaims "collapse of terrorists" as #Assad forces try to hold out in NW city http://t.co/hCVXynqIDK
+EANewsFeed,-1.930306,52.450366 #Syria: #Assad Soldier n East Ghouta Nr Damascus: "Damn Them, Where r They Coming From? 100s Upon 100s of Rebels"  http://t.co/Gr8Hcxflxh
+EANewsFeed,-1.930303,52.450395 #Syria Video: Rebels in captured hilltop checkpoint overlooking #Ariha as offensive begins to take town http://t.co/gbEzAKZV5l
+EANewsFeed,-1.92980894,52.45068098 #Syria Video: Rebels attack #Assad forces at Sawmill barrier near Jisr al-Shughour in NW http://t.co/hCVXynqIDK
+EANewsFeed,-1.930169,52.450498 #Syria Video: Rebel storming of Fanar checkpoint, following tunnel bomb, in #Ariha offensive http://t.co/gbEzAKZV5l
+EANewsFeed,-1.930405,52.4503 #Syria Video: Rebel attack from Mount 40 on Musaybeen, near #Ariha, south of #Idlib http://t.co/EYusgdvreo
+EANewsFeed,-1.930332,52.450382 #Syria Video: Rebel "Tank-Hunters" in #Idlib Offensive http://t.co/EYusgdvreo
+EANewsFeed,-1.93167371,52.45082251 #Syria Video: Propaganda montage from #Assad regime, trying to rally support after losses in #Idlib in NW http://t.co/hCVXynqIDK
+EANewsFeed,-1.931953,52.450815 #Syria Video: Propaganda montage from #Assad regime, trying to rally support after losses in #Idlib in NW http://t.co/hCVXynqIDK
+EANewsFeed,-1.930325,52.450395 #Syria Video: Journalist @HadiAlabdallah w rebel fighter in "liberated" Musaybeen, nr #Ariha http://t.co/gbEzAKZV5l
+EANewsFeed,-1.929941,52.450521 #Syria Video: Aftermath of Regime Strike Killing 30 in Market in al-EIs in Southern #Aleppo Province http://t.co/fUz0rKghSl
+EANewsFeed,-1.931071,52.4513 #Syria Video: Aftermath of Regime Strike Killing 30 in Market in al-EIs in Southern #Aleppo Province http://t.co/fUz0rKghSl
+EANewsFeed,-1.930043,52.450562 #Syria Video: #Hezbollah plants its flags on hilltops in #Qalamoun region amid offensive nr #Lebanon border http://t.co/qSsOJv59UO
+EANewsFeed,-1.930422,52.450367 #Syria Vid: Bomb under checkpoint starting #Ariha offensive - 700-m tunnel, dug by 150 men w 55K lbs. of explosive http://t.co/gbEzAKZV5l
+EANewsFeed,-1.930372,52.45036 #Syria Vid: Bomb under checkpoint starting #Ariha offensive - 700-m tunnel, dug by 150 men w 55K lbs. of explosive http://t.co/gbEzAKZV5l
+EANewsFeed,-1.930138,52.450474 #Syria Report (w Video): #Kurds Forces Take Village on Important Highway from Islamic State http://t.co/VImJV1p32J | #ISIS #TwitterKurds
+EANewsFeed,-1.930391,52.450351 #Syria Report (w Video): #Kurds Forces Take Village on Important Highway from Islamic State http://t.co/VImJV1p32J | #ISIS #TwitterKurds
+EANewsFeed,-1.929923,52.450677 #Syria Picture: #ISIS fighters in Sukhna in #Homs Province after capturing town http://t.co/qSsOJv59UO
+EANewsFeed,-1.935343,52.453968 #Syria Picture: #ISIS fighters in Sukhna in #Homs Province after capturing town http://t.co/qSsOJv59UO
+EANewsFeed,-1.93026,52.450555 #Syria Latest: New Vehicle Bomb on Regime Holdout in National Hospital in Jisr al-Shughour http://t.co/L643QVmOc9
+EANewsFeed,-1.930034,52.450533 #Syria Feature: The #Iran-Directed Afghans Fighting #Assad's War http://t.co/0FgARVM1LY
+EANewsFeed,-1.929958,52.450524 #Syria Feature: Senior US Official "No-Fly Zones, Safe Havens Are Not Happening" http://t.co/iykWZEn6ZI
+EANewsFeed,-1.935171,52.454465 #Syria Feature: Senior US Official "No-Fly Zones, Safe Havens Are Not Happening" http://t.co/iykWZEn6ZI
+EANewsFeed,-1.931776,52.450916 #Syria Feature: Jisr al-Shughour --- How #Assad's Forces Fought from A Home for Orphans, Disabled, and Elderly http://t.co/4q3i8i8Mv3
+EANewsFeed,-1.930282,52.450542 #Syria Daily: Syrian Military Claims Capture, With #Hezbollah, of Highest Point in Western #Qalamoun Region http://t.co/R9sr0mQc0s
+EANewsFeed,-1.930358,52.450421 #Syria Daily: Senior US Official - We Don't Always Want to Confront #Assad Over Undeclared Chemical Weapons http://t.co/IrYlNpdcBr
+EANewsFeed,-1.930022,52.450547 #Syria Daily: Rumors Circulate Over Status of #Assad's Head of Security Services, Ali Mamlouk http://t.co/Y6TghBHD58
+EANewsFeed,-1.930279,52.450523 #Syria Daily: Rebels Clear Islamic State Out of Quneitra in Southwest http://t.co/aW49QHnuk8
+EANewsFeed,-1.930331,52.450397 #Syria Daily: Rebel ops room Jaish al-Fatah announces involvement in #Qalamoun fighting w regime &amp; #Hezbollah http://t.co/GrMpL4wTBT
+EANewsFeed,-1.930346,52.450411 #Syria Daily: Oppo Coalition "We r waiting for UN envoy to invite us to genuine negotiations" http://t.co/LF2EEg9Zv6
+EANewsFeed,-1.933149,52.452584 #Syria Daily: Claims - #Israel Airstrike on #Hezbollah-Regime Positions in Quneitra Province in Southwest http://t.co/V1UdKQyKEQ
+EANewsFeed,-1.933768,52.451782 #Syria Daily: Claims - #Israel Airstrike on #Hezbollah-Regime Positions in Quneitra Province in Southwest http://t.co/V1UdKQyKEQ
+EANewsFeed,-1.93018,52.450558 #Syria Daily: Activists Report 73 Killed on Thursday Amid Regime Bombing; State Media Say 7 Killed in Aleppo http://t.co/fDoB5g6GgL .
+EANewsFeed,-1.930136,52.450572 #Syria Daily: #ISIS takes Sukhna in #Homs Province &amp; threatens ancient city of Palmyra http://t.co/qSsOJv59UO
+EANewsFeed,-1.930125,52.450616 #Syria Daily: #ISIS takes Sukhna in #Homs Province &amp; threatens ancient city of Palmyra http://t.co/qSsOJv59UO
+EANewsFeed,-1.931964,52.450937 #Syria Daily (w Video): Regime Continues Barrel-Bombing of #Aleppo After 55 Killed on Tuesday http://t.co/F6vMEJQlJS
+EANewsFeed,-1.930436,52.45034 #Saudi Arabia Feature: State Oil Company #Aramco To Be Split from Oil Ministry http://t.co/SSU6XSqgwD
+SNBartlett,-1.930786,52.451254 #PrayForPreston
+EANewsFeed,-1.92997,52.450529 #Iran Video: 1000s of Teachers Continue Protests, Denounce Corruption of Clerics and Officials http://t.co/sQ7ORUnMim
+EANewsFeed,-1.928154,52.449756 #Iran Video: 1000s of Teachers Continue Protests, Denounce Corruption of Clerics and Officials http://t.co/sQ7ORUnMim
+EANewsFeed,-1.930321,52.450408 #Iran Feature: Will Tehran Challenge US and #Saudi Arabia With War Over "Aid" to #Yemen? http://t.co/czEXEFSjqx
+EANewsFeed,-1.93089,52.450942 #Iran Feature: Will Tehran Challenge US and #Saudi Arabia With War Over "Aid" to #Yemen? http://t.co/czEXEFSjqx
+EANewsFeed,-1.930316,52.450436 #Iran Feature: Ex-Political Prisoners Reply to FM @JZarif's "We Do Not Jail People for Their Opinions" http://t.co/QYeVENHqYW
+EANewsFeed,-1.936436,52.455649 #Iran Daily: Supreme Leader uses meeting w #Iraq President to denounce "enemies of Islam" in #Syria http://t.co/LEifnNAQhu
+EANewsFeed,-1.930103,52.450454 #Iran Daily: President @HassanRouhani Welcomes #Iraq Counterpart Masum in Tehran Visit http://t.co/ZwKFLMVzgj
+EANewsFeed,-1.930459,52.45034 #Iran Daily: Nuclear talks adjourn in New York today, resume in Vienna next week http://t.co/gQjujPgtO3
+EANewsFeed,-1.930151,52.45049 #Iran Daily: Iranian navy - We "locked missile systems" on "invader" nr #Yemen &amp; forced it to withdraw http://t.co/czEXEFSjqx
+EANewsFeed,-1.926966,52.44727 #Iran Daily: FM @JZarif Responds to US Senator Cotton's "Coward" Blast on #Twitter http://t.co/A1A2YK0WLi
+EANewsFeed,-1.930365,52.450452 #Iran Daily: #IAEA Head Indicates Challenge to Iran Over Inspections of Military Sites http://t.co/LjIZKYO0TP
+EANewsFeed,-1.930319,52.450436 #Iran Daily (w Picture): Publications Removed from Tehran Book Fair as Supreme Leader Visits http://t.co/WW5DdqDEYN
+EANewsFeed,-1.930323,52.450395 #Iran Daily (w Picture): Publications Removed from Tehran Book Fair as Supreme Leader Visits http://t.co/WW5DdqDEYN
+friends_quotes1,-1.921907,52.464222 #Chandler: He saw a therapist?
+#Monica: Yeah, he used to have this recurring nightmare, just really freaked him out. http://t.co/brSbCmIKY1
+sshinaz,-1.93674381,52.45541735 #BritishElections: Even a four party coalition remains a potential outcome. This is what makes Parliamentary Systems more representative.
+bennyhilts,-1.930592,52.451214 "I really wanna dick him but he's dead" @JessiicaYoung on Jimi Hendrix, everyone.
+_SMurage,-1.936811,52.455715 "@ThatguyDavy: Bruh😂😂 "@Mr__Harlem: Rihanna showed up like a poured omelette http://t.co/OOlE6TwFVD"" who did this? why though? 😂
+----------------------------
+vamps_most_positive
+all instances: 
+----------------------------
+sognandoluke,0.80 🍓🍓🍓🍓🍓
+#onstagewiththevamps @thevampsband birmingham! 
+giada and cindy 
+upper block 9 zd 264-265.
+we would love to meet the guys
+🍓🍓🍓🍓🍓
+
+60
+HodgkinsAbbie,0.80 today is my birthday 🎂🎀💗
+
+a follow would be the best 🎁 ever!💞
+
+@thevampsband @thevampsjames @thevampscon @thevampsbrad @thevampstristan
+HiyaBradley,0.80 they've sold out birmingham im so proud😭 @thevampsband http://t.co/9cbq8tafew
+ForeverStyles_,0.80 that was definitly an amazing night, i can't wait for nottingham and birmingham 💥 @thevampsband @thevampsjames http://t.co/o9actr9afr
+SamanthaR94,1.00 someone buy my bloody vamps ticket i have to much uni work and cant go :( birmingham wow pit £70!! @thevampsband
+emmasumner_,0.80 so excited for bham @thetide @thevampsband
+hannahc289,0.80 so close until i see @thevampsband in bham w/ @thetide , @unionjworld &amp; @lukefriendmusic i'm so excited, you don't even know omg 😫😁
+ChelsJones_,1.00 rt @samanthar94: someone buy my bloody vamps ticket i have to much uni work and cant go :( birmingham wow pit £70!! @thevampsband
+visit_solihull,0.80 rt @gentingarena: may is looking like a pretty impressive month y'know ðÿ˜� @sclub7, @thevampsband and then...@takethat! count down is on! httâ€¦
+pauinegaudron,0.80 rt @foreverstyles_: @thevampscon you were amazing saturday night, can't wait to see you again in nottingham and birmingham ! http://t.co/lr…
+itreallyisEmma,0.80 rt @fadge123: @thevampsband girls excited to see you next week at birmingham http://t.co/tp9bgkzmzv
+rob_andrewslaw,0.80 rt @emily_andrewsx: not long now until @thevampsband come to birmingham! so excited!!🎶
+TracycropperAB,0.80 nottingham was great bring on birmingham@thevampsbrad @thevampscon @thevampstristan @thevampsjames @thevampsband http://t.co/tic85tfkhd
+emily_andrewsx,0.80 not long now until @thevampsband come to birmingham! so excited!!🎶
+disneyirwin_,0.80 i'm excited for the vamps and union j purley because i get to see luke and george👏😁
+teamhxrry,0.80 i can't wait for my @thevampsband show this friday in birmingham #vampsontour 💓.
+chels1001p,0.80 had a great night with @theewaaanted seeing @thevampsband http://t.co/yno3j8naxg
+RainyDaysx_,0.80 decided to treat myself by buying 2 tickets to see @thevampsband in birmingham on friday because they were that amazing in liverpool!
+Memegrainger,0.80 can't wait for the vamps on friday 🎀
+AbbiAbbixo,0.80 can't wait for @thevampsband in brum next week @thevampsbrad @thevampsjames @thevampscon @thevampstristan ❤️❤️🙈🎉🎉🎉💃💃💃💃💃💃💃🎉🎉👸
+graydani00,0.80 @thevampstristan can't wait to see you guys in a few weeks in birmingham❤️ @thevampsband @thevampscon @thevampsbrad @thevampsjames 💎
+lawsonsroomie,0.80 @thevampstristan @thevampsband please follow me it would mean so much.i can't wait to see you in birmingham.only 4 days🎶🎉💕 #vampssaythanks 9
+cropper_megan,0.80 @thevampscon i'm very much looking forward to friday now nottingham was amazing bring on birmingham 😁💕
+_UKMumBelieber,0.80 @thevampscon great meeting you in london hotel. see you in birmingham!! http://t.co/bnujksmppp
+fadge123,0.80 @thevampsband girls excited to see you next week at birmingham http://t.co/tp9bgkzmzv
+KatieBond94,0.80 @thevampsband can't wait to see you guys on friday in birmingham #vampssaythanks
+_shelleyhugs,0.80 @thevampsband can't wait for birmingham on friday 🎉
+#vampssaythanks
+AbbieUJWorld001,0.80 @thevampsband @unionjworld bring on friday in birmingham-can't wait to see you guys-5th time seeing union j🎉 first time seeing the vamps🎉😍💖🙈
+AliceLandray,0.80 @thevampsband @thevampstristan can't wait to see you on friday at birmingham!!!😁☺️ #vampssaythanks
+izzyfizzy02,0.80 @thevampsband #vampssaythanks can't wait to see you in birmingham 😭❤️❤️❤️❤️❤️❤️❤️❤️💖
+BekkiHeys,0.80 @claireseurope @waddysolomon @thevampsband 🙋 i'm going birmingham so excited
+thevampstiffany,0.80 4 more days till i get a new photo !!!!!! so excited for birmingham😎 @adventure @thevampsband @waddysolomon http://t.co/hbrfs5imja
+SianRoseSummers,1.00 2 x vamps wow pit tickets for sale for the 8th may at the genting arena birmingham 
+vip complimentary parking included!
+£90 each
+----------------------------
+university_jobs
+all instances: 
+----------------------------
+job ["I am looking forward to voting tomorrow, but Harborne I have had no people at my door 😞 it's a good job I have studied instead!!", 0.7]
+#Hospitality ['Hilton UK #Hospitality #Job: Food &amp; Beverage Breakfast Host - Hilton Birmingham Metropole (#Birmingham) http://t.co/ecBZc0shIx #Jobs', 0.67]
+#TweetMyJobs ['#Birmingham, UK #Transportation #Job: M&amp;E Condition Surveyor at Hays http://t.co/qHer7zazfu #Jobs #Hiring #TweetMyJobs', 0.8]
+#Job ['#Birmingham, UK #Transportation #Job: M&amp;E Condition Surveyor at Hays http://t.co/qHer7zazfu #Jobs #Hiring #TweetMyJobs', 0.8]
+#Hiring ['#Birmingham, UK #Transportation #Job: M&amp;E Condition Surveyor at Hays http://t.co/qHer7zazfu #Jobs #Hiring #TweetMyJobs', 0.8]
+#Jobs ['#Birmingham, UK #Transportation #Job: M&amp;E Condition Surveyor at Hays http://t.co/qHer7zazfu #Jobs #Hiring #TweetMyJobs', 0.8]
+----------------------------
+university_beverage_other
+all instances: 
+----------------------------
+#Syria ['Tuesday #Syria Daily: Rebels Launch Offensive on #Hezbollah &amp; #Assad Forces Near #Lebanon Border http://t.co/Os5a6fNk84', -0.2]
+prison ['JAILED: Man stabbed #Dudley sisters and attacked their 88-year-old grandmother http://t.co/iKh2Fyifu5 #Birmingham http://t.co/PuCElOJp83', -0.6]
+beverage ['Hilton UK #Hospitality #Job: Food &amp; Beverage Breakfast Host - Hilton Birmingham Metropole (#Birmingham) http://t.co/ecBZc0shIx #Jobs', 0.67]
+food ['Hilton UK #Hospitality #Job: Food &amp; Beverage Breakfast Host - Hilton Birmingham Metropole (#Birmingham) http://t.co/ecBZc0shIx #Jobs', 0.67]
+exam ['Classy evening in with pizza and cider @EllaCunningham6 @FordEldridge @itsbeccaemily got through our first exam without dying 👍', 0.6]
+attack ['Acocks Green thug jailed over brutal attack on mum in front of her infant son http://t.co/O4o54fCVzj #Birmingham http://t.co/XmopnHxPF5', -1]
+#Transportation ['#Birmingham, UK #Transportation #Job: M&amp;E Condition Surveyor at Hays http://t.co/qHer7zazfu #Jobs #Hiring #TweetMyJobs', 0.8]
+----------------------------
+concept_sentiment
+top 10:
+----------------------------
+rt [100329, 20311.71]
+tomorrow [11309, 5034.509999999997]
+voting [7717, 2747.1299999999997]
+today [6792, 2677.009999999999]
+day [6651, 2288.1900000000005]
+people [6074, 590.9399999999999]
+love [5437, 3667.730000000001]
+hope [3640, 1255.6800000000003]
+campaign [3309, 1240.0100000000002]
+front [3197, 341.3400000000001]
+----------------------------
+topic_accent
+top 10:
+----------------------------
+daniellan35 “@sattyaujla: birmingham accent powerpuff girls lool ffs 😩😭 http://t.co/9zzbbmmh6z” @missymoymoy
+TheAccentKit “@deanlemon: about to film another accent challenge video with @kityeh street birmingham, nottingham, glasgow, brooklyn, alabama &amp; crewe!
+ChelsVlogs you need to learn the brummie accent
+shaxxla you cant gave a brum accent and a high pitched voice, thats just too much man
+wolfgirl90 ya'll make fun of brummie accents but your accent isn't better
+georginakay13 why is a brummie accent literally the most difficult one to get right
+TunechisBitchxo why does kieran sound like that?! 😕 it's putting me off the brum accent 😷
+gg_the_gherkin why does a liverpool &amp; birmingham accent sound so gorge on a guy ... but girls not so much 😂😂
+0151bluenose74 why does @waynerooney have a brummie accent on @newzoids ? 😕
+lestafarian who set my tinder to birmingham only? my future babies will cry in an accent and i'll hate it 😞😒
+----------------------------
+highest_sentiment_tweets
+top 10:
+----------------------------

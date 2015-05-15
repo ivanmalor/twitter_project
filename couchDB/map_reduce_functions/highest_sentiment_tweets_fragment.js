@@ -5,7 +5,7 @@
 		period = ' Morning'
 	} 
 	else if (hour > 13 && hour <= 17)
-		emit(weekday + ' Afternoon', [1, parseFloat(doc.meaningcloud.score)]);
+		period = ' Afternoon'
 	else if (hour >= 18 && hour <= 23)
 		period = ' Night'
 	else {

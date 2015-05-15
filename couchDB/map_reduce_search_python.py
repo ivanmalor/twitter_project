@@ -27,6 +27,7 @@ def create_view(server, db, map_name, reduce_name):
 
     map_func = open(func_dir + map_name + '.js', 'r').read()
 
+
     # Reduce function
 
     if reduce_name == '':
@@ -113,15 +114,16 @@ def sort_map_reduce_search(ret, N, g_level):
     print("----------------------------")
 
     for row in returned_view:
-        if view_name in 'total_sentiment_by_weekday sentiment_morning_night topic_sentiment university_sentiment accent_sentiment jobs':
+        key = str(re.sub("[\[\'\]]", '', str(row.key)))
+        if view_name in 'total_sentiment_by_weekday sentiment_morning_night topic_sentiment university_sentiment accent_sentiment jobs vamps_sentiment':
             # For weekday scenarios when you want to get the average sentiment by dividing with total tweets
-            result_dict[str(row.key)] = round((float(row.value[1]) / row.value[0]), 5)
+            result_dict[key] = round((float(row.value[1]) / row.value[0]), 5)
         elif view_name in 'university_topics':
             val = list(row.value)
             val.append(round((float(val[1]) / val[0]), 5))
-            result_dict[str(row.key)] = val
+            result_dict[key] = val
         else:
-            result_dict[str(row.key)] = row.value
+            result_dict[key] = row.value
 
     # Perform top N search, if N == 0 return all rows descendingly
     # create a counter object to store the list of topics returned from couchdb
@@ -137,6 +139,7 @@ def sort_map_reduce_search(ret, N, g_level):
     save_json(top_n, view_name)
     return top_n
 
+#for finding the hour with the highest ratio of tweets
 def correlate_hourly_ratio(ret, N):
     total_by_day = sort_map_reduce_search(ret, N, 1)
     total_by_hour = sort_map_reduce_search(ret, N, 2)
@@ -149,10 +152,16 @@ def correlate_hourly_ratio(ret, N):
         day = re.sub("[\[\]\',0-9\s]", '', item[0])
         ret[item[0]] = item[1]/dic[day]
 
-    for val in (ret.most_common(20)):
-        print (val[0], val[1])
-
-    json_data = json.dumps(ret.most_common(10))
+    print ("most_frequent_tweet_hour")
+    print("----------------------------")
+    result = []
+    for item in (ret.most_common(15)):
+        key = re.sub("[\[\]\'\s]", '', item[0])
+        value = str(round(float(item[1])*100,3)) + '%'
+        print (key, value)
+        result.append((key,value))
+    print("----------------------------")
+    json_data = json.dumps(result)
     
     #send results to queries db to be displayed in frontend
     save_json(json_data, 'most_frequent_tweet_hour')
@@ -210,7 +219,7 @@ def perform_topic_sentiment_search(top_n, ret, view_name, reduce_func):
     new_param = {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
     return new_param
 
-def perform_day_sentiment_search(top_n, ret):
+def perform_highest_sentiment_search(top_n, ret):
     server = ret["server"]
     db = ret["db"]
     view_name = "highest_sentiment_tweets"
@@ -219,26 +228,20 @@ def perform_day_sentiment_search(top_n, ret):
     # Uses the Counter dictionary returned by previous top n topic search
     # and embeds it in a javascript function for topic/sentiment search
     highest_sentiment_period = top_n[0][0]
-    map_func_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/highest_sentiment_tweets.js",'w')
-    fragment_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/highest_sentiment_tweets_fragment.js",'r')
+    map_func_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/" + view_name + ".js",'w')
+    fragment_file = open(os.path.dirname(os.path.realpath(__file__)) + "/map_reduce_functions/" + view_name + "_fragment.js",'r')
     fragment = fragment_file.read()
     map_func = """function(doc) {
     highest_sentiment_period = """ + "'" + highest_sentiment_period + "'" + "\n" + fragment
 
     # Writes the map function made according to popular topics into js file
     map_func_file.write(map_func)
+    map_func_file.close()
     reduce_func = "_count"
     reduce_used = True
 
-    # Design view
-    design = {'views': { view_name: {
-                        'map': map_func,
-                        'reduce': reduce_func
-                        }}
-                  }
-    # Make new view or not if already exist
-    if not (("_design/" + design_name) in db):
-        db["_design/" + design_name] = design
+
+    create_view('http://115.146.93.167:5984/', 'twit', view_name, reduce_func)
 
     # Return if reduce function has been used
     new_param = {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
@@ -257,14 +260,14 @@ param5 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_n
 param6 = create_view('http://115.146.93.167:5984/', 'twit', 'user_tweet_language', '_count')
 param7 = create_view('http://115.146.93.167:5984/', 'twit', 'most_followers', '')
 param8 = create_view('http://115.146.93.167:5984/', 'twit', 'most_prolific_tweeter', '_count')
-param10 = create_view('http://115.146.93.167:5984/', 'twit', 'topic_accent', '_count')
+param10 = create_view('http://115.146.93.167:5984/', 'twit', 'topic_accent', '')
 param12 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_avfc_players', '_count')
 param13 = create_view('http://115.146.93.167:5984/', 'twit', 'most_positive_sentiment_avfc_player', '_sum')
 param14 = create_view('http://115.146.93.167:5984/', 'twit', 'tweet_number_time_day', '_count')
 param15 = create_view('http://115.146.93.167:5984/', 'twit', 'jobs', '_sum')
 param16 = create_view('http://115.146.93.167:5984/', 'twit', 'university_tweets', '')
-param17 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_negative', '')
-param18 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_positive', '')
+param17 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_sentiment', '_sum')
+param18 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_most_positive', '')
 param19 = create_view('http://115.146.93.167:5984/', 'twit', 'university_sentiment', '_sum')
 param20 = create_view('http://115.146.93.167:5984/', 'twit', 'university_topics', '_sum')
 param21 = create_view('http://115.146.93.167:5984/', 'twit', 'election_mentions', '_count')
@@ -275,36 +278,37 @@ param25 = create_view('http://115.146.93.167:5984/', 'twit', 'university_beverag
 
 
 
-
-
-# correlate_hourly_ratio(param14, 0)
-
-
-
 # Put in N as second argument for top N
 # N=0 for all docs, sorted descendingly
 try:
     print ("ctrl+c or ctrl+z to abort")
-    # sort_map_reduce_search(param17, 0, 2)
-    # sort_map_reduce_search(param18, 0, 2)
-    # sort_map_reduce_search(param1, 10, 1)
-    concept_topics = sort_map_reduce_search(param2, 100, 1)
-    # hash_tag_topics = sort_map_reduce_search(param3, 10, 1)
     # sort_map_reduce_search(param4, 15, 1)
+
+    # correlate_hourly_ratio(param14, 0)
+
+    # sort_map_reduce_search(param1, 10, 1)
+    concept_topics = sort_map_reduce_search(param2, 0, 1)
+    # hash_tag_topics = sort_map_reduce_search(param3, 10, 1)
     highest_sentiment_period = sort_map_reduce_search(param5, 21, 1)
-    # sort_map_reduce_search(param6, 50, 2)
+    param11 = perform_highest_sentiment_search(highest_sentiment_period, param5)
+    sort_map_reduce_search(param11, 10, 2)
+    # sort_map_reduce_search(param6, 0, 1)
     # sort_map_reduce_search(param7, 10, 1)
     # sort_map_reduce_search(param8, 10, 1)
     # sort_map_reduce_search(param12, 10, 2)
     # sort_map_reduce_search(param13, 10, 2)
     # sort_map_reduce_search(param14, 0, 2)
-    sort_map_reduce_search(param15, 10, 0)
-    # sort_map_reduce_search(param16, 0, 2)
+    # sort_map_reduce_search(param15, 10, 0)
     # sort_map_reduce_search(param19, 50, 2)
-    sort_map_reduce_search(param20, 50, 2)
-    sort_map_reduce_search(param21, 15, 2)
-    sort_map_reduce_search(param22, 0, 2)
-    sort_map_reduce_search(param23, 15, 0)
+    # sort_map_reduce_search(param20, 50, 2)
+    # sort_map_reduce_search(param21, 15, 2)
+    # sort_map_reduce_search(param22, 0, 2)
+    # sort_map_reduce_search(param23, 0, 0)
+    # sort_map_reduce_search(param17, 0, 1)
+
+
+    # sort_map_reduce_search(param16, 0, 2)
+    # sort_map_reduce_search(param18, 0, 2)
     sort_map_reduce_search(param24, 0, 0)
     sort_map_reduce_search(param25, 0, 0)
 
@@ -312,16 +316,13 @@ try:
 
 
 
-    param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment", '_sum')
-    sort_map_reduce_search(param_new, 10, 1)
-    sort_map_reduce_search(param10, 10, 1)
+    # param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment", '_sum')
+    # sort_map_reduce_search(param_new, 10, 1)
+    sort_map_reduce_search(param10, 100, 1)
 
-    param11 = perform_day_sentiment_search(highest_sentiment_period, param5)
-    sort_map_reduce_search(param11, 10, 2)
-    #now: election and university
 
-    param_new = perform_topic_sentiment_search(hash_tag_topics, param3, "hash_tag_sentiment", '_sum')
-    sort_map_reduce_search(param_new, 10, 1)
+    # param_new = perform_topic_sentiment_search(hash_tag_topics, param3, "hash_tag_sentiment", '_sum')
+    # sort_map_reduce_search(param_new, 10, 1)
 
 except KeyboardInterrupt:
     print ("Program exiting")

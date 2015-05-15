@@ -1,12 +1,12 @@
 function(doc) {
-	topics = ['onstagewiththevamps', 'vamps', '@thevampsband', '@thevampscon']
+	topics = ['onstagewiththevamps', 'vamps', '@thevampsband', '@thevampscon', 'vampsband']
 	user_name = doc.tweet_data.user.screen_name
 	tweet = doc.tweet_data.text.toLowerCase()
 
 	if (is_mentioned(topics, doc)){
 		score = doc.meaningcloud.score
-		if (score && parseFloat(score) < -0.75){
- 			emit(tweet, [score,tweet]);
+		if (score && parseFloat(score) > 0.7){
+ 			emit([user_name,score], tweet);
 		}
 	}
 }

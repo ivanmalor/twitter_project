@@ -4,7 +4,7 @@ function(doc) {
 	if (is_mentioned(topics, doc)){
 		if (doc.meaningcloud.score){
 			score = doc.meaningcloud.score
- 			emit(doc.tweet_data.text, [1,parseFloat(score)]);
+ 			emit('Accent tweet', [1,parseFloat(score)]);
 		}
 	}
 }
