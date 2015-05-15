@@ -23,7 +23,7 @@ import json
 host = 'api.meaningcloud.com'
 api = '/sentiment-1.2.php'
 key = '9e062aedbc21839056d12f457513be2f'
-txt = 'I love the birmingham accent'
+txt = 'job and jobs are very important #job #jobs'
 model = 'en-general' #// es-general/en-general/fr-general
 
 

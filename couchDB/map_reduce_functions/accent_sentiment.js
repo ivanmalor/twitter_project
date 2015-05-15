@@ -2,7 +2,10 @@ function(doc) {
 	topics = ['accent']
 	user_name = doc.tweet_data.user.screen_name
 	if (is_mentioned(topics, doc)){
- 		emit(user_name, tweet);
+		if (doc.meaningcloud.score){
+			score = doc.meaningcloud.score
+ 			emit(doc.tweet_data.text, [1,parseFloat(score)]);
+		}
 	}
 }
 

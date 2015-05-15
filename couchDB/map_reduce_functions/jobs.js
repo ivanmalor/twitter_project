@@ -6,7 +6,7 @@ function(doc) {
 		if (doc.meaningcloud.score){
 			score = doc.meaningcloud.score
 			if (point && inside_box(point)){
-	 			emit(user_name, [score,point,tweet]);
+	 			emit([tweet, point], [1,parseFloat(score)]);
 			}
 		}
 	}

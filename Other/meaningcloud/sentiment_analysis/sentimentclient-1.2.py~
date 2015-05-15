@@ -23,7 +23,7 @@ import json
 host = 'api.meaningcloud.com'
 api = '/sentiment-1.2.php'
 key = '9e062aedbc21839056d12f457513be2f'
-txt = 'The Royal baby is on its way At last I am so happy! Soccer Aston Villa father Mercedes Benz'
+txt = '@other @bobo you rock'
 model = 'en-general' #// es-general/en-general/fr-general
 
 
