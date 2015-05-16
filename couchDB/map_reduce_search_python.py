@@ -252,7 +252,7 @@ def perform_highest_sentiment_search(top_n, ret):
 # Name of map function file in ./map_reduce_functions
 # Name of reduce function file in ./map_reduce_functions (or default operation)
 param1 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_tweeter', '_count')
-param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_concepts', '_count')
+param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_concepts_bham', '_count')
 param3 = create_view('http://115.146.93.167:5984/', 'twit', 'hash_tag_topics', '_count')
 param4 = create_view('http://115.146.93.167:5984/', 'twit', 'total_sentiment_by_weekday', '_sum')
 param5 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_night', '_sum')
