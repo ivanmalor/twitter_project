@@ -27,7 +27,7 @@ function(doc){
 
             tweet_words.forEach(function(tweet_word){
                 if(jobs.indexOf(tweet_word)>-1){
-                    emit(tweet_word, 1);
+                    emit(tweet_word, [1, parseFloat(score)]);
                 }
 
             });
