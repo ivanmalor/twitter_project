@@ -275,7 +275,7 @@ param22 = create_view('http://115.146.93.167:5984/', 'twit', 'election_sentiment
 param23 = create_view('http://115.146.93.167:5984/', 'twit', 'accent_sentiment', '_sum')
 param24 = create_view('http://115.146.93.167:5984/', 'twit', 'university_jobs', '')
 param25 = create_view('http://115.146.93.167:5984/', 'twit', 'university_beverage_other', '')
-param26 = create_view('http://115.146.93.167:5984/','twit','all_topics_bham','_count')
+param26 = create_view('http://115.146.93.167:5984/','twit','all_concepts_bham','_count')
 
 
 # Put in N as second argument for top N
