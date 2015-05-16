@@ -111,14 +111,16 @@ def sort_map_reduce_search(ret, N, g_level):
         print("top {0}:".format(N))
     else:
         print ("all instances: ")
+    print ("group level: " + str(g_level))
     print("----------------------------")
 
     for row in returned_view:
         key = str(re.sub("[\[\'\]]", '', str(row.key)))
-        if view_name in 'total_sentiment_by_weekday sentiment_morning_night topic_sentiment university_sentiment accent_sentiment jobs vamps_sentiment concept_sentiment':
+        if view_name in 'total_sentiment_by_weekday sentiment_morning_night university_sentiment accent_sentiment jobs vamps_sentiment concept_sentiment birmingham_average_sentiment university_average_sentiment':
+        # if 'sentiment' in view_name.split("_"):
             # For weekday scenarios when you want to get the average sentiment by dividing with total tweets
             result_dict[key] = round((float(row.value[1]) / row.value[0]), 5)
-        elif view_name in 'university_topics':
+        elif view_name == 'university_topics':
             val = list(row.value)
             val.append(round((float(val[1]) / val[0]), 5))
             result_dict[key] = val
@@ -250,7 +252,7 @@ def perform_highest_sentiment_search(top_n, ret):
 # Server address
 # Database name
 # Name of map function file in ./map_reduce_functions
-# Name of reduce function file in ./map_reduce_functions (or default operation)
+# Name of reduce function file in ./map_reduce_functions (or default operation of _count, _sum, etc)
 param1 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_tweeter', '_count')
 param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_concepts_bham', '_count')
 param3 = create_view('http://115.146.93.167:5984/', 'twit', 'hash_tag_topics', '_count')
@@ -275,6 +277,12 @@ param23 = create_view('http://115.146.93.167:5984/', 'twit', 'accent_sentiment',
 param24 = create_view('http://115.146.93.167:5984/', 'twit', 'university_jobs', '')
 param25 = create_view('http://115.146.93.167:5984/', 'twit', 'university_beverage_other', '')
 param26 = create_view('http://115.146.93.167:5984/', 'twit', 'birmingham_average_sentiment', '_sum')
+param27 = create_view('http://115.146.93.167:5984/', 'twit', 'university_jobs_tally', '_sum')
+param28 = create_view('http://115.146.93.167:5984/', 'twit', 'university_jobs_tally', '_sum')
+param29 = create_view('http://115.146.93.167:5984/', 'twit', 'bham_coordinate_sentiment', '')
+
+
+
 
 
 
@@ -283,37 +291,44 @@ param26 = create_view('http://115.146.93.167:5984/', 'twit', 'birmingham_average
 # N=0 for all docs, sorted descendingly
 try:
     print ("ctrl+c or ctrl+z to abort")
-    correlate_hourly_ratio(param14, 0)
-    concept_topics = sort_map_reduce_search(param2, 50, 1)
-    hash_tag_topics = sort_map_reduce_search(param3, 20, 1)
+    # correlate_hourly_ratio(param14, 0)
+    # concept_topics = sort_map_reduce_search(param2, 50, 1)
+    # hash_tag_topics = sort_map_reduce_search(param3, 20, 1)
 
-    highest_sentiment_period = sort_map_reduce_search(param5, 21, 1)
-    param11 = perform_highest_sentiment_search(highest_sentiment_period, param5)
-    sort_map_reduce_search(param11, 0, 2)
+    # sort_map_reduce_search(param4, 15, 1)
+    # sort_map_reduce_search(param6, 0, 1)
+    # sort_map_reduce_search(param8, 10, 1)
+    # sort_map_reduce_search(param12, 10, 2)
+    # sort_map_reduce_search(param13, 10, 2)
+    # sort_map_reduce_search(param14, 0, 2)
+    # sort_map_reduce_search(param15, 0, 1)
+    # sort_map_reduce_search(param19, 0, 1)
+    # sort_map_reduce_search(param20, 50, 2)
+    # sort_map_reduce_search(param26, 0, 1)
+    # sort_map_reduce_search(param21, 15, 2)
+    # sort_map_reduce_search(param22, 0, 2)
+    # sort_map_reduce_search(param23, 0, 1)
+    # sort_map_reduce_search(param17, 0, 1)
+
+    #ones which emits the tweets for random extraction
+    # sort_map_reduce_search(param10, 0, 2)
+    # sort_map_reduce_search(param16, 0, 2)
+    # sort_map_reduce_search(param18, 0, 2)
+    # sort_map_reduce_search(param24, 0, 2)
+    # sort_map_reduce_search(param25, 0, 2)
+
+    # highest_sentiment_period = sort_map_reduce_search(param5, 21, 1)
+    # param11 = perform_highest_sentiment_search(highest_sentiment_period, param5)
+    # sort_map_reduce_search(param11, 0, 2)
+
+    sort_map_reduce_search(param27, 0, 1)
+    sort_map_reduce_search(param28, 0, 1)
+
     
-    sort_map_reduce_search(param4, 15, 1)
-    sort_map_reduce_search(param6, 0, 1)
-    sort_map_reduce_search(param8, 10, 1)
-    sort_map_reduce_search(param12, 10, 2)
-    sort_map_reduce_search(param13, 10, 2)
-    sort_map_reduce_search(param14, 0, 2)
-    sort_map_reduce_search(param15, 0, 1)
-    sort_map_reduce_search(param19, 0, 1)
-    sort_map_reduce_search(param20, 50, 2)
-    sort_map_reduce_search(param26, 0, 1)
-    sort_map_reduce_search(param21, 15, 2)
-    sort_map_reduce_search(param22, 0, 2)
-    sort_map_reduce_search(param23, 0, 1)
-    sort_map_reduce_search(param17, 0, 1)
+    #----------------------------------------------------------------------------
 
-    sort_map_reduce_search(param16, 0, 2)
-    sort_map_reduce_search(param18, 0, 2)
-    sort_map_reduce_search(param24, 0, 1)
-    sort_map_reduce_search(param25, 0, 1)
-
-    param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment", '_sum')
+    param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment_bham", '_sum')
     sort_map_reduce_search(param_new, 50, 1)
-    sort_map_reduce_search(param10, 0, 1)
 
     param_new = perform_topic_sentiment_search(hash_tag_topics, param3, "hash_tag_sentiment", '_sum')
     sort_map_reduce_search(param_new, 10, 1)
@@ -335,5 +350,5 @@ except KeyboardInterrupt:
 
 
 
-
+#delete concept_sentiment
 
