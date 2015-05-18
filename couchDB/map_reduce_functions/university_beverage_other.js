@@ -1,7 +1,7 @@
-//Filters the tweets with coordinates from a bounding box
-
+//Map function to search for tweets within the vicinity of the 5
+//Universities in Birmingham for topics such as beverage, food, exam
 function(doc){
-    //boundaries of birmingham university
+    //boundaries of universities in Birmingham
     b_uni = [[-1.9594866483,52.4400293691],[-1.9594866483,52.4652158],[-1.9045507443,52.4652158],[-1.9045507443,52.4400293691],[-1.9594866483,52.4400293691]]
     city_uni = [[-1.9194554351,52.5060403603],[-1.9194554351,52.5298722002],[-1.8671720125,52.5298722002],[-1.8671720125,52.5060403603],[-1.9194554351,52.5060403603]]
     aston_uni = [[-1.8984172551,52.4813043783],[-1.8984172551,52.491873318],[-1.8792522439,52.491873318],[-1.8792522439,52.4813043783],[-1.8984172551,52.4813043783]]
@@ -22,6 +22,7 @@ function(doc){
             doc.meaningcloud.concept_list.forEach(function(concept){
                 if (concept.text == 'beverage' || concept.text == 'food' || concept.text == 'exam' || concept.text == 'attack' || concept.text == 'prison'){
                     emit([user_name, tweet_id], [concept.text, tweet, parseFloat(score)]);
+                    return
                 }
             });
         }
@@ -30,6 +31,7 @@ function(doc){
             doc.meaningcloud.entity_list.forEach(function(entity){
                 if (entity.text == '#Transportation' || entity.text == '#Syria'){
                     emit([user_name, tweet_id], [entity.text, tweet, parseFloat(score)]);
+                    return
                 }
             });
         }

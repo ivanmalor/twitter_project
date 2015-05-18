@@ -1,3 +1,6 @@
+//Map function to get the tally of concepts people are talking about in Birmingham
+
+
 function(doc) {
     if(doc.tweet_data.coordinates.coordinates ){
         point = doc.tweet_data.coordinates.coordinates;
@@ -20,10 +23,9 @@ function(doc) {
     }
 }
 
+//function to find whether a spatial coordinate is within a box of coordinates
+//Used from http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
 function inside_box (point) {
-    
-    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
-    
     bbox = [[-2.0336485,52.381053],[-2.0336485,52.6087058],[-1.7288577,52.6087058],[-1.7288577,52.381053],[-2.0336485,52.381053]]
     var x = point[0], y = point[1];
     

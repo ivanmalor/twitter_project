@@ -1,3 +1,6 @@
+//Map function to find the highest average sentiment weekday
+//During the week
+
 function(doc) {
 	date = new Date(Date.parse((doc.tweet_data.created_at)));
 	weekday = getWeekday(date.getDay())

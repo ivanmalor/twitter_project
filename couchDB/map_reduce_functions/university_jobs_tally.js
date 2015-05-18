@@ -1,9 +1,11 @@
-//Filters the tweets with coordinates from a bounding box
+//Map function to get a tally of the jobs being offered in the vicinity of 
+//The 5 universities in Birmingham
+
 var tags = ['job','jobs','#job', '#jobs', '#hiring', '#hospitality', '#tweetmyjobs'];
 var jobs = ['manager', 'surveyor', 'programmer', 'engineer', 'assistant', 'director', 'planner', 'consultant', 'receptionist', 'supervisor','chef'];
 
 function(doc){
-    //boundaries of birmingham university
+    //boundaries of birmingham universities
     b_uni = [[-1.9594866483,52.4400293691],[-1.9594866483,52.4652158],[-1.9045507443,52.4652158],[-1.9045507443,52.4400293691],[-1.9594866483,52.4400293691]]
     city_uni = [[-1.9194554351,52.5060403603],[-1.9194554351,52.5298722002],[-1.8671720125,52.5298722002],[-1.8671720125,52.5060403603],[-1.9194554351,52.5060403603]]
     aston_uni = [[-1.8984172551,52.4813043783],[-1.8984172551,52.491873318],[-1.8792522439,52.491873318],[-1.8792522439,52.4813043783],[-1.8984172551,52.4813043783]]

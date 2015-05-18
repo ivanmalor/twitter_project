@@ -1,3 +1,7 @@
+//Map function to find sentiment towards political parties 
+//From tweets with #ge2015 #ge15 hash tag
+//According to 3 time periods
+
 //Use _sum as reduce function.
 //group_level = 2 for the sentiment on different period of each party
 //group_level = 1 for the sentiment on each party

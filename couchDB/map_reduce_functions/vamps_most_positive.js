@@ -1,3 +1,7 @@
+//Map function to get the most positive tweets mentioning The Vamps band
+//The tweets have to be scored higher than +0.75 by Meaningcloud
+//(out of a scale of -1 to 1)
+
 function(doc) {
 	topics = ['onstagewiththevamps', 'vamps', '@thevampsband', '@thevampscon', 'vampsband']
 	user_name = doc.tweet_data.user.screen_name
@@ -6,7 +10,7 @@ function(doc) {
 
 	if (is_mentioned(topics, doc)){
 		score = doc.meaningcloud.score
-		if (score && parseFloat(score) > 0.7){
+		if (score && parseFloat(score) > 0.75){
  			emit([user_name,tweet_id], [tweet, score]);
 		}
 	}

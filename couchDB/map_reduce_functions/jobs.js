@@ -1,3 +1,5 @@
+//Map function to get tweets mentioning jobs in Birmingham
+
 function(doc) {
 	topics = ['job', 'jobs']
 	point = doc.tweet_data.coordinates.coordinates;

@@ -1,3 +1,6 @@
+//Map function to find the hour and day of the week with the 
+//Highest number of average tweets (most frequently tweeted hour)
+
 function(doc) {
 	date = new Date(Date.parse((doc.tweet_data.created_at)));
 	weekday = getWeekday(date.getDay())

@@ -1,5 +1,5 @@
 function(doc) {
-    highest_sentiment_period = 'Thursday Afternoon'
+    highest_sentiment_period = 'Tuesday Morning'
  	date = new Date(Date.parse((doc.tweet_data.created_at)));
 	weekday = getWeekday(date.getDay())
 	hour = date.getUTCHours()

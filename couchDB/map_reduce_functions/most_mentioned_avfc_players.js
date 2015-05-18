@@ -1,3 +1,6 @@
+
+//Map function to find the most mentioned Aston Villa FC players
+
 //Use _sum as reduce function.
 //group_level = 2 for the number of mentions on each player
 //group_level = 1 for the number of mentions on each position (e.g. striker, goalkeeper)

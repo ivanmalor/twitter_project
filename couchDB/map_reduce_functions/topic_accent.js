@@ -1,3 +1,5 @@
+//Map function to find tweets that mention accent
+
 function(doc) {
 	topics = ['accent']
 	user_name = doc.tweet_data.user.screen_name

@@ -1,3 +1,5 @@
+//Map function to find all mentioned hash tag topics
+
 function(doc) {
     if(doc.tweet_data.entities){
         if(doc.tweet_data.entities.hashtags){

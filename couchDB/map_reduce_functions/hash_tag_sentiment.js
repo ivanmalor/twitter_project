@@ -1,5 +1,5 @@
 function(doc) {
-                    topic_list = ["#ge2015", "#birmingham", "#votesnp", "#onstagewiththevamps", "#ge15", "#jobs", "#job", "#snp", "#labour", "#ukip", "#votelabour", "#generalelection", "#bhamplay", "#staffordshire", "#libdems", "#london", "#labourmustwin", "#voteukip", "#election2015", "#bcfc"]
+                    topic_list = ["#ge2015", "#birmingham", "#votesnp", "#onstagewiththevamps", "#jobs", "#ge15", "#job", "#snp", "#labour", "#ukip", "#votelabour", "#staffordshire", "#generalelection", "#bhamplay", "#london", "#libdems", "#warwickshire", "#labourmustwin", "#voteukip", "#bcfc"]
     tweet = doc.tweet_data.text.toLowerCase()
     //if there is a sentiment for the tweet
     if (doc.meaningcloud.score){

@@ -1,3 +1,5 @@
+//Map function to find the highest/lowest public sentiment Aston Villa FC players 
+
 //Use _sum as reduce function.
 //group_level = 2 for the sentiment on each player
 //group_level = 1 for the sentiment on each position (e.g. striker, goalkeeper)

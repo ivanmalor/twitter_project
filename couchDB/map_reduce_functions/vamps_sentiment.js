@@ -1,3 +1,6 @@
+//Map function to get the average sentiment out of all the tweets
+//That mention The Vamps band which are scored by Meaningcloud
+
 function(doc) {
 	topics = ['onstagewiththevamps', 'vamps', '@thevampsband', '@thevampscon', 'vampsband']
 	user_name = doc.tweet_data.user.screen_name

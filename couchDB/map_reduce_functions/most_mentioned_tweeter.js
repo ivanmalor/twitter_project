@@ -1,3 +1,5 @@
+//Map function to find the most mentioned tweeter
+
 function(doc) {
     if(doc.tweet_data.entities){
         if(doc.tweet_data.entities.user_mentions){

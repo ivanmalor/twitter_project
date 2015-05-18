@@ -14,3 +14,7 @@
         });
     }
 }
+
+//Fragment of concept sentiment or hash tag sentiment functions
+//To do further search on the top mentioned topics and find the average
+//Sentiment for those topics

@@ -1,5 +1,5 @@
 function(doc) {
-                    topic_list = ["day", "man", "home", "people", "match", "report", "work", "fight", "baby", "exam", "food", "love", "photograph", "mother", "video", "boy", "guy", "buddy", "world", "rebel", "family", "train", "position", "woman", "canteen", "friend", "attack", "place", "bank", "final", "car", "bank holiday", "child", "fan", "plug", "cup", "club", "father", "season", "head", "money", "finger", "school", "service", "face", "arrogant", "coffee", "picture", "bus", "west"]
+                    topic_list = ["day", "man", "home", "people", "work", "match", "report", "video", "photograph", "love", "fight", "baby", "exam", "food", "mother", "guy", "family", "boy", "buddy", "child", "rebel", "woman", "world", "position", "canteen", "friend", "car", "place", "train", "final", "father", "bank", "club", "attack", "head", "plug", "season", "cup", "bank holiday", "queen", "school", "bus", "coffee", "service", "money", "fan", "mile", "picture", "arrogant", "today"]
     tweet = doc.tweet_data.text.toLowerCase()
     //if there is a sentiment for the tweet
     if (doc.meaningcloud.score){
