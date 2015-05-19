@@ -6,7 +6,6 @@ import os
 from collections import Counter
 import json
 import re
-import map_reduce_search_python
 
 #This Python program handles the couchDB MapReduce processing
 #Through the couchdb library interface. It handles the creation and modification of views,
@@ -262,93 +261,6 @@ def perform_highest_sentiment_search(top_n, ret):
 
     new_param = {"server": server, "db" : db, "view_name" : view_name, "design_name" : design_name, "reduce_used" : reduce_used}
     return new_param
-
-
-
-
-# Arguments in order:
-# Server address
-# Database name
-# Name of map function file in ./map_reduce_functions
-# Name of reduce function file in ./map_reduce_functions (or default operation of _count, _sum, etc)
-param1 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_tweeter', '_count')
-param2 = create_view('http://115.146.93.167:5984/', 'twit', 'all_concepts_bham', '_count')
-param3 = create_view('http://115.146.93.167:5984/', 'twit', 'hash_tag_topics', '_count')
-param4 = create_view('http://115.146.93.167:5984/', 'twit', 'total_sentiment_by_weekday', '_sum')
-param5 = create_view('http://115.146.93.167:5984/', 'twit', 'sentiment_morning_night', '_sum')
-param6 = create_view('http://115.146.93.167:5984/', 'twit', 'user_tweet_language', '_count')
-param7 = create_view('http://115.146.93.167:5984/', 'twit', 'most_followers', '')
-param8 = create_view('http://115.146.93.167:5984/', 'twit', 'most_prolific_tweeter', '_count')
-param10 = create_view('http://115.146.93.167:5984/', 'twit', 'topic_accent', '')
-param12 = create_view('http://115.146.93.167:5984/', 'twit', 'most_mentioned_avfc_players', '_count')
-param13 = create_view('http://115.146.93.167:5984/', 'twit', 'most_positive_sentiment_avfc_player', '_sum')
-param14 = create_view('http://115.146.93.167:5984/', 'twit', 'tweet_number_time_day', '_count')
-param15 = create_view('http://115.146.93.167:5984/', 'twit', 'jobs', '_sum')
-param16 = create_view('http://115.146.93.167:5984/', 'twit', 'university_tweets', '')
-param17 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_sentiment', '_sum')
-param18 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_most_positive', '')
-param19 = create_view('http://115.146.93.167:5984/', 'twit', 'university_average_sentiment', '_sum')
-param20 = create_view('http://115.146.93.167:5984/', 'twit', 'university_topics', '_sum')
-param21 = create_view('http://115.146.93.167:5984/', 'twit', 'election_mentions', '_count')
-param22 = create_view('http://115.146.93.167:5984/', 'twit', 'election_sentiment', '_sum')
-param23 = create_view('http://115.146.93.167:5984/', 'twit', 'accent_sentiment', '_sum')
-param24 = create_view('http://115.146.93.167:5984/', 'twit', 'university_jobs', '')
-param25 = create_view('http://115.146.93.167:5984/', 'twit', 'university_beverage_other', '')
-param26 = create_view('http://115.146.93.167:5984/', 'twit', 'birmingham_average_sentiment', '_sum')
-param27 = create_view('http://115.146.93.167:5984/', 'twit', 'university_jobs_tally', '_sum')
-param28 = create_view('http://115.146.93.167:5984/', 'twit', 'bham_coordinate_sentiment', '')
-param29 = create_view('http://115.146.93.167:5984/', 'twit', 'vamps_most_negative', '')
-
-try:
-    # Put in N as second argument for top N
-    # N=0 for all docs, sorted descendingly
-    print ("ctrl+c or ctrl+z to abort")
-    correlate_hourly_ratio(param14, 0)
-    concept_topics = sort_map_reduce_search(param2, 50, 1)
-    hash_tag_topics = sort_map_reduce_search(param3, 20, 1)
-
-    sort_map_reduce_search(param4, 15, 1, 'avg')
-    sort_map_reduce_search(param15, 0, 0, 'avg')
-    sort_map_reduce_search(param19, 0, 1, 'avg')
-    sort_map_reduce_search(param20, 50, 2, 'avg_retain')
-    sort_map_reduce_search(param26, 0, 1, 'avg')
-    sort_map_reduce_search(param23, 0, 1, 'avg')
-    sort_map_reduce_search(param17, 0, 1, 'avg')
-    sort_map_reduce_search(param6, 0, 2)
-    sort_map_reduce_search(param8, 10, 1)
-    sort_map_reduce_search(param12, 10, 2)
-    sort_map_reduce_search(param13, 0, 2)
-    sort_map_reduce_search(param14, 0, 2)
-    sort_map_reduce_search(param21, 15, 2)
-    sort_map_reduce_search(param22, 0, 2)
-
-    # ones which emits the tweets for random extraction
-    sort_map_reduce_search(param10, 0, 2)
-    sort_map_reduce_search(param16, 0, 2)
-    sort_map_reduce_search(param18, 0, 2)
-    sort_map_reduce_search(param24, 0, 2)
-    sort_map_reduce_search(param25, 0, 2)
-
-    highest_sentiment_period = sort_map_reduce_search(param5, 21, 1, 'avg')
-    param11 = perform_highest_sentiment_search(highest_sentiment_period, param5)
-    sort_map_reduce_search(param11, 0, 2)
-
-    sort_map_reduce_search(param27, 0, 1)
-    sort_map_reduce_search(param28, 0, 1)
-
-    sort_map_reduce_search(param29, 0, 1)
-
-    param_new = perform_topic_sentiment_search(concept_topics, param2, "concept_sentiment_bham", '_sum')
-    sort_map_reduce_search(param_new, 50, 1, 'avg')
-
-    param_new = perform_topic_sentiment_search(hash_tag_topics, param3, "hash_tag_sentiment", '_sum')
-    sort_map_reduce_search(param_new, 10, 1, 'avg')
-
-    sort_map_reduce_search(param1, 10, 1)
-    sort_map_reduce_search(param7, 10, 1)
-except KeyboardInterrupt:
-    print ("Program exiting")
-
 
 
 
