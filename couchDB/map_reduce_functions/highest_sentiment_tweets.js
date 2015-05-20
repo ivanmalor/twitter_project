@@ -44,3 +44,6 @@ function getWeekday(day){
 			return "UNDEFINED"
 	}
 }
+
+//Fragment for the highest sentiment tweet, where python processing is used to
+//Create a new map function on the fly with the highest average sentiment period

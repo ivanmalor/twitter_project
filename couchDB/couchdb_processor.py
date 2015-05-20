@@ -94,7 +94,7 @@ def eval_new_old_funcs(db, design_name, map_func, reduce_func):
 
 #Load couchDB views and perform sorting on returned views using Counter objects
 #Prints the results in stdout
-def sort_map_reduce_search(ret, N, g_level, mode=None):
+def sort_map_reduce_search(ret, N=0, g_level=1, mode=None):
     #Gets the parameters from dict returned from create_view
     db = ret["db"]
     view_name = ret["view_name"]
@@ -133,6 +133,9 @@ def sort_map_reduce_search(ret, N, g_level, mode=None):
             val = list(row.value)
             val.append(round((float(val[1]) / val[0]), 5))
             result_dict[key] = val
+        elif mode == 'total':
+            #rounding off for total mode
+            result_dict[key] = round(float(row.value), 5)
         else:
             result_dict[key] = row.value
 

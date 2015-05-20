@@ -1,5 +1,5 @@
 function(doc) {
-                    topic_list = ["day", "man", "home", "people", "work", "match", "report", "video", "photograph", "love", "fight", "baby", "exam", "food", "mother", "guy", "family", "boy", "buddy", "child", "rebel", "woman", "world", "position", "canteen", "friend", "car", "place", "train", "final", "father", "bank", "club", "attack", "head", "plug", "season", "cup", "bank holiday", "queen", "school", "bus", "coffee", "service", "money", "fan", "mile", "picture", "arrogant", "today"]
+                    topic_list = ["day", "man", "home", "people", "work", "match", "report", "video", "photograph", "exam", "baby", "love", "food", "fight", "mother", "guy", "boy", "family", "buddy", "child", "position", "friend", "rebel", "place", "world", "woman", "canteen", "car", "train", "arrogant", "club", "bank", "father", "final", "plug", "head", "attack", "cup", "season", "bank holiday", "coffee", "rt", "bus", "queen", "service", "school", "fan", "fair", "event", "mile"]
     tweet = doc.tweet_data.text.toLowerCase()
     //if there is a sentiment for the tweet
     if (doc.meaningcloud.score){
@@ -16,3 +16,7 @@ function(doc) {
         });
     }
 }
+
+//Fragment of concept sentiment or hash tag sentiment functions
+//To do further search on the top mentioned topics and find the average
+//Sentiment for those topics
