@@ -1,5 +1,5 @@
 # twitter_project
-COMP90024 Cluster and Cloud Computing Assignment 2
+COMP90024 Cluster and Cloud Computing - Assignment 2
 -------------------------------------------------------
 
 Team 17 - Birmingham,UK
