@@ -1,0 +1,96 @@
+#Created by COMP90024 CCC Project 2 Team 17, Semester 1 2015
+#This script do the basic configurations in the server
+
+#- name: upgrade all packages
+#  yum: name=* state=latest
+
+- name: install the 'Development tools' package group
+  yum: name="@Development tools" state=present
+
+- name: Install the other utils package
+  yum: name={{ item }} state=present
+  with_items:
+   - zlib-devel
+   - openssl-devel
+   - sqlite-devel
+   - bzip2-devel
+   - xz-libs
+
+- name: Install python 2.7. Download sources
+  get_url: url={{ python27_url }} dest={{ common_setup_dir }}/
+
+- name: extract content
+  unarchive: src={{ common_setup_dir }}/Python-2.7.9.tar.xz dest={{ common_setup_dir }} copy=no
+
+- name: configure python2.7
+  command: chdir={{ common_setup_dir }}/Python-2.7.9 ./configure --prefix=/usr/local
+
+- name: build and install python2.7
+  command: chdir={{ common_setup_dir }}/Python-2.7.9 make
+- command: chdir={{ common_setup_dir }}/Python-2.7.9 make altinstall
+
+- name: Install python 3.4. Download sources
+  get_url: url={{ python34_url }} dest={{ common_setup_dir }}/
+
+- name: extract content
+  unarchive: src={{ common_setup_dir }}/Python-3.4.3.tar.xz dest={{ common_setup_dir }} copy=no
+
+- name: move python directory
+  command: cd {{ common_setup_dir }}/Python-3.4.3
+
+- name: configure python3.4
+  command: chdir={{ common_setup_dir }}/Python-3.4.3 ./configure --prefix=/usr/local
+
+- name: build and install python3.4
+  command: chdir={{ common_setup_dir }}/Python-3.4.3 make
+- command: chdir={{ common_setup_dir }}/Python-3.4.3 make altinstall
+
+- command: chown -R ec2-user:ec2-user /usr/local/lib/python2.7
+- command: chown -R ec2-user:ec2-user /usr/local/lib/python3.4
+
+#create link to python3.4
+#- file: src=/usr/local/bin/python2.7 dest=/usr/bin/python2.7 owner=ec2-user group=ec2-user state=link
+- file: src=/usr/local/bin/python3.4 dest=/usr/bin/python3.4 owner=ec2-user group=ec2-user state=link
+
+# add a symbolic to python3.4 
+#- command: ln -s /usr/local/bin/python3.4 /usr/bin/python3.4
+
+- command: echo "PYTHONPATH=/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages" >> $HOME/.bash_profile
+- command: echo "export PYTHONPATH" >> $HOME/.bash_profile
+
+- name: Get python setup tools from uri
+  get_url: url={{ pythonsetuptools_url }} dest={{ common_setup_dir }}/ validate_certs=no
+
+- name: extract content
+  unarchive: src={{ common_setup_dir }}/setuptools-1.4.2.tar.gz dest={{ common_setup_dir }} copy=no
+
+- name: Then install it for Python 2.7 and/or Python 3.4
+  command: chdir={{ common_setup_dir }}/setuptools-1.4.2 python2.7 setup.py install
+  environment:
+      PYTHONPATH: "/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages"
+
+- command: chdir={{ common_setup_dir }}/setuptools-1.4.2 python3.4 setup.py install
+  environment:
+      PYTHONPATH: "/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages"
+
+- command: chdir={{ common_setup_dir }}/setuptools-1.4.2 easy_install-2.7 pip
+  environment:
+      PYTHONPATH: "/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages"
+
+- command: chdir={{ common_setup_dir }}/setuptools-1.4.2 /usr/local/bin/easy_install-3.4 pip
+  environment:
+      PYTHONPATH: "/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages"
+
+- yum: name=yum-plugin-priorities state=present
+- yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm state=present
+- yum: name=http://rdo.fedorapeople.org/openstack-juno/rdo-release-juno.rpm state=present
+
+- name: Install the other utils package
+  yum: name={{ item }} state=present
+  with_items:
+   - python-novaclient
+   - python-cinderclient
+   - python-swiftclient
+   - python-openstackclient
+
+

@@ -1,0 +1,44 @@
+#Created by COMP90024 CCC Project 2 Team 17, Semester 1 2015
+#This script install couchdb, install the harvesting twitter.
+#Start couchdb and the harvesting_twitter service
+
+- name: install epel-repo
+  yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm state=present
+
+- name: install the latest version of couchdb
+  yum: name=couchdb state=latest
+
+- name: couchdb in init.d
+  template: src={{ template_couchini }} dest=/etc/couchdb/local.ini owner=couchdb group=couchdb mode=0644
+
+#change owner couchdb dir
+- file: path=/etc/couchdb owner=couchdb group=couchdb mode=0755 state=directory recurse=yes
+
+#- file: path=/mnt/data/couchdbdir owner=couchdb group=couchdb mode=0755 state=directory recurse=yes
+
+- name: couchdb service
+  service: name=couchdb state=started enabled=yes
+
+- command: /usr/local/bin/pip3.4 install tweepy
+  environment:
+      PYTHONPATH: "/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages" 
+
+- command: /usr/local/bin/pip3.4 install couchdb
+  environment:
+      PYTHONPATH: "/usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages"
+
+#create harvesting directory
+- name: create harvesting directory
+  file: path={{ harvesting_dir }} state=directory  owner=ec2-user group=ec2-user mode=0755
+
+#add harvesting process
+- name: copy haversting script
+  template: src={{ template_harvestingScript }} dest={{ harvesting_dir }}/{{ harvesting_scriptName }} owner=ec2-user group=ec2-user mode=0755
+
+#copy harvesting service file
+- name: copy haversting service file
+  template: src={{ template_harvestingService }} dest={{ harvesting_serviceDir }}/{{ harvesting_serviceName }} owner=ec2-user group=ec2-user mode=0755
+
+#start the service
+- name: start harvesting service
+  service: name=twitterharvest.service state=started enabled=yes

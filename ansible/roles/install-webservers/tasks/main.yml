@@ -1,0 +1,42 @@
+#Created by COMP90024 CCC Project 2 Team 17, Semester 1 2015
+#This script install apache-toncat, copy the project.war that 
+#contain our service and start the web service
+
+- name: install epel-repo
+  yum: name={{ item }} state=present
+  with_items:
+    - java-1.7.0-openjdk
+#    - java-1.7.0-openjdk-develjava-1.7.0-openjdk
+    - java-1.7.0-openjdk-devel
+        
+- name: Set JAVA_HOME envioroment
+  lineinfile: dest=/home/ec2-user/.bashrc line='export JAVA_HOME={{ webserver_JAVA_HOME }}' create=yes state=present mode=0644
+  
+- name: Download Tomcat 7.0.61
+  get_url: url=http://apache.uberglobalmirror.com/tomcat/tomcat-7/v7.0.62/bin/apache-tomcat-7.0.62.tar.gz dest="/home/ec2-user/apache-tomcat-7.0.62.tar.gz"
+ 
+- name: Extract Tomcat
+  unarchive: src=/home/ec2-user/apache-tomcat-7.0.62.tar.gz dest=/usr/local copy=no
+
+- name: Change ownership of Tomcat installation
+  file: path={{ webserver_tomactDir }} owner=ec2-user group=ec2-user state=directory recurse=yes
+
+- name: Set CATALINA_HOME envioroment
+  lineinfile: dest=/home/ec2-user/.bashrc line='export {{ webserver_tomactDir }}' create=yes state=present mode=0644
+  
+- name: Set JAVA_HOME for tomcat
+  lineinfile: dest={{ webserver_tomactDir }}/setenv.sh line='export JAVA_HOME={{ webserver_JAVA_HOME }}' create=yes state=present mode=0555
+
+- name: Set CATALINA_HOME for tomcat
+  lineinfile: dest={{ webserver_tomactDir }}/setenv.sh line='export CATALINA_HOME={{ webserver_tomactDir }}' create=yes state=present mode=0555
+  
+- name: move war that contains the web application to toncat directory
+  copy: src={{ webserver_application }} dest={{ webserver_tomactDir }}/webapps/ owner=ec2-user group=ec2-user mode=0664
+
+- name: Start Tomcat
+  command:  nohup {{ webserver_tomactDir }}/bin/catalina.sh start
+  sudo: true
+  sudo_user: ec2-user
+  
+- name: wait for tomcat to start
+  wait_for: port=8080

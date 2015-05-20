@@ -1,0 +1,5 @@
+python27_url: http://www.python.org/ftp/python/2.7.9/Python-2.7.9.tar.xz
+common_setup_dir: /home/ec2-user
+python34_url: http://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz
+pythonsetuptools_url: https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz
+pythonsetuptools: /usr/local/bin/python2.7/site-packages:/usr/local/bin/python3.4/site-packages

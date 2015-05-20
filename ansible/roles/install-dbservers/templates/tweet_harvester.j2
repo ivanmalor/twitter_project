@@ -1,0 +1,112 @@
+#!/usr/local/bin/python3.4
+__author__ = 'Richard Gale, Matheu Malo, Kevin Zhang'
+
+"""Adopted/combined Matheu and Kevin's code segments to put 
+twitter stream json data directly into couchdb.
+You need to:
+1)Change the API keys
+2)Change Couchdb location + database name
+3)Select Birmingham location segment (GEOBOX_BHAM1~4)
+For the program to work properly on your machine/node.
+
+Get tweepy and couchdb library using pip
+"""
+
+from tweepy import Stream
+from tweepy import OAuthHandler
+from tweepy.streaming import StreamListener
+import os
+import time,json,sys
+import couchdb
+from couchdb.mapping import Document, TextField, FloatField
+
+
+#Put in your own keys
+# Go to http://apps.twitter.com and create an app.
+# The consumer key and secret will be generated for you after
+consumer_key = "{{ harvesting_consumerkey }}"
+consumer_secret = "{{ harvesting_consumerSecret }}"
+
+# After the step above, you will be redirected to your app's page.
+# Create an access token under the the "Your access token" section
+access_token = "{{ harvesting_accessToken }}"
+access_token_secret = "{{ harvesting_accessTokenSecret }}"
+
+#this one is using abdon's fake  account
+
+# Geobox of Birmingham, UK. Source: http://boundingbox.klokantech.com/
+GEOBOX_BHAM = [-2.0336485,52.381053,-1.7288577,52.6087058]
+# Geobox divided in quadrants. For each VM
+GEOBOX_BHAM_1 = [-2.033649,52.381053,-1.887473,52.497652]
+GEOBOX_BHAM_2 = [-1.887473,52.380634,-1.728858,52.497652]
+GEOBOX_BHAM_3 = [-2.033649,52.494074,-1.887473,52.608706]
+GEOBOX_BHAM_4 = [-1.887393,52.490729,-1.728858,52.608706]
+#choose the appropriate coordinates for the node
+
+#handles authentication
+auth = OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
+
+#set up couchdb (local version)
+#put in your own db name and address
+db_name = 'twit'
+server_location = "http://{{ ansible_eth0.ipv4.address }}:5984/"
+couch = couchdb.Server(server_location)
+
+couch.resource.credentials = ("CCC-2015team17", "CCC-Team17")
+#check if twit db exist, if not exits create it
+try:
+    db = couch.create(db_name)
+except couchdb.http.PreconditionFailed:
+    db = couch[db_name]
+except BaseException as e:
+    exit
+
+
+duplicate_count = 0
+
+log = open("log.txt", 'a')
+
+
+class listener(StreamListener):
+	""" A listener handles tweets received from the stream.
+	This is a custom listener that store received tweets to FILE.
+	"""
+	def on_data(self, tweet_data):
+		try:
+			#converts to json format then saves in couchdb
+			tweets_json = json.loads(tweet_data)
+			doc_id = tweets_json["id_str"]
+			#id of the document is the tweet id
+			doc = {"_id": doc_id, "tweet_data": tweets_json}
+			db.save(doc)
+			#log.write(doc_id + '\n')
+			#print('added: ' + doc_id)
+			return True
+		except BaseException as e:
+			log.write(e)
+			time.sleep(5)
+		except couchdb.http.ResourceConflict:
+			#handles duplicates
+			duplicate_count += 1
+			time.sleep(5)
+
+	def on_error(self,status):
+		#returning False in on_data disconnects the stream
+		if status_code == 420:
+			#print(status)
+			return False
+			
+			
+def main():
+	print("Streaming started....")
+	try:
+		twitterStream = Stream(auth,listener())
+		twitterStream.filter(locations = {{ harvesting_coordinateBox }})
+	except Exception as e:
+		print("Error or execution finished. Program exiting... ")
+		print("there were {0} duplicates".format(duplicate_count))
+		twitterStream.disconnect()
+
+main()

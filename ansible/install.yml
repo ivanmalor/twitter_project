@@ -1,0 +1,17 @@
+#Created by COMP90024 CCC Project 2 Team 17, Semester 1 2015
+#Playhood that desploy the webserver, hervesting service and web server
+
+- hosts: webservers:dbservers
+  sudo: yes
+  roles:
+     - common
+
+- hosts: dbservers
+  sudo: yes
+  roles:
+     - install-dbservers
+
+- hosts: webservers
+  sudo: yes
+  roles:
+     - install-webservers

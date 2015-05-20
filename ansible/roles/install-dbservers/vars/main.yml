@@ -1,0 +1,30 @@
+# The port in which couch server server should listen on 
+couch_port: 5984
+
+# The port in which couch server server should listen on 
+#couch_ip: {{ ansible_eth0.ipv4.address }}
+# couch admin password
+couch_admin_user: CCC-2015team17
+couch_admin_pass: CCC-Team17
+#
+couchdb_datadir: /var/lib/couchdb
+
+template_couchini: couchdb_ini.j2
+
+#havesting setup vars
+
+#harvesting template script
+harvesting_consumerkey: "R49nk3U8A8UR2PmQyhNK9T9wC" 
+harvesting_consumerSecret: "5MfLnDqeg68yWFjh4sWmVwgHLFZ37SGMULqOypWSfCCpipnoIj"
+harvesting_accessToken: "3181056804-td4WOe9mz6DDieUevQ9MyqZX6A5fMrGY6jl4vCs"
+harvesting_accessTokenSecret: "TDnq8e8Sx5L2QUOv5oUj4YdfiAqkTJlWjLTeJMq5YhVV0"
+harvesting_coordinateBox: GEOBOX_BHAM_2
+
+#harvesting task
+harvesting_dir: /usr/local/share/twitter_harvest
+harvesting_scriptName: tweet_harvester.py
+template_harvestingScript: tweet_harvester.j2
+template_harvestingService: twitterharvest.service.j2
+harvesting_serviceDir: /etc/systemd/system
+harvesting_serviceName: twitterharvest.service
+

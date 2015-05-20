@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import org.glassfish.jersey.server.JSONP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,92 +38,33 @@ public class TweetRest {
 	private Tweet tweetModel=new Tweet();
 	
 	@GET
-	@Produces("application/json")
+	@Produces({"application/json", "application/javascript"})
+    @JSONP(queryParam = "callback")
 	/**
 	 * Return a list of tweets order by id. As default return 10 tweets
 	 * Params:
-	 * pp: number of tweets to return per page. default 10 max 100
+	 * pp: number of tweets to return per page. default 10
 	 * page: number of page that want to be returned.
 	 * @return
 	 */
 	public String tweet(@DefaultValue("10") @QueryParam("pp") int pp,
-	        @DefaultValue("1") @QueryParam("page") int page)
+	        @DefaultValue("1") @QueryParam("page") int page,
+	        @DefaultValue("false") @QueryParam("geo") boolean geo,
+	        @DefaultValue("false") @QueryParam("mapformat") boolean mapformat)
 	{	
-		return tweetModel.getTweets(pp, page).toString();
+		return tweetModel.getTweets(pp, page, geo, mapformat).toString();
 	}
  
     @GET @Path("{id}")
-    @Produces("application/json")
+    @Produces({"application/json", "application/javascript"})
+    @JSONP(queryParam = "callback")
     public String findById(@PathParam("id") String id) {
     	return tweetModel.findTweetById(id).toString();
     }
-    
-	/*public String tweets()
-	{	
-		JSONObject jsonObject = new JSONObject();
-		//Double fahrenheit = 98.24;
-		//Double celsius;
-		//celsius = (fahrenheit - 32)*5/9; 
-		//try {
-			//jsonObject.put("F Value", fahrenheit);
-			//jsonObject.put("C Value", celsius);
-		//} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		//} 
-		
-		String response="";
-		try {
-			response=excutePost();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
-		return response;
-		//return Response.status(200).entity(result).build();
-	}
-	
-	@GET
-	@Produces("application/json")
-	public String tweetByID()
-	{
-		String response="";
-		return response;
-	}*/
 	
 	public String excutePost() throws Exception {
 		//String url = "https://selfsolve.apple.com/wcResults.do";
 		String host = "115.146.93.167";
-		
-		/**HttpClient client = new DefaultHttpClient();
-		HttpPost post = new HttpPost(host);
-		
-		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-		urlParameters.add(new BasicNameValuePair("limit", "10"));
-		//urlParameters.add(new BasicNameValuePair("include_docs", "true"));
-		
-		post.setEntity(new UrlEncodedFormEntity(urlParameters));
- 
-		HttpResponse response = client.execute(post);
- 
-		BufferedReader rd = new BufferedReader(
-                        new InputStreamReader(response.getEntity().getContent()));
- 
-		StringBuffer result = new StringBuffer();
-		String line = "";
-		while ((line = rd.readLine()) != null) {
-			result.append(line);
-		}
-		BufferedReader rd = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
-
-		StringBuffer result = new StringBuffer();
-		String line = "";
-		while ((line = rd.readLine()) != null) {
-			result.append(line);
-		}
-		*/
 		
 		String jsonString="";
 		

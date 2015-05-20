@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import org.glassfish.jersey.server.JSONP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +36,8 @@ public class UserRest {
 	private User userModel=new User();
 	
 	@GET
-	@Produces("application/json")
+	@Produces({"application/json", "application/javascript"})
+    @JSONP(queryParam = "callback")
 	/**
 	 * Return a list of users oreder by username. As default return 10
 	 * Params:
@@ -43,33 +45,30 @@ public class UserRest {
 	 * page: number of page that want to be returned.
 	 * @return
 	 */
-	public List<JsonObject> users(@QueryParam("pp") int pp, 
+	public String users(@QueryParam("pp") int pp, 
             			@QueryParam("page") int page)
 	{	
-		return userModel.getUsers(pp,page);
+		return userModel.getUsers(pp,page).toString();
 	}
 	
-	@GET @Path("search/{username}")
-	@Produces("application/json")
-	public List<JsonObject> findByUsername(@PathParam("username") String username) {
-		return userModel.findUserByUsername(username);
+	@GET @Path("{username}")
+	@Produces({"application/json", "application/javascript"})
+    @JSONP(queryParam = "callback")
+	public String findByUsername(@PathParam("username") String username) {
+		return userModel.findUserByUsername(username).toString();
     }
  
-	@GET @Path("search/{username}/tweets")
-	@Produces("application/json")
-	public List<JsonObject> usernameTweets(@PathParam("username") String username) {
-		return userModel.findUserByUsername(username);
+	@GET @Path("{username}/tweets")
+	@Produces({"application/json", "application/javascript"})
+    @JSONP(queryParam = "callback")
+	public String usernameTweets(@PathParam("username") String username,
+			@DefaultValue("false") @QueryParam("geo") boolean geo) {
+		return userModel.userTweets(username,geo).toString();
     }
 	
-	@GET @Path("search/{username}/tweets/geo")
-	@Produces("application/json")
-	public List<JsonObject> usernameTweetsWithGeo(@PathParam("username") String username) {
-		return userModel.userTweetsGeo(username);
-    }
-	
-    @GET @Path("{id}")
+    /*@GET @Path("{id}")
     @Produces("application/json")
     public String findById(@PathParam("id") String id) {
         return "";
-    }
+    }*/
 }

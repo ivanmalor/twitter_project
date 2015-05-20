@@ -109,6 +109,26 @@ public class DBConnection {
 		return docs;
 	}
 	
+	public List<JsonObject> bulkDocsRetrieve(String view,boolean includeDocs) {
+		
+		List<JsonObject> docs=null;
+		docs = dbClient.view(view)
+				.includeDocs(includeDocs)
+				.limit(200000)
+				.query(JsonObject.class);
+		return docs;
+	}
+	
+	public List<JsonObject> bulkDocsRetrieve(String view,boolean includeDocs,int groupLevel,boolean reduce) {
+		List<JsonObject> docs=null;
+		docs = dbClient.view(view)
+				.includeDocs(includeDocs)
+				.reduce(reduce)
+				.groupLevel(groupLevel)
+				.query(JsonObject.class);
+		return docs;
+	}
+	
 	public void bulkModifyDocs(List<Object> docsNewOrModify) {
 
 		boolean allOrNothing = true;

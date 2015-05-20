@@ -1,0 +1,17 @@
+[Unit]
+Description=Service that gather the tweet and populates then in twit database
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+ExecStart=/usr/local/share/twitter_harvest/tweet_harvester.py
+WorkingDirectory=/usr/local/share/twitter_harvest
+KillSignal=SIGINT
+TimeoutStopSec=120
+StandardInput=null
+StandardOutput=journal
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
