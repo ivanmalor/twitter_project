@@ -2,25 +2,17 @@
 COMP90024 Cluster and Cloud Computing Assignment 2
 -------------------------------------------------------
 
-comp90024_imalo app - from @cholopic_ec
+Team 17
 
-consumer_key = "sEe0b4yXx5uJ54QvtbvfEYPP7"
+Abdon Carrera - 645998
 
-consumer_secret = "RmHmFvINJOnvxkUNdgMX1UrEyDBQfZobB9yUEx80yUxloKistN"
+Richard Gale - 319740
 
-access_token = "2201707272-Dno4Gb4CHJO9VwaXhOU46bnNA0NRUsMSSozXVTS"
+Rocio Mera - 647650
 
-access_token_secret = "ntOU6yld0iOZVE86DKLAqRlcVrqoK2tFyfNWkUFT3AZiU"
+Ivan Malo - 661332
 
-comp90024_imalo_1 app from @cholopic_ec
+Siyuan Zhang - 668506
 
-----------------------------------------------------------------------
 
-consumer_key = "IRzi8JVyIhHIxXM5yAsHB8GrT"
-
-consumer_secret = "hiT9ZERr462FachT0D0tXFBA1gYNKoez2bFpGGwwlSJZuijcNC"
-
-access_token = "2201707272-g3zXokah0wwbMoXoLnn9IhrGP6YrNNExzEfdXYh"
-
-access_token_secret = "RPTqg0TjcX5qxLCHC70VXWAsCfhaD0pi8xsO0nCyySyPQ"
 
